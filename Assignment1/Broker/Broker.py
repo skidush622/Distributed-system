@@ -43,9 +43,6 @@ class Broker(ZMQHelper):
     # Message type for subscribers:
     # 1. request history message
     #
-    # #########################################
-    # Receive Message format:
-    # $(status)-$(id)-$(msg-type)-$(msg)
     def handler(self):
         while True:
             # receive message from publisher
