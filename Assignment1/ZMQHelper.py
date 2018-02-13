@@ -32,12 +32,8 @@ class ZMQHelper:
         socket.send_string(message)
 
     # publisher disconnect with broker
-    def disconnect_pub2broker(self, socket):
-        pass
-
-    # helper method for subscriber to set initial topic
-    def sub_init_topic(self, socket, topic):
-        socket.setsockopt_string(zmq.SUBSCRIBE, topic)
+    def disconnect_pub2broker(self, socket, addr):
+        socket.disconnect(addr)
 
     # helper method used for subscriber to subscribe a topic
     def subscribe_topic(self, socket, topic):
@@ -45,8 +41,12 @@ class ZMQHelper:
 
     # helper method used for subscriber receives message
     def sub_recieve_msg(self, socket):
-        socket.recv_string()
+        return socket.recv_string()
 
+    # subscriber send message to xpubsocket to request history
+    def sub_request_history(self, socket, msg):
+        socket.send_string(msg)
+        
     # helper method used for un-subscribing
     def unsubscriber(self, socket, topic):
         socket.unsubscribe(topic)
