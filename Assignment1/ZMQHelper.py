@@ -66,3 +66,7 @@ class ZMQHelper:
         xpubsocket.bind('tcp://*:' + port)
         xpubsocket.setsockopt(zmq.XPUB_VERBOSE, 1)
         return xpubsocket
+
+    # xpub socket sends message
+    def xpub_send_msg(self, socket, string1, string2):
+        socket.send_string('%s %s' % (string1, string2))

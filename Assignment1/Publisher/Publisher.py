@@ -39,6 +39,11 @@ class Publisher(ZMQHelper):
         send_str = 'drop_topic' + '#' + self.myID + '#' + topic + '#'
         self.helper.pub_send_msg(self.socket, send_str)
 
+    # send heartbeat
+    def heartbeat(self):
+        send_str = 'heartbeat' + '#' + self.myID + '#'
+        self.helper.pub_send_msg(self.socket, send_str)
+
     # publisher fails, disconnect with broker
     def shutoff(self):
         send_str = 'shutoff' + '#' + self.myID + '#'

@@ -6,6 +6,7 @@
 #
 
 import random
+from time import time
 from Assignment1.ZMQHelper import ZMQHelper
 
 
@@ -13,7 +14,7 @@ class Broker(ZMQHelper):
     
     def __init__(self, xsub_port, xpub_port):
         # initialize Broker class
-        helper = ZMQHelper()
+        self.helper = ZMQHelper()
 
         # publisher dictionary
         # dictionary format
@@ -26,8 +27,13 @@ class Broker(ZMQHelper):
         # $(topic):$({$pubID: $ownership_strength})
         self.pub_ownership_dict = {}
 
-        self.xsubsocket = helper.bind_xsub(xsub_port)
-        self.xpubsocket = helper.bind_xpub(xpub_port)
+        # publisher heartbeat dictionary
+        # This dict is used to record publisher's latest heartbeat timestamp
+        # $(pubID):$(time)
+        self.heartbeat_dict = {}
+
+        self.xsubsocket = self.helper.bind_xsub(xsub_port)
+        self.xpubsocket = self.helper.bind_xpub(xpub_port)
 
     # This method should always be alive to listen message from pubs & subs
     # Handler serves for either publisher and subscriber
@@ -45,6 +51,14 @@ class Broker(ZMQHelper):
     #
     def handler(self):
         while True:
+            # check if any publisher has failed
+            for pubID in self.heartbeat_dict.keys():
+                if time() - self.heartbeat_dict[pubID] > 30:
+                    print('Publisher %s has dead.' % pubID)
+                    del self.heartbeat_dict[pubID]
+                    self.update_pub_dict('shutoff', pubID, '', '')
+                    self.update_pub_ownership_dict('shutoff', '', pubID)
+
             # receive message from publisher
             msg = self.xsubsocket.recv_string(0, 'utf-8')
             message = msg.split('#')
@@ -73,7 +87,7 @@ class Broker(ZMQHelper):
                     continue
                 else:
                     # send publication to subscribers using xpubsocket
-                    self.xpubsocket.send_string('%s %s' % (topic, publication))
+                    self.helper.xpub_send_msg(self.xpubsocket, topic, publication)
 
             elif msg_type == 'drop_topic':
                 target_pub = message[1]
@@ -81,12 +95,21 @@ class Broker(ZMQHelper):
                 self.update_pub_dict('drop_topic', target_pub, target_topic, '')
                 self.update_pub_ownership_dict('drop_topic', target_topic, target_pub)
 
+            # This shutoff is a soft shutoff, which means publisher would tell broker in advance
             elif msg_type == 'shutoff':
                 target_pub = message[1]
                 # update publisher dictionary
                 self.update_pub_dict('shutoff', target_pub, '', '')
                 # update publisher ownership dictionary
                 self.update_pub_ownership_dict('shutoff', '', target_pub)
+
+            elif msg_type == 'heartbeat':
+                pubID = message[1]
+                print('Publisher %s heartbeat.' % pubID)
+                if pubID not in self.heartbeat_dict:
+                    self.heartbeat_dict.update({pubID: time()})
+                else:
+                    self.heartbeat_dict[pubID] = time()
 
             elif msg_type == 'history':
                 topic = message[1]
@@ -101,14 +124,14 @@ class Broker(ZMQHelper):
                     print('Broker is send history publications with topic %s ...' % topic)
                     for index, history_publication in enumerate(history_publication_list):
                         if index < history_count:
-                            self.xpubsocket.send_string('%s %s' % (topic, history_publication))
+                            self.helper.xpub_send_msg(self.xpubsocket, topic, history_publication)
                         else:
                             break
                     print('Broker has finished sending history publication with topic %s ' % topic)
                 except KeyError:
                     print('Topic %s has no history.' % topic)
                     # send an empty publication list to subscriber
-                    self.xpubsocket.send_string('%s %s' % (topic, ''))
+                    self.helper.xpub_send_msg(self.xpubsocket, topic, '')
 
     # update publisher dictionary
     #
