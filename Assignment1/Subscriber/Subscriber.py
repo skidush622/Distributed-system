@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# encoding: utf-8
 # FileName: Subscriber.py
 #
 # CS6381 Assignment1
