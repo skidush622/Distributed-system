@@ -51,19 +51,25 @@ class Subscriber(ZMQHelper):
         connect_str = 'tcp://' + self.address + ':' + self.port
         print('Subscriber connect to broker at %s' % connect_str)
         self.socket = self.helper.connect_sub2broker(connect_str)
+        if self.socket is None:
+            print('Subscriber connected xpub socket failed.')
+            return False
+        else:
+            print('Subscriber connected xpub socket succeed.')
+            return True
 
     def un_subscribe(self, topic):
         self.helper.unsubscriber(self.socket, topic)
 
     # add a subscription topic
-    def add_sub_topic(self, socket, topic):
-        self.helper.subscribe_topic(socket, topic)
+    def add_sub_topic(self, topic):
+        self.helper.subscribe_topic(self.socket, topic)
 
     # request last n subscription items
     # if n is not specified, the default is request all passed publications
     def request_history(self, topic, n):
         # subscribe a history topic
-        self.add_sub_topic(self.socket, self.history_topic)
+        self.add_sub_topic(self.history_topic)
         request_str = 'history#' + topic + '#' + n + '#'
         print('Subscriber is requesting history publications...')
         self.helper.sub_request_history(self.socket, request_str)
