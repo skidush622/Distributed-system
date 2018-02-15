@@ -66,7 +66,7 @@ class Publisher(ZMQHelper):
             while True:
                 send_str = 'heartbeat' + '#' + self.myID + '#'
                 self.heartbeat_helper.pub_send_msg(self.heartbeat_socket, send_str)
-                time.sleep(3)
+                time.sleep(10)
 
     # publisher fails, disconnect with broker
     def shutoff(self):

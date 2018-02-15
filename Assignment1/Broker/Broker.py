@@ -54,7 +54,7 @@ class Broker(ZMQHelper):
         while True:
             # check if any publisher has failed
             for pubID in self.heartbeat_dict.keys():
-                if time() - self.heartbeat_dict[pubID] > 30:
+                if time() - self.heartbeat_dict[pubID] > 60:
                     print('Publisher %s has dead.' % pubID)
                     del self.heartbeat_dict[pubID]
                     self.update_pub_dict('shutoff', pubID, '', '')
