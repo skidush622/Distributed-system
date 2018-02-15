@@ -30,8 +30,6 @@ def help():
 
     print('       sub -r [address] -P [port] -t [topic] -h [history samples count] # register subscriber to an '
           'address with a port number and set its initial topic and history samples count')
-    print('       sub -a [topic] # add a subscription topic for a subscriber')
-    print('       sub -d [topic] # drop a subscription topic for a subscriber')
 
 
 pub = None
@@ -96,12 +94,6 @@ def parse(argv):
             global sub
             sub = Subscriber(address, port, topic, count)
             sub.handler()
-        elif argv[1] == '-a':
-            topic = argv[2]
-            sub.add_sub_topic(topic)
-        elif argv[1] == '-d':
-            topic = argv[2]
-            sub.un_subscribe(topic)
         else:
             print('Illegal command.')
             return False

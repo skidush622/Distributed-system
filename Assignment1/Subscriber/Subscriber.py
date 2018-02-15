@@ -38,7 +38,7 @@ class Subscriber(ZMQHelper):
             count += 1
 
         self.un_subscribe(self.history_topic)
-        self.add_sub_topic(self.socket, self.topic)
+        self.add_sub_topic(self.topic)
 
         # receive new publication
         while True:
