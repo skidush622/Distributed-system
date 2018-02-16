@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1/MyPublisher" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1/MySubscriber" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1/MyZMQHelper" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1/Test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1/MyBroker" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Assignment1" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

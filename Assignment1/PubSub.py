@@ -1,18 +1,17 @@
-#!/usr/bin/python
+#!/usr/bin/env /usr/local/bin/python
 # encoding: utf-8
 # FileName: PubSub.py
 #
-# CS6381 Assignment1
+# CS6381 Assignment
 # Group member: Peng Manyao, Li Yingqi, Zhou Minhui, Zhuangwei Kang
 #
 
-
-from Assignment1.Broker.Broker import Broker
-from Assignment1.Publisher.Publisher import Publisher
-from Assignment1.Subscriber.Subscriber import Subscriber
+from Broker import Broker
+from Subscriber import Subscriber
+from Publisher import Publisher
 
 pubsub_version = '0.1'
-pubsub_info = 'Dev Publisher/Subscriber system based on ZeroMQ'
+pubsub_info = 'Dev MyPublisher/MySubscriber system based on ZeroMQ'
 
 
 def help():
@@ -39,14 +38,15 @@ sub = None
 
 def parse(argv):
     opt = argv[0]
-
+    global pub
+    global broker
+    global sub
     if opt == 'pub':
         if argv[1] == '-r' and argv[3] == '-P' and argv[5] == '-t':
             if pub is None:
                 address = argv[2]
                 port = argv[4]
                 topic = argv[6]
-                global pub
                 pub = Publisher(address, port, topic)
                 if pub.register_handler():
                     return True
@@ -78,7 +78,6 @@ def parse(argv):
         if argv[1] == '-l':
             xsubport = argv[2]
             xpubport = argv[3]
-            global broker
             broker = Broker(xsubport, xpubport)
             broker.handler()
         else:
@@ -91,32 +90,36 @@ def parse(argv):
             port = argv[4]
             topic = argv[6]
             count = argv[8]
-            global sub
             sub = Subscriber(address, port, topic, count)
             sub.handler()
         else:
             print('Illegal command.')
             return False
     else:
+        print('Illegal command.')
         return False
 
 
 if __name__ == '__main__':
 
     while True:
-        cmd = input('PubSub>>')
+        cmd = input('PubSub>> ')
         try:
             cmd = cmd.split()
+            if cmd[0] != 'pubsub':
+                print('Illegal command.')
+                continue
             opt = cmd[1]
 
             # help info and version info
             if opt == '-h' or opt == 'help':
                 help()
+                continue
             elif opt == '-v' or opt == 'version':
                 print('PubSub current version is: %s' % pubsub_version)
                 print('PubSub info is: %s' % pubsub_info)
-
-            ret = parse(opt[1:])
+                continue
+            ret = parse(cmd[1:])
             if ret is False:
                 print('Service failed.')
         except IndexError:

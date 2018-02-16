@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env /usr/local/bin/python
 # encoding: utf-8
-# FileName: Broker.py
+# FileName: MyBroker.py
 #
 # CS6381 Assignment1
 # Group member: Peng Manyao, Li Yingqi, Zhou Minhui, Zhuangwei Kang
@@ -8,13 +8,13 @@
 
 import random
 from time import time
-from Assignment1.ZMQHelper import ZMQHelper
+from ZMQHelper import ZMQHelper
 
 
-class Broker(ZMQHelper):
+class Broker:
     
     def __init__(self, xsub_port, xpub_port):
-        # initialize Broker class
+        # initialize MyBroker class
         self.helper = ZMQHelper()
 
         # publisher dictionary
@@ -36,6 +36,8 @@ class Broker(ZMQHelper):
         self.xsubsocket = self.helper.bind_xsub(xsub_port)
         self.xpubsocket = self.helper.bind_xpub(xpub_port)
 
+        print('Init MyBroker succeed.')
+
     # This method should always be alive to listen message from pubs & subs
     # Handler serves for either publisher and subscriber
     #
@@ -55,13 +57,14 @@ class Broker(ZMQHelper):
             # check if any publisher has failed
             for pubID in self.heartbeat_dict.keys():
                 if time() - self.heartbeat_dict[pubID] > 60:
-                    print('Publisher %s has dead.' % pubID)
+                    print('MyPublisher %s has dead.' % pubID)
                     del self.heartbeat_dict[pubID]
                     self.update_pub_dict('shutoff', pubID, '', '')
                     self.update_pub_ownership_dict('shutoff', '', pubID)
 
             # receive message from publisher
             msg = self.xsubsocket.recv_string(0, 'utf-8')
+            print('Broker received message %s on xsubsocket.' % msg)
             message = msg.split('#')
             msg_type = message[0]
             if msg_type == 'pub_init':
@@ -83,7 +86,7 @@ class Broker(ZMQHelper):
 
                 # filter publisher via ownership strength
                 if self.filter_pub_ownership_dict(pubID, topic) is None:
-                    print('Publisher %s doesn\'t own highest ownership strength, %s won\'t be forwarded.'
+                    print('MyPublisher %s doesn\'t own highest ownership strength, %s won\'t be forwarded.'
                           % (pubID, topic))
                     continue
                 else:
@@ -106,7 +109,7 @@ class Broker(ZMQHelper):
 
             elif msg_type == 'heartbeat':
                 pubID = message[1]
-                print('Publisher %s heartbeat.' % pubID)
+                print('MyPublisher %s heartbeat.' % pubID)
                 if pubID not in self.heartbeat_dict:
                     self.heartbeat_dict.update({pubID: time()})
                 else:
@@ -122,13 +125,13 @@ class Broker(ZMQHelper):
                     history_publication_list = self.pub_dict[target_pub][topic]
                     topic = topic + '-' + 'history'
                     # send all history publications
-                    print('Broker is send history publications with topic %s ...' % topic)
+                    print('MyBroker is send history publications with topic %s ...' % topic)
                     for index, history_publication in enumerate(history_publication_list):
                         if index < history_count:
                             self.helper.xpub_send_msg(self.xpubsocket, topic, history_publication)
                         else:
                             break
-                    print('Broker has finished sending history publication with topic %s ' % topic)
+                    print('MyBroker has finished sending history publication with topic %s ' % topic)
                 except KeyError:
                     print('Topic %s has no history.' % topic)
                     # send an empty publication list to subscriber
@@ -146,22 +149,22 @@ class Broker(ZMQHelper):
     def update_pub_dict(self, update_typ, pubID, topic, publication):
         if update_typ == 'add_pub':
             self.pub_dict.update({pubID: {}})
-            print('Publisher storage update: Add publisher %s succeed.' % pubID)
+            print('MyPublisher storage update: Add publisher %s succeed.' % pubID)
 
         elif update_typ == 'add_publication':
             if topic not in self.pub_dict[pubID].keys():
                 self.pub_dict[pubID].update({topic: [publication]})
             else:
                 self.pub_dict[pubID][topic].add(publication)
-                print('Publisher storage update: Add publication for %s succeed.' % pubID)
+                print('MyPublisher storage update: Add publication for %s succeed.' % pubID)
 
         elif update_typ == 'drop_topic':
             del self.pub_dict[pubID][topic]
-            print('Publisher storage update: Drop topic %s for publisher %s succeed.' % (topic, pubID))
+            print('MyPublisher storage update: Drop topic %s for publisher %s succeed.' % (topic, pubID))
 
         elif update_typ == 'shutoff':
             del self.pub_dict[pubID]
-            print('Publisher storage update: Shutoff publisher %s succeed.' % pubID)
+            print('MyPublisher storage update: Shutoff publisher %s succeed.' % pubID)
 
     # update publisher ownership strength dictionary
     #
@@ -181,18 +184,18 @@ class Broker(ZMQHelper):
 
             # sort the publisher ownership strength based on value
             sorted(self.pub_ownership_dict.items(), key=lambda val: val[1])
-            print('Publisher ownership update: Update ownership for %s with topic: %s succeed.' % (pubID, topic))
+            print('MyPublisher ownership update: Update ownership for %s with topic: %s succeed.' % (pubID, topic))
 
         elif update_type == 'drop_topic':
             if topic not in self.pub_ownership_dict.keys():
-                print('Publisher ownership update: drop topic %s for publisher %s failed, '
+                print('MyPublisher ownership update: drop topic %s for publisher %s failed, '
                       '%s not in publisher ownership dictionary.' % (topic, pubID, topic))
             else:
                 if topic not in self.pub_ownership_dict[topic].keys():
-                    print('Publisher ownership update: drop topic %s for publisher %s failed, %s don\'t have this topic.' % (topic, pubID, pubID))
+                    print('MyPublisher ownership update: drop topic %s for publisher %s failed, %s don\'t have this topic.' % (topic, pubID, pubID))
                 else:
                     del self.pub_ownership_dict[topic][pubID]
-                    print('Publisher ownership update: drop topic %s for publisher %s succeed.' % (topic, pubID))
+                    print('MyPublisher ownership update: drop topic %s for publisher %s succeed.' % (topic, pubID))
 
         elif update_type == 'shutoff':
             count = 0
@@ -200,7 +203,7 @@ class Broker(ZMQHelper):
                 if pubID in self.pub_ownership_dict[key].keys():
                     del self.pub_ownership_dict[key][pubID]
                     count += 1
-            print('Publisher ownership update: Shutoff publisher %s succeed.' % pubID)
+            print('MyPublisher ownership update: Shutoff publisher %s succeed.' % pubID)
 
     # filter publisher ownership strength dictionary
     #
