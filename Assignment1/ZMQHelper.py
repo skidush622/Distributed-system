@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env /usr/local/bin/python
 # encoding: utf-8
-# FileName: ZMQHelper.py
+# FileName: MyZMQHelper.py
 #
 # CS6381 Assignment1
 # Group member: Peng Manyao, Li Yingqi, Zhou Minhui, Zhuangwei Kang
@@ -57,7 +57,7 @@ class ZMQHelper:
         context = zmq.Context()
         xsubsocket = context.socket(zmq.XSUB)
         xsubsocket.bind('tcp://*:' + port)
-        xsubsocket.setsockopt(zmq.SUBSCRIBE, b'')
+        #xsubsocket.setsockopt(zmq.SUBSCRIBE, b'')
         return xsubsocket
 
     # bind xpub socket with a specified port
@@ -65,8 +65,14 @@ class ZMQHelper:
         context = zmq.Context()
         xpubsocket = context.socket(zmq.XPUB)
         xpubsocket.bind('tcp://*:' + port)
-        xpubsocket.setsockopt(zmq.XPUB_VERBOSE, 1)
+        #xpubsocket.setsockopt(zmq.XPUB_VERBOSE, 1)
         return xpubsocket
+
+    # prepare broker
+    def prepare_broker(self, xsub_port, xpub_port):
+        xsub = self.bind_xsub(xsub_port)
+        xpub = self.bind_xpub(xpub_port)
+        return xsub, xpub
 
     # xpub socket sends message
     def xpub_send_msg(self, socket, string1, string2):

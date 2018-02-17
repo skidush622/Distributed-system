@@ -1,15 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env /usr/local/bin/python
 # encoding: utf-8
-# FileName: Subscriber.py
+# FileName: MySubscriber.py
 #
 # CS6381 Assignment1
 # Group member: Peng Manyao, Li Yingqi, Zhou Minhui, Zhuangwei Kang
 #
 
-from Assignment1.ZMQHelper import ZMQHelper
+from ZMQHelper import ZMQHelper
 
 
-class Subscriber(ZMQHelper):
+class Subscriber:
     def __init__(self, address, port, topic, history_count):
         self.address = address
         self.port = port
@@ -34,7 +34,7 @@ class Subscriber(ZMQHelper):
         while count < self.history_count:
             received_pub = self.helper.sub_recieve_msg(self.socket)
             received_topic, received_msg = received_pub.split()
-            print('Subscriber received history publication: %s' % received_msg)
+            print('MySubscriber received history publication: %s' % received_msg)
             count += 1
 
         self.un_subscribe(self.history_topic)
@@ -44,18 +44,18 @@ class Subscriber(ZMQHelper):
         while True:
             received_pub = self.helper.sub_recieve_msg(self.socket)
             received_topic, received_msg = received_pub.split()
-            print('Subscriber received publication: %s' % received_msg)
+            print('MySubscriber received publication: %s' % received_msg)
 
     # register subscriber
     def register_sub(self):
         connect_str = 'tcp://' + self.address + ':' + self.port
-        print('Subscriber connect to broker at %s' % connect_str)
+        print('MySubscriber connect to broker at %s' % connect_str)
         self.socket = self.helper.connect_sub2broker(connect_str)
         if self.socket is None:
-            print('Subscriber connected xpub socket failed.')
+            print('MySubscriber connected xpub socket failed.')
             return False
         else:
-            print('Subscriber connected xpub socket succeed.')
+            print('MySubscriber connected xpub socket succeed.')
             return True
 
     def un_subscribe(self, topic):
@@ -71,5 +71,5 @@ class Subscriber(ZMQHelper):
         # subscribe a history topic
         self.add_sub_topic(self.history_topic)
         request_str = 'history#' + topic + '#' + n + '#'
-        print('Subscriber is requesting history publications...')
+        print('MySubscriber is requesting history publications...')
         self.helper.sub_request_history(self.socket, request_str)

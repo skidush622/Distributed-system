@@ -33,8 +33,7 @@ class Broker:
         # $(pubID):$(time)
         self.heartbeat_dict = {}
 
-        self.xsubsocket = self.helper.bind_xsub(xsub_port)
-        self.xpubsocket = self.helper.bind_xpub(xpub_port)
+        self.xsubsocket, self.xpubsocket = self.helper.prepare_broker(xsub_port, xpub_port)
 
         print('Init MyBroker succeed.')
 
