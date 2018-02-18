@@ -44,26 +44,18 @@ class ZMQHelper:
     def sub_recieve_msg(self, socket):
         return socket.recv_string()
 
-    # subscriber send message to xpubsocket to request history
-    def sub_request_history(self, socket, msg):
-        socket.send_string(msg)
-        
-    # helper method used for un-subscribing
-    def unsubscriber(self, socket, topic):
-        socket.unsubscribe(topic)
-
     # bind xsub socket with a specified port
     def bind_xsub(self, port):
         context = zmq.Context()
-        xsubsocket = context.socket(zmq.XSUB)
+        xsubsocket = context.socket(zmq.SUB)
         xsubsocket.bind('tcp://*:' + port)
-        #xsubsocket.setsockopt(zmq.SUBSCRIBE, b'')
+        xsubsocket.setsockopt(zmq.SUBSCRIBE, b'')
         return xsubsocket
 
     # bind xpub socket with a specified port
     def bind_xpub(self, port):
         context = zmq.Context()
-        xpubsocket = context.socket(zmq.XPUB)
+        xpubsocket = context.socket(zmq.PUB)
         xpubsocket.bind('tcp://*:' + port)
         #xpubsocket.setsockopt(zmq.XPUB_VERBOSE, 1)
         return xpubsocket

@@ -18,7 +18,7 @@ class Subscriber:
         self.history_topic = self.topic + '-' + 'history'
         self.helper = ZMQHelper()
         self.register_sub()
-        self.request_history(topic, history_count)
+        self.add_sub_topic(self.topic)
 
     #
     # This method should always be alive
@@ -29,47 +29,30 @@ class Subscriber:
     # 2. new publication
     #
     def handler(self):
-        count = 0
         # receive history publications
-        while count < self.history_count:
+        for count in range(1, int(self.history_count)):
             received_pub = self.helper.sub_recieve_msg(self.socket)
             received_topic, received_msg = received_pub.split()
-            print('MySubscriber received history publication: %s' % received_msg)
-            count += 1
-
-        self.un_subscribe(self.history_topic)
-        self.add_sub_topic(self.topic)
+            print('History publication: %s' % received_msg)
 
         # receive new publication
         while True:
             received_pub = self.helper.sub_recieve_msg(self.socket)
             received_topic, received_msg = received_pub.split()
-            print('MySubscriber received publication: %s' % received_msg)
+            print('Publication: %s' % received_msg)
 
     # register subscriber
     def register_sub(self):
         connect_str = 'tcp://' + self.address + ':' + self.port
-        print('MySubscriber connect to broker at %s' % connect_str)
+        print('Connection info: %s' % connect_str)
         self.socket = self.helper.connect_sub2broker(connect_str)
         if self.socket is None:
-            print('MySubscriber connected xpub socket failed.')
+            print('Connection feedback: connected xpub socket failed.')
             return False
         else:
-            print('MySubscriber connected xpub socket succeed.')
+            print('Connection feedback: connected xpub socket succeed.')
             return True
-
-    def un_subscribe(self, topic):
-        self.helper.unsubscriber(self.socket, topic)
 
     # add a subscription topic
     def add_sub_topic(self, topic):
         self.helper.subscribe_topic(self.socket, topic)
-
-    # request last n subscription items
-    # if n is not specified, the default is request all passed publications
-    def request_history(self, topic, n):
-        # subscribe a history topic
-        self.add_sub_topic(self.history_topic)
-        request_str = 'history#' + topic + '#' + n + '#'
-        print('MySubscriber is requesting history publications...')
-        self.helper.sub_request_history(self.socket, request_str)

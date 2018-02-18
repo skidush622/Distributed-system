@@ -19,7 +19,7 @@ class Publisher:
         self.init_topic = init_topic
         self.helper = ZMQHelper()
         self.heartbeat_helper = ZMQHelper()
-        self.myID = str(random.randint(1, 100))
+        self.myID = str(random.randint(1, 1000))
 
     def register_handler(self):
         if self.register_pub():
@@ -33,35 +33,41 @@ class Publisher:
     # register publisher, connect with broker
     def register_pub(self):
         connect_str = 'tcp://' + self.address + ':' + self.port
-        print('MyPublisher connect to broker at %s' % connect_str)
+        print('Connection info: %s' % connect_str)
         self.socket = self.helper.connect_pub2broker(connect_str)
         if self.socket is None:
-            print('MyPublisher connected xsub socket failed.')
+            print('Connecttion feedback: connected xsub socket failed.')
             return False
         else:
-            print('MyPublisher connected xsub socket succeed.')
-            init_str = 'pub_init' + '#' + self.myID + '#' + self.init_topic
-            print('MyPublisher %s initialized with initial topic %s succeed.' % (self.myID, self.init_topic))
-            self.helper.pub_send_msg(self.socket, init_str)
+            print('Connecttion feedback: connected xsub socket succeed.')
+            init_str = 'pub_init' + '#' + self.myID + '#' + self.init_topic + '#'
+            current = time.time()
+            while True:
+                self.helper.pub_send_msg(self.socket, init_str)
+                if time.time() - current > 0.01:
+                    break
+            print('Connecttion feedback: %s initialized with initial topic %s succeed.' % (self.myID, self.init_topic))
             return True
 
     # send publication to broker
     def send_pub(self, topic, msg):
         send_str = 'publication' + '#' + self.myID + '#' + topic + '#' + msg
-        print('MyPublisher is publishing message %s' % send_str)
+        print('Publication: publishing message %s' % send_str)
         self.helper.pub_send_msg(self.socket, send_str)
 
     # drop a topic
     def drop_topic(self, topic):
         send_str = 'drop_topic' + '#' + self.myID + '#' + topic + '#'
         self.helper.pub_send_msg(self.socket, send_str)
+        print('Drop topic: %s' % topic)
 
     # send heartbeat
     def heartbeat(self):
         connect_str = 'tcp://' + self.address + ':' + self.port
         self.heartbeat_socket = self.heartbeat_helper.connect_pub2broker(connect_str)
+        print('Heartbeat connection info: %s' % connect_str)
         if self.heartbeat_socket is None:
-            print('MyPublisher heartbeat connected xsub socket failed.')
+            print('Heartbeat connection feedback: heartbeat connected xsub socket failed.')
             return False
         else:
             while True:
@@ -72,4 +78,5 @@ class Publisher:
     # publisher fails, disconnect with broker
     def shutoff(self):
         send_str = 'shutoff' + '#' + self.myID + '#'
+        print('Shutoff')
         self.helper.pub_send_msg(self.socket, send_str)

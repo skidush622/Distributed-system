@@ -61,7 +61,7 @@ def parse(argv):
                 return False
             else:
                 topic = argv[3]
-                publication = argv[5]
+                publication = ' '.join(argv[5:])
                 pub.send_pub(topic, publication)
         elif argv[1] == '-d':
             if pub is None:
@@ -70,6 +70,13 @@ def parse(argv):
             else:
                 topic = argv[2]
                 pub.drop_topic(topic)
+        elif argv[1] == 'shutoff':
+            if pub is None:
+                print('Please register a publisher firstly.')
+                return False
+            else:
+                pub.shutoff()
+                return True
         else:
             print('Illegal command.')
             return False
