@@ -95,10 +95,6 @@ class Broker:
                 # publisher registration
                 self.update_pub_dict('add_pub', pubID, topic, '')
                 self.update_pub_ownership_dict('add_pub', topic, pubID)
-                for item in self.pub_dict.items():
-                    for sample in item[1].items():
-                        for publication in sample[1]:
-                            self.helper.xpub_send_msg(self.xpubsocket, sample[0], publication)
                 
             elif msg_type == 'publication':
                 pubID = message[1]
