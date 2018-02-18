@@ -29,16 +29,23 @@ class Subscriber:
     # 2. new publication
     #
     def handler(self):
+
+        '''
         # receive history publications
-        for count in range(1, int(self.history_count)):
+        for count in range(1, int(self.history_count) + 1):
             received_pub = self.helper.sub_recieve_msg(self.socket)
-            received_topic, received_msg = received_pub.split()
+            message = received_pub.split()
+            received_topic = message[0]
+            received_msg = ' '.join(message[1:])
             print('History publication: %s' % received_msg)
+        '''
 
         # receive new publication
         while True:
             received_pub = self.helper.sub_recieve_msg(self.socket)
-            received_topic, received_msg = received_pub.split()
+            message = received_pub.split()
+            received_topic = message[0]
+            received_msg = ' '.join(message[1:])
             print('Publication: %s' % received_msg)
 
     # register subscriber

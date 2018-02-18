@@ -19,14 +19,15 @@ def help():
     print('usage: pubsub [opt] [argv]')
     print('usage: pubsub -h')
     print('usage: pubsub -v')
-
+    print('****************************')
     print('       pub -r [address] -P [port] -t [topic] # register publisher to an address with a port number'
           'and set its initial topic')
     print('       pub send -t [topic] -p [publication] # send publication with topic')
     print('       pub -d [topic] # drop a topic')
-
+    print('       pub shutoff')
+    print('****************************')
     print('       broker -l [xsubsocket port] [xpubsocket port] # listen connections at these two ports')
-
+    print('****************************')
     print('       sub -r [address] -P [port] -t [topic] -h [history samples count] # register subscriber to an '
           'address with a port number and set its initial topic and history samples count')
 
