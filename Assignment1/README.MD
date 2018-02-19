@@ -3,7 +3,7 @@
 Team members:
 
   - Manyao Peng
-  - Yinqi Li
+  - Yingqi Li
   - Minhui Zhou
   - Zhuangwei Kang
 
