@@ -40,6 +40,10 @@ class ZMQHelper:
     def subscribe_topic(self, socket, topic):
         socket.subscribe(topic)
 
+    # helper method used for subscriber to unsubscribe a topic
+    def unsubscribe(self, socket, topic):
+        socket.unsubscribe(topic)
+
     # helper method used for subscriber receives message
     def sub_recieve_msg(self, socket):
         return socket.recv_string()

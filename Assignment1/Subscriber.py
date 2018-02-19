@@ -7,17 +7,18 @@
 #
 
 from ZMQHelper import ZMQHelper
-
+import time
 
 class Subscriber:
     def __init__(self, address, port, topic, history_count):
         self.address = address
         self.port = port
         self.topic = topic
+        self.history_topic = topic + '-history'
         self.history_count = history_count
-        self.history_topic = self.topic + '-' + 'history'
         self.helper = ZMQHelper()
         self.register_sub()
+        self.add_sub_topic(self.history_topic)
         self.add_sub_topic(self.topic)
 
     #
@@ -29,24 +30,29 @@ class Subscriber:
     # 2. new publication
     #
     def handler(self):
-
-        '''
-        # receive history publications
-        for count in range(1, int(self.history_count) + 1):
-            received_pub = self.helper.sub_recieve_msg(self.socket)
-            message = received_pub.split()
-            received_topic = message[0]
-            received_msg = ' '.join(message[1:])
-            print('History publication: %s' % received_msg)
-        '''
-
-        # receive new publication
+        current_time = time.time()
+        prev_time = 2e100
+        # receive publications
+        count = 0
         while True:
             received_pub = self.helper.sub_recieve_msg(self.socket)
             message = received_pub.split()
             received_topic = message[0]
             received_msg = ' '.join(message[1:])
-            print('Publication: %s' % received_msg)
+            received_msg = received_msg.split('--')
+            time_stamp = float(received_msg[1])
+            received_msg = received_msg[0]
+            if count == int(self.history_count) or prev_time <= time_stamp:
+                self.helper.unsubscribe(self.socket, self.history_topic)
+                count += 1e10
+            if time_stamp < current_time and count < int(self.history_count) and prev_time > time_stamp:
+                count += 1
+                print('History Publication: %s' % received_msg)
+                prev_time = time_stamp
+            if time_stamp >= current_time:
+                print('Publication: %s' % received_msg)
+                current_time = time.time()
+                
 
     # register subscriber
     def register_sub(self):

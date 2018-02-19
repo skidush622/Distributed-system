@@ -18,6 +18,7 @@ class Broker:
         # initialize MyBroker class
         self.helper = ZMQHelper()
         self.heartbeat_lock = threading.Lock()
+        self.history_lock = threading.Lock()
         # publisher dictionary
         # dictionary format
         # $(pubID):{$({$topic:[$history]})}
@@ -55,7 +56,22 @@ class Broker:
                     del self.heartbeat_dict[pubID]
                     break
             self.heartbeat_lock.release()
+            time.sleep(20)
 
+    # This helper function is used to send history publications un-interruptedly
+    def history_helper(self):
+        while True:
+            self.history_lock.acquire()
+            group = self.get_highest_strength_pubs()
+            for key in list(group.keys())[::-1]:
+                for pubs in list(self.pub_dict[key][group[key]])[::-1]:
+                    his_topic = group[key] + '-history'
+                    print('Sending history publications: %s : %s' % (his_topic, pubs))
+                    self.helper.xpub_send_msg(self.xpubsocket, his_topic, pubs)
+            self.history_lock.release()
+            time.sleep(10)
+
+            
     # This method should always be alive to listen message from pubs & subs
     # Handler serves for either publisher and subscriber
     #
@@ -71,10 +87,13 @@ class Broker:
     # 1. request history message
     #
     def handler(self):
-        thr = threading.Thread(target= self.vice_handler, args = ())
-        threading.Thread.setDaemon(thr, True)
-        thr.start()
+        heartbeat_thr = threading.Thread(target= self.vice_handler, args= ())
+        threading.Thread.setDaemon(heartbeat_thr, True)
+        heartbeat_thr.start()
 
+        history_thr = threading.Thread(target= self.history_helper, args= ())
+        threading.Thread.setDaemon(history_thr, True)
+        history_thr.start()
         while True:
             # receive message from publisher
             msg = self.xsubsocket.recv_string(0, 'utf-8')
@@ -115,8 +134,11 @@ class Broker:
                           % (pubID, topic))
                     continue
                 else:
+                    self.history_lock.acquire()
                     # send publication to subscribers using xpubsocket
+                    publication = publication + '--' + str(time.time())
                     self.helper.xpub_send_msg(self.xpubsocket, topic, publication)
+                    self.history_lock.release()
 
             elif msg_type == 'drop_topic':
                 target_pub = message[1]
@@ -164,10 +186,11 @@ class Broker:
             self.pub_dict.update({pubID: {topic:[]}})
 
         elif update_typ == 'add_publication':
+            stored_publication = publication + '--' + str(time.time())
             if topic not in self.pub_dict[pubID].keys():
-                self.pub_dict[pubID].update({topic: [publication]})
+                self.pub_dict[pubID].update({topic: [stored_publication]})
             else:
-                self.pub_dict[pubID][topic].append(publication)
+                self.pub_dict[pubID][topic].append(stored_publication)
 
         elif update_typ == 'drop_topic':
             if topic not in self.pub_dict[pubID].keys():
@@ -219,3 +242,13 @@ class Broker:
             return pubID
         else:
             return None
+
+    # This function is used to get all publications who have highest ownership strength for all topics
+    def get_highest_strength_pubs(self):
+        group = {}
+        for topic in self.pub_ownership_dict.keys():
+            max_str = max(self.pub_ownership_dict[topic].values())
+            for pub in self.pub_ownership_dict[topic].keys():
+                if self.pub_ownership_dict[topic][pub] == max_str:
+                    group.update({pub:topic})
+        return group
