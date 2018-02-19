@@ -15,8 +15,8 @@ Team members:
 
 ##### Tips:
   - You can spawn multiple publishers and subscribers in this system.
-  - Broker will assign a random ownership strength value for each publisher when it publishes a new topic.
-  - Brokers send valid publication to all subscribers every 10 seconds.
+  - Broker will assign a random ownership strength value for each publisher when it publishes a new topic.
+  - Broker sends all valid publications to all subscribers every 10 seconds.
   - Publishers send heartbeat signal evey 10 seconds.
   - If a publisher did't send heartbeat signal to broker within 60 seconds, broker would announce the publisher has died.
 #### How to run our codes
