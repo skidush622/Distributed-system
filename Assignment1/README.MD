@@ -13,6 +13,9 @@ Team members:
   - Pyzmq
   - Mininet
 
+##### Tips:
+  - You can spawn multiple publishers and subscribers in this system.
+  - Broker will assign a random ownership strength value for
 #### How to run our codes
 
 ```sh
