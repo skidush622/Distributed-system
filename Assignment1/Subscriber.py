@@ -47,11 +47,17 @@ class Subscriber:
                 count += 1e10
             if time_stamp < current_time and count < int(self.history_count) and prev_time > time_stamp:
                 count += 1
+                print('*************************************************')
+                print('Receipt Info:')
                 print('History Publication: %s' % received_msg)
+                print('Time Interval: %f' % (current_time - time_stamp)) 
                 prev_time = time_stamp
             if time_stamp >= current_time:
-                print('Publication: %s' % received_msg)
                 current_time = time.time()
+                print('*************************************************')
+                print('Receipt Info:')
+                print('Publication: %s' % received_msg)
+                print('Time Interval: %f' % (current_time - time_stamp))
                 
 
     # register subscriber
