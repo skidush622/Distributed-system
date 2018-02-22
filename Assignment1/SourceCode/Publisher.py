@@ -9,11 +9,16 @@
 from ZMQHelper import ZMQHelper
 import random
 import time
+import sys
 import threading
+
+
 
 
 class Publisher:
     def __init__(self, address, port, init_topic):
+        self.lock = threading.Lock()
+        self.shutoff_check = False
         self.address = address
         self.port = port
         self.init_topic = init_topic
@@ -71,12 +76,19 @@ class Publisher:
             return False
         else:
             while True:
-                send_str = 'heartbeat' + '#' + self.myID + '#'
-                self.heartbeat_helper.pub_send_msg(self.heartbeat_socket, send_str)
+                with self.lock:
+                    if self.shutoff_check:
+                        break
+                    else:  
+                        send_str = 'heartbeat' + '#' + self.myID + '#'
+                        self.heartbeat_helper.pub_send_msg(self.heartbeat_socket, send_str)
                 time.sleep(10)
+                
 
     # publisher fails, disconnect with broker
     def shutoff(self):
         send_str = 'shutoff' + '#' + self.myID + '#'
         print('Shutoff')
+        with self.lock:
+            self.shutoff_check = True
         self.helper.pub_send_msg(self.socket, send_str)

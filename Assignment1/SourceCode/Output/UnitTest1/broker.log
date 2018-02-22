@@ -1,0 +1,763 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Init msg: 854 init with topic foods
+Init msg: 466 init with topic animals
+Publication: 854 published asparagus with topic foods
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 854 published apples with topic foods
+Publication: 854 published avacado with topic foods
+Init msg: 231 init with topic laptops
+Heartbeat: 231 heartbeat
+Publication: 854 published alfalfa with topic foods
+Publication: 466 published Aardvark with topic animals
+Publication: 466 published Abyssinian with topic animals
+Publication: 854 published acorn squash with topic foods
+Publication: 466 published Adelie Penguin with topic animals
+Publication: 854 published almond with topic foods
+Publication: 231 published MacBook with topic laptops
+Publication: 466 published Affenpinscher with topic animals
+Publication: 854 published arugala with topic foods
+Heartbeat: 854 heartbeat
+Publication: 231 published MacBook Pro with topic laptops
+Publication: 466 published Afghan Hound with topic animals
+Publication: 854 published artichoke with topic foods
+Publication: 231 published MacBook Air with topic laptops
+Publication: 854 published applesauce with topic foods
+Publication: 466 published African Bush Elephant with topic animals
+Publication: 231 published Inspiron with topic laptops
+Publication: 854 published asian noodles with topic foods
+Publication: 466 published African Civet with topic animals
+Heartbeat: 466 heartbeat
+Publication: 231 published Latitude with topic laptops
+Publication: 854 published antelope with topic foods
+Publication: 466 published African Clawed Frog with topic animals
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 231 published XPS with topic laptops
+Publication: 854 published ahi tuna with topic foods
+Publication: 466 published African Forest Elephant with topic animals
+Publication: 231 published Alienware with topic laptops
+Publication: 854 published albacore tuna with topic foods
+Publication: 466 published African Palm Civet with topic animals
+Heartbeat: 231 heartbeat
+Publication: 231 published Vostro with topic laptops
+Publication: 854 published Apple juice with topic foods
+Publication: 466 published African Penguin with topic animals
+Publication: 231 published Dell with topic laptops
+Publication: 854 published Avocado roll with topic foods
+Publication: 466 published African Tree Toad with topic animals
+Publication: 854 published Bruscetta with topic foods
+Publication: 231 published ThinkPad with topic laptops
+Publication: 466 published African Wild Dog with topic animals
+Publication: 854 published bacon with topic foods
+Publication: 231 published IdeaPad with topic laptops
+Publication: 466 published Ainu Dog with topic animals
+Heartbeat: 854 heartbeat
+Publication: 854 published black beans with topic foods
+Publication: 466 published Airedale Terrier with topic animals
+Publication: 231 published Yoga with topic laptops
+Publication: 854 published bagels with topic foods
+Publication: 466 published Akbash with topic animals
+Publication: 231 published Legion with topic laptops
+Publication: 854 published baked beans with topic foods
+Publication: 466 published Akita with topic animals
+Publication: 231 published Chromebook with topic laptops
+Heartbeat: 466 heartbeat
+Publication: 854 published BBQ with topic foods
+Publication: 466 published Alaskan Malamute with topic animals
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Publication: 231 published HP Pavilion with topic laptops
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 854 published bison with topic foods
+Publication: 466 published Albatross with topic animals
+Publication: 231 published HP EliteBook with topic laptops
+Publication: 854 published barley with topic foods
+Publication: 466 published Aldabra Giant Tortoise with topic animals
+Publication: 231 published HP ProBook with topic laptops
+Heartbeat: 231 heartbeat
+Publication: 854 published beer with topic foods
+Publication: 466 published Alligator with topic animals
+Publication: 231 published HP Envy with topic laptops
+Publication: 854 published bisque with topic foods
+Publication: 466 published Alpine Dachsbracke with topic animals
+Publication: 231 published HP Omen with topic laptops
+Publication: 854 published bluefish with topic foods
+Publication: 466 published American Bulldog with topic animals
+Publication: 231 published HP Chromeboo with topic laptops
+Publication: 854 published bread with topic foods
+Publication: 466 published American Cocker Spaniel with topic animals
+Heartbeat: 854 heartbeat
+Publication: 854 published broccoli with topic foods
+Publication: 466 published American Coonhound with topic animals
+Publication: 854 published buritto with topic foods
+Publication: 466 published American Eskimo Dog with topic animals
+Publication: 854 published babaganoosh with topic foods
+Publication: 466 published American Foxhound with topic animals
+Heartbeat: 466 heartbeat
+Sending history publications: laptops-history : HP Chromeboo--1519266300.077032
+Sending history publications: laptops-history : HP Omen--1519266299.056084
+Sending history publications: laptops-history : HP Envy--1519266298.03837
+Sending history publications: laptops-history : HP ProBook--1519266297.025673
+Sending history publications: laptops-history : HP EliteBook--1519266296.008838
+Sending history publications: laptops-history : HP Pavilion--1519266294.989294
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : American Foxhound--1519266304.14647
+Sending history publications: animals-history : American Eskimo Dog--1519266303.124375
+Sending history publications: animals-history : American Coonhound--1519266302.108143
+Sending history publications: animals-history : American Cocker Spaniel--1519266301.087479
+Sending history publications: animals-history : American Bulldog--1519266300.058563
+Sending history publications: animals-history : Alpine Dachsbracke--1519266299.035369
+Sending history publications: animals-history : Alligator--1519266298.01481
+Sending history publications: animals-history : Aldabra Giant Tortoise--1519266297.002856
+Sending history publications: animals-history : Albatross--1519266295.98381
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : babaganoosh--1519266304.100888
+Sending history publications: foods-history : buritto--1519266303.076886
+Sending history publications: foods-history : broccoli--1519266302.062558
+Sending history publications: foods-history : bread--1519266301.042367
+Sending history publications: foods-history : bluefish--1519266300.02701
+Sending history publications: foods-history : bisque--1519266299.010847
+Sending history publications: foods-history : beer--1519266297.989858
+Sending history publications: foods-history : barley--1519266296.965348
+Sending history publications: foods-history : bison--1519266295.951966
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 854 published Cabbage with topic foods
+Publication: 466 published American Pit Bull Terrier with topic animals
+Publication: 854 published cake with topic foods
+Publication: 466 published American Staffordshire Terrier with topic animals
+Publication: 854 published carrots with topic foods
+Publication: 466 published American Water Spaniel with topic animals
+Heartbeat: 231 heartbeat
+Publication: 854 published carne asada with topic foods
+Publication: 466 published Anatolian Shepherd Dog with topic animals
+Publication: 854 published celery with topic foods
+Publication: 466 published Angelfish with topic animals
+Publication: 854 published cheese with topic foods
+Publication: 466 published Ant with topic animals
+Publication: 854 published chicken with topic foods
+Publication: 466 published Anteater with topic animals
+Heartbeat: 854 heartbeat
+Publication: 854 published catfish with topic foods
+Publication: 466 published Antelope with topic animals
+Publication: 854 published chips with topic foods
+Publication: 466 published Appenzeller Dog with topic animals
+Publication: 854 published chocolate with topic foods
+Publication: 466 published Arctic Fox with topic animals
+Heartbeat: 466 heartbeat
+Sending history publications: laptops-history : HP Chromeboo--1519266300.077032
+Sending history publications: laptops-history : HP Omen--1519266299.056084
+Sending history publications: laptops-history : HP Envy--1519266298.03837
+Sending history publications: laptops-history : HP ProBook--1519266297.025673
+Sending history publications: laptops-history : HP EliteBook--1519266296.008838
+Sending history publications: laptops-history : HP Pavilion--1519266294.989294
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : Arctic Fox--1519266314.321492
+Sending history publications: animals-history : Appenzeller Dog--1519266313.299707
+Sending history publications: animals-history : Antelope--1519266312.278412
+Sending history publications: animals-history : Anteater--1519266311.257747
+Sending history publications: animals-history : Ant--1519266310.241915
+Sending history publications: animals-history : Angelfish--1519266309.243241
+Sending history publications: animals-history : Anatolian Shepherd Dog--1519266308.21853
+Sending history publications: animals-history : American Water Spaniel--1519266307.195622
+Sending history publications: animals-history : American Staffordshire Terrier--1519266306.188768
+Sending history publications: animals-history : American Pit Bull Terrier--1519266305.165083
+Sending history publications: animals-history : American Foxhound--1519266304.14647
+Sending history publications: animals-history : American Eskimo Dog--1519266303.124375
+Sending history publications: animals-history : American Coonhound--1519266302.108143
+Sending history publications: animals-history : American Cocker Spaniel--1519266301.087479
+Sending history publications: animals-history : American Bulldog--1519266300.058563
+Sending history publications: animals-history : Alpine Dachsbracke--1519266299.035369
+Sending history publications: animals-history : Alligator--1519266298.01481
+Sending history publications: animals-history : Aldabra Giant Tortoise--1519266297.002856
+Sending history publications: animals-history : Albatross--1519266295.98381
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : chocolate--1519266314.2973
+Sending history publications: foods-history : chips--1519266313.280847
+Sending history publications: foods-history : catfish--1519266312.259678
+Sending history publications: foods-history : chicken--1519266311.240246
+Sending history publications: foods-history : cheese--1519266310.219817
+Sending history publications: foods-history : celery--1519266309.196143
+Sending history publications: foods-history : carne asada--1519266308.177013
+Sending history publications: foods-history : carrots--1519266307.161112
+Sending history publications: foods-history : cake--1519266306.141365
+Sending history publications: foods-history : Cabbage--1519266305.120403
+Sending history publications: foods-history : babaganoosh--1519266304.100888
+Sending history publications: foods-history : buritto--1519266303.076886
+Sending history publications: foods-history : broccoli--1519266302.062558
+Sending history publications: foods-history : bread--1519266301.042367
+Sending history publications: foods-history : bluefish--1519266300.02701
+Sending history publications: foods-history : bisque--1519266299.010847
+Sending history publications: foods-history : beer--1519266297.989858
+Sending history publications: foods-history : barley--1519266296.965348
+Sending history publications: foods-history : bison--1519266295.951966
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 854 published chowder with topic foods
+Publication: 466 published Arctic Hare with topic animals
+Publication: 854 published clams with topic foods
+Publication: 466 published Arctic Wolf with topic animals
+Publication: 466 published Armadillo with topic animals
+Publication: 854 published coffee with topic foods
+Heartbeat: 231 heartbeat
+Publication: 466 published Asian Elephant with topic animals
+Publication: 854 published cookies with topic foods
+Publication: 466 published Asian Giant Hornet with topic animals
+Publication: 854 published corn with topic foods
+Publication: 466 published Asian Palm Civet with topic animals
+Publication: 854 published cupcakes with topic foods
+Publication: 466 published Asiatic Black Bear with topic animals
+Publication: 854 published crab with topic foods
+Heartbeat: 854 heartbeat
+Publication: 466 published Australian Cattle Dog with topic animals
+Publication: 854 published curry with topic foods
+Publication: 466 published Australian Kelpie Dog with topic animals
+Publication: 854 published cereal with topic foods
+Publication: 466 published Australian Mist with topic animals
+Publication: 854 published chimichang with topic foods
+Heartbeat: 466 heartbeat
+Sending history publications: laptops-history : HP Chromeboo--1519266300.077032
+Sending history publications: laptops-history : HP Omen--1519266299.056084
+Sending history publications: laptops-history : HP Envy--1519266298.03837
+Sending history publications: laptops-history : HP ProBook--1519266297.025673
+Sending history publications: laptops-history : HP EliteBook--1519266296.008838
+Sending history publications: laptops-history : HP Pavilion--1519266294.989294
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : Australian Mist--1519266324.528277
+Sending history publications: animals-history : Australian Kelpie Dog--1519266323.504774
+Sending history publications: animals-history : Australian Cattle Dog--1519266322.484485
+Sending history publications: animals-history : Asiatic Black Bear--1519266321.459998
+Sending history publications: animals-history : Asian Palm Civet--1519266320.438172
+Sending history publications: animals-history : Asian Giant Hornet--1519266319.419266
+Sending history publications: animals-history : Asian Elephant--1519266318.397227
+Sending history publications: animals-history : Armadillo--1519266317.373591
+Sending history publications: animals-history : Arctic Wolf--1519266316.35668
+Sending history publications: animals-history : Arctic Hare--1519266315.34016
+Sending history publications: animals-history : Arctic Fox--1519266314.321492
+Sending history publications: animals-history : Appenzeller Dog--1519266313.299707
+Sending history publications: animals-history : Antelope--1519266312.278412
+Sending history publications: animals-history : Anteater--1519266311.257747
+Sending history publications: animals-history : Ant--1519266310.241915
+Sending history publications: animals-history : Angelfish--1519266309.243241
+Sending history publications: animals-history : Anatolian Shepherd Dog--1519266308.21853
+Sending history publications: animals-history : American Water Spaniel--1519266307.195622
+Sending history publications: animals-history : American Staffordshire Terrier--1519266306.188768
+Sending history publications: animals-history : American Pit Bull Terrier--1519266305.165083
+Sending history publications: animals-history : American Foxhound--1519266304.14647
+Sending history publications: animals-history : American Eskimo Dog--1519266303.124375
+Sending history publications: animals-history : American Coonhound--1519266302.108143
+Sending history publications: animals-history : American Cocker Spaniel--1519266301.087479
+Sending history publications: animals-history : American Bulldog--1519266300.058563
+Sending history publications: animals-history : Alpine Dachsbracke--1519266299.035369
+Sending history publications: animals-history : Alligator--1519266298.01481
+Sending history publications: animals-history : Aldabra Giant Tortoise--1519266297.002856
+Sending history publications: animals-history : Albatross--1519266295.98381
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : chimichang--1519266324.546127
+Sending history publications: foods-history : cereal--1519266323.525149
+Sending history publications: foods-history : curry--1519266322.502704
+Sending history publications: foods-history : crab--1519266321.478102
+Sending history publications: foods-history : cupcakes--1519266320.456421
+Sending history publications: foods-history : corn--1519266319.437763
+Sending history publications: foods-history : cookies--1519266318.416036
+Sending history publications: foods-history : coffee--1519266317.392468
+Sending history publications: foods-history : clams--1519266316.344296
+Sending history publications: foods-history : chowder--1519266315.319997
+Sending history publications: foods-history : chocolate--1519266314.2973
+Sending history publications: foods-history : chips--1519266313.280847
+Sending history publications: foods-history : catfish--1519266312.259678
+Sending history publications: foods-history : chicken--1519266311.240246
+Sending history publications: foods-history : cheese--1519266310.219817
+Sending history publications: foods-history : celery--1519266309.196143
+Sending history publications: foods-history : carne asada--1519266308.177013
+Sending history publications: foods-history : carrots--1519266307.161112
+Sending history publications: foods-history : cake--1519266306.141365
+Sending history publications: foods-history : Cabbage--1519266305.120403
+Sending history publications: foods-history : babaganoosh--1519266304.100888
+Sending history publications: foods-history : buritto--1519266303.076886
+Sending history publications: foods-history : broccoli--1519266302.062558
+Sending history publications: foods-history : bread--1519266301.042367
+Sending history publications: foods-history : bluefish--1519266300.02701
+Sending history publications: foods-history : bisque--1519266299.010847
+Sending history publications: foods-history : beer--1519266297.989858
+Sending history publications: foods-history : barley--1519266296.965348
+Sending history publications: foods-history : bison--1519266295.951966
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Publication: 466 published Australian Shepherd with topic animals
+Publication: 466 published Australian Terrier with topic animals
+Publication: 466 published Avocet with topic animals
+Heartbeat: 231 heartbeat
+Publication: 466 published Axolotl with topic animals
+Publication: 466 published Aye Ay with topic animals
+Heartbeat: 854 heartbeat
+Heartbeat: 466 heartbeat
+Sending history publications: laptops-history : HP Chromeboo--1519266300.077032
+Sending history publications: laptops-history : HP Omen--1519266299.056084
+Sending history publications: laptops-history : HP Envy--1519266298.03837
+Sending history publications: laptops-history : HP ProBook--1519266297.025673
+Sending history publications: laptops-history : HP EliteBook--1519266296.008838
+Sending history publications: laptops-history : HP Pavilion--1519266294.989294
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : Aye Ay--1519266329.631563
+Sending history publications: animals-history : Axolotl--1519266328.612931
+Sending history publications: animals-history : Avocet--1519266327.594563
+Sending history publications: animals-history : Australian Terrier--1519266326.572005
+Sending history publications: animals-history : Australian Shepherd--1519266325.551319
+Sending history publications: animals-history : Australian Mist--1519266324.528277
+Sending history publications: animals-history : Australian Kelpie Dog--1519266323.504774
+Sending history publications: animals-history : Australian Cattle Dog--1519266322.484485
+Sending history publications: animals-history : Asiatic Black Bear--1519266321.459998
+Sending history publications: animals-history : Asian Palm Civet--1519266320.438172
+Sending history publications: animals-history : Asian Giant Hornet--1519266319.419266
+Sending history publications: animals-history : Asian Elephant--1519266318.397227
+Sending history publications: animals-history : Armadillo--1519266317.373591
+Sending history publications: animals-history : Arctic Wolf--1519266316.35668
+Sending history publications: animals-history : Arctic Hare--1519266315.34016
+Sending history publications: animals-history : Arctic Fox--1519266314.321492
+Sending history publications: animals-history : Appenzeller Dog--1519266313.299707
+Sending history publications: animals-history : Antelope--1519266312.278412
+Sending history publications: animals-history : Anteater--1519266311.257747
+Sending history publications: animals-history : Ant--1519266310.241915
+Sending history publications: animals-history : Angelfish--1519266309.243241
+Sending history publications: animals-history : Anatolian Shepherd Dog--1519266308.21853
+Sending history publications: animals-history : American Water Spaniel--1519266307.195622
+Sending history publications: animals-history : American Staffordshire Terrier--1519266306.188768
+Sending history publications: animals-history : American Pit Bull Terrier--1519266305.165083
+Sending history publications: animals-history : American Foxhound--1519266304.14647
+Sending history publications: animals-history : American Eskimo Dog--1519266303.124375
+Sending history publications: animals-history : American Coonhound--1519266302.108143
+Sending history publications: animals-history : American Cocker Spaniel--1519266301.087479
+Sending history publications: animals-history : American Bulldog--1519266300.058563
+Sending history publications: animals-history : Alpine Dachsbracke--1519266299.035369
+Sending history publications: animals-history : Alligator--1519266298.01481
+Sending history publications: animals-history : Aldabra Giant Tortoise--1519266297.002856
+Sending history publications: animals-history : Albatross--1519266295.98381
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : chimichang--1519266324.546127
+Sending history publications: foods-history : cereal--1519266323.525149
+Sending history publications: foods-history : curry--1519266322.502704
+Sending history publications: foods-history : crab--1519266321.478102
+Sending history publications: foods-history : cupcakes--1519266320.456421
+Sending history publications: foods-history : corn--1519266319.437763
+Sending history publications: foods-history : cookies--1519266318.416036
+Sending history publications: foods-history : coffee--1519266317.392468
+Sending history publications: foods-history : clams--1519266316.344296
+Sending history publications: foods-history : chowder--1519266315.319997
+Sending history publications: foods-history : chocolate--1519266314.2973
+Sending history publications: foods-history : chips--1519266313.280847
+Sending history publications: foods-history : catfish--1519266312.259678
+Sending history publications: foods-history : chicken--1519266311.240246
+Sending history publications: foods-history : cheese--1519266310.219817
+Sending history publications: foods-history : celery--1519266309.196143
+Sending history publications: foods-history : carne asada--1519266308.177013
+Sending history publications: foods-history : carrots--1519266307.161112
+Sending history publications: foods-history : cake--1519266306.141365
+Sending history publications: foods-history : Cabbage--1519266305.120403
+Sending history publications: foods-history : babaganoosh--1519266304.100888
+Sending history publications: foods-history : buritto--1519266303.076886
+Sending history publications: foods-history : broccoli--1519266302.062558
+Sending history publications: foods-history : bread--1519266301.042367
+Sending history publications: foods-history : bluefish--1519266300.02701
+Sending history publications: foods-history : bisque--1519266299.010847
+Sending history publications: foods-history : beer--1519266297.989858
+Sending history publications: foods-history : barley--1519266296.965348
+Sending history publications: foods-history : bison--1519266295.951966
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741
+Heartbeat: 231 heartbeat
+Heartbeat: 854 heartbeat
+Heartbeat: 466 heartbeat
+Sending history publications: laptops-history : HP Chromeboo--1519266300.077032
+Sending history publications: laptops-history : HP Omen--1519266299.056084
+Sending history publications: laptops-history : HP Envy--1519266298.03837
+Sending history publications: laptops-history : HP ProBook--1519266297.025673
+Sending history publications: laptops-history : HP EliteBook--1519266296.008838
+Sending history publications: laptops-history : HP Pavilion--1519266294.989294
+Sending history publications: laptops-history : Chromebook--1519266293.964939
+Sending history publications: laptops-history : Legion--1519266292.948131
+Sending history publications: laptops-history : Yoga--1519266291.908435
+Sending history publications: laptops-history : IdeaPad--1519266290.87551
+Sending history publications: laptops-history : ThinkPad--1519266289.83702
+Sending history publications: laptops-history : Dell--1519266288.799684
+Sending history publications: laptops-history : Vostro--1519266287.780699
+Sending history publications: laptops-history : Alienware--1519266286.762757
+Sending history publications: laptops-history : XPS--1519266285.742227
+Sending history publications: laptops-history : Latitude--1519266284.722881
+Sending history publications: laptops-history : Inspiron--1519266283.705394
+Sending history publications: laptops-history : MacBook Air--1519266282.682517
+Sending history publications: laptops-history : MacBook Pro--1519266281.662198
+Sending history publications: laptops-history : MacBook--1519266280.649075
+Sending history publications: animals-history : Aye Ay--1519266329.631563
+Sending history publications: animals-history : Axolotl--1519266328.612931
+Sending history publications: animals-history : Avocet--1519266327.594563
+Sending history publications: animals-history : Australian Terrier--1519266326.572005
+Sending history publications: animals-history : Australian Shepherd--1519266325.551319
+Sending history publications: animals-history : Australian Mist--1519266324.528277
+Sending history publications: animals-history : Australian Kelpie Dog--1519266323.504774
+Sending history publications: animals-history : Australian Cattle Dog--1519266322.484485
+Sending history publications: animals-history : Asiatic Black Bear--1519266321.459998
+Sending history publications: animals-history : Asian Palm Civet--1519266320.438172
+Sending history publications: animals-history : Asian Giant Hornet--1519266319.419266
+Sending history publications: animals-history : Asian Elephant--1519266318.397227
+Sending history publications: animals-history : Armadillo--1519266317.373591
+Sending history publications: animals-history : Arctic Wolf--1519266316.35668
+Sending history publications: animals-history : Arctic Hare--1519266315.34016
+Sending history publications: animals-history : Arctic Fox--1519266314.321492
+Sending history publications: animals-history : Appenzeller Dog--1519266313.299707
+Sending history publications: animals-history : Antelope--1519266312.278412
+Sending history publications: animals-history : Anteater--1519266311.257747
+Sending history publications: animals-history : Ant--1519266310.241915
+Sending history publications: animals-history : Angelfish--1519266309.243241
+Sending history publications: animals-history : Anatolian Shepherd Dog--1519266308.21853
+Sending history publications: animals-history : American Water Spaniel--1519266307.195622
+Sending history publications: animals-history : American Staffordshire Terrier--1519266306.188768
+Sending history publications: animals-history : American Pit Bull Terrier--1519266305.165083
+Sending history publications: animals-history : American Foxhound--1519266304.14647
+Sending history publications: animals-history : American Eskimo Dog--1519266303.124375
+Sending history publications: animals-history : American Coonhound--1519266302.108143
+Sending history publications: animals-history : American Cocker Spaniel--1519266301.087479
+Sending history publications: animals-history : American Bulldog--1519266300.058563
+Sending history publications: animals-history : Alpine Dachsbracke--1519266299.035369
+Sending history publications: animals-history : Alligator--1519266298.01481
+Sending history publications: animals-history : Aldabra Giant Tortoise--1519266297.002856
+Sending history publications: animals-history : Albatross--1519266295.98381
+Sending history publications: animals-history : Alaskan Malamute--1519266294.961534
+Sending history publications: animals-history : Akita--1519266293.94606
+Sending history publications: animals-history : Akbash--1519266292.927826
+Sending history publications: animals-history : Airedale Terrier--1519266291.902036
+Sending history publications: animals-history : Ainu Dog--1519266290.88179
+Sending history publications: animals-history : African Wild Dog--1519266289.871288
+Sending history publications: animals-history : African Tree Toad--1519266288.842781
+Sending history publications: animals-history : African Penguin--1519266287.82035
+Sending history publications: animals-history : African Palm Civet--1519266286.807265
+Sending history publications: animals-history : African Forest Elephant--1519266285.783332
+Sending history publications: animals-history : African Clawed Frog--1519266284.76796
+Sending history publications: animals-history : African Civet--1519266283.750282
+Sending history publications: animals-history : African Bush Elephant--1519266282.729783
+Sending history publications: animals-history : Afghan Hound--1519266281.691746
+Sending history publications: animals-history : Affenpinscher--1519266280.663878
+Sending history publications: animals-history : Adelie Penguin--1519266279.643695
+Sending history publications: animals-history : Abyssinian--1519266278.620659
+Sending history publications: animals-history : Aardvark--1519266277.604324
+Sending history publications: foods-history : chimichang--1519266324.546127
+Sending history publications: foods-history : cereal--1519266323.525149
+Sending history publications: foods-history : curry--1519266322.502704
+Sending history publications: foods-history : crab--1519266321.478102
+Sending history publications: foods-history : cupcakes--1519266320.456421
+Sending history publications: foods-history : corn--1519266319.437763
+Sending history publications: foods-history : cookies--1519266318.416036
+Sending history publications: foods-history : coffee--1519266317.392468
+Sending history publications: foods-history : clams--1519266316.344296
+Sending history publications: foods-history : chowder--1519266315.319997
+Sending history publications: foods-history : chocolate--1519266314.2973
+Sending history publications: foods-history : chips--1519266313.280847
+Sending history publications: foods-history : catfish--1519266312.259678
+Sending history publications: foods-history : chicken--1519266311.240246
+Sending history publications: foods-history : cheese--1519266310.219817
+Sending history publications: foods-history : celery--1519266309.196143
+Sending history publications: foods-history : carne asada--1519266308.177013
+Sending history publications: foods-history : carrots--1519266307.161112
+Sending history publications: foods-history : cake--1519266306.141365
+Sending history publications: foods-history : Cabbage--1519266305.120403
+Sending history publications: foods-history : babaganoosh--1519266304.100888
+Sending history publications: foods-history : buritto--1519266303.076886
+Sending history publications: foods-history : broccoli--1519266302.062558
+Sending history publications: foods-history : bread--1519266301.042367
+Sending history publications: foods-history : bluefish--1519266300.02701
+Sending history publications: foods-history : bisque--1519266299.010847
+Sending history publications: foods-history : beer--1519266297.989858
+Sending history publications: foods-history : barley--1519266296.965348
+Sending history publications: foods-history : bison--1519266295.951966
+Sending history publications: foods-history : BBQ--1519266294.939032
+Sending history publications: foods-history : baked beans--1519266293.916306
+Sending history publications: foods-history : bagels--1519266292.897281
+Sending history publications: foods-history : black beans--1519266291.875075
+Sending history publications: foods-history : bacon--1519266290.857631
+Sending history publications: foods-history : Bruscetta--1519266289.825718
+Sending history publications: foods-history : Avocado roll--1519266288.811527
+Sending history publications: foods-history : Apple juice--1519266287.799699
+Sending history publications: foods-history : albacore tuna--1519266286.780342
+Sending history publications: foods-history : ahi tuna--1519266285.764465
+Sending history publications: foods-history : antelope--1519266284.748237
+Sending history publications: foods-history : asian noodles--1519266283.726089
+Sending history publications: foods-history : applesauce--1519266282.71444
+Sending history publications: foods-history : artichoke--1519266281.697985
+Sending history publications: foods-history : arugala--1519266280.664389
+Sending history publications: foods-history : almond--1519266279.656297
+Sending history publications: foods-history : acorn squash--1519266278.639625
+Sending history publications: foods-history : alfalfa--1519266277.603853
+Sending history publications: foods-history : avacado--1519266276.576112
+Sending history publications: foods-history : apples--1519266275.575537
+Sending history publications: foods-history : asparagus--1519266274.570741

@@ -1,0 +1,292 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Init msg: 612 init with topic foods
+Heartbeat: 612 heartbeat
+Publication: 612 published asparagus with topic foods
+Publication: 612 published apples with topic foods
+Publication: 612 published avacado with topic foods
+Publication: 612 published alfalfa with topic foods
+Publication: 612 published acorn squash with topic foods
+Publication: 612 published almond with topic foods
+Publication: 612 published arugala with topic foods
+Publication: 612 published artichoke with topic foods
+Publication: 612 published applesauce with topic foods
+Publication: 612 published asian noodles with topic foods
+Sending history publications: foods-history : asian noodles--1519267913.181158
+Sending history publications: foods-history : applesauce--1519267912.166512
+Sending history publications: foods-history : artichoke--1519267911.153694
+Sending history publications: foods-history : arugala--1519267910.14015
+Sending history publications: foods-history : almond--1519267909.124595
+Sending history publications: foods-history : acorn squash--1519267908.107993
+Sending history publications: foods-history : alfalfa--1519267907.09823
+Sending history publications: foods-history : avacado--1519267906.084279
+Sending history publications: foods-history : apples--1519267905.071224
+Sending history publications: foods-history : asparagus--1519267904.05341
+Heartbeat: 612 heartbeat
+Publication: 612 published antelope with topic foods
+Publication: 612 published ahi tuna with topic foods
+Publication: 612 published albacore tuna with topic foods
+Publication: 612 published Apple juice with topic foods
+Publication: 612 published Avocado roll with topic foods
+Publication: 612 published Bruscetta with topic foods
+Publication: 612 published bacon with topic foods
+Publication: 612 published black beans with topic foods
+Publication: 612 published bagels with topic foods
+Sending history publications: foods-history : bagels--1519267922.336118
+Sending history publications: foods-history : black beans--1519267921.314891
+Sending history publications: foods-history : bacon--1519267920.302409
+Sending history publications: foods-history : Bruscetta--1519267919.280257
+Sending history publications: foods-history : Avocado roll--1519267918.261852
+Sending history publications: foods-history : Apple juice--1519267917.244835
+Sending history publications: foods-history : albacore tuna--1519267916.225156
+Sending history publications: foods-history : ahi tuna--1519267915.212233
+Sending history publications: foods-history : antelope--1519267914.199617
+Sending history publications: foods-history : asian noodles--1519267913.181158
+Sending history publications: foods-history : applesauce--1519267912.166512
+Sending history publications: foods-history : artichoke--1519267911.153694
+Sending history publications: foods-history : arugala--1519267910.14015
+Sending history publications: foods-history : almond--1519267909.124595
+Sending history publications: foods-history : acorn squash--1519267908.107993
+Sending history publications: foods-history : alfalfa--1519267907.09823
+Sending history publications: foods-history : avacado--1519267906.084279
+Sending history publications: foods-history : apples--1519267905.071224
+Sending history publications: foods-history : asparagus--1519267904.05341
+Publication: 612 published baked beans with topic foods
+Heartbeat: 612 heartbeat
+Publication: 612 published BBQ with topic foods
+Publication: 612 published bison with topic foods
+Publication: 612 published barley with topic foods
+Publication: 612 published beer with topic foods
+Publication: 612 published bisque with topic foods
+Publication: 612 published bluefish with topic foods
+Publication: 612 published bread with topic foods
+Publication: 612 published broccoli with topic foods
+Publication: 612 published buritto with topic foods
+Sending history publications: foods-history : buritto--1519267932.504185
+Sending history publications: foods-history : broccoli--1519267931.480349
+Sending history publications: foods-history : bread--1519267930.458278
+Sending history publications: foods-history : bluefish--1519267929.441159
+Sending history publications: foods-history : bisque--1519267928.42586
+Sending history publications: foods-history : beer--1519267927.40831
+Sending history publications: foods-history : barley--1519267926.406976
+Sending history publications: foods-history : bison--1519267925.383086
+Sending history publications: foods-history : BBQ--1519267924.365175
+Sending history publications: foods-history : baked beans--1519267923.354201
+Sending history publications: foods-history : bagels--1519267922.336118
+Sending history publications: foods-history : black beans--1519267921.314891
+Sending history publications: foods-history : bacon--1519267920.302409
+Sending history publications: foods-history : Bruscetta--1519267919.280257
+Sending history publications: foods-history : Avocado roll--1519267918.261852
+Sending history publications: foods-history : Apple juice--1519267917.244835
+Sending history publications: foods-history : albacore tuna--1519267916.225156
+Sending history publications: foods-history : ahi tuna--1519267915.212233
+Sending history publications: foods-history : antelope--1519267914.199617
+Sending history publications: foods-history : asian noodles--1519267913.181158
+Sending history publications: foods-history : applesauce--1519267912.166512
+Sending history publications: foods-history : artichoke--1519267911.153694
+Sending history publications: foods-history : arugala--1519267910.14015
+Sending history publications: foods-history : almond--1519267909.124595
+Sending history publications: foods-history : acorn squash--1519267908.107993
+Sending history publications: foods-history : alfalfa--1519267907.09823
+Sending history publications: foods-history : avacado--1519267906.084279
+Sending history publications: foods-history : apples--1519267905.071224
+Sending history publications: foods-history : asparagus--1519267904.05341
+Publication: 612 published babaganoosh with topic foods
+Heartbeat: 612 heartbeat
+Publication: 612 published Cabbage with topic foods
+Publication: 612 published cake with topic foods
+Publication: 612 published carrots with topic foods
+Publication: 612 published carne asada with topic foods
+Publication: 612 published celery with topic foods
+Publication: 612 published cheese with topic foods
+Publication: 612 published chicken with topic foods
+Publication: 612 published catfish with topic foods
+Publication: 612 published chips with topic foods
+Sending history publications: foods-history : chips--1519267942.670103
+Sending history publications: foods-history : catfish--1519267941.653502
+Sending history publications: foods-history : chicken--1519267940.638603
+Sending history publications: foods-history : cheese--1519267939.621635
+Sending history publications: foods-history : celery--1519267938.600211
+Sending history publications: foods-history : carne asada--1519267937.589776
+Sending history publications: foods-history : carrots--1519267936.577276
+Sending history publications: foods-history : cake--1519267935.560618
+Sending history publications: foods-history : Cabbage--1519267934.548093
+Sending history publications: foods-history : babaganoosh--1519267933.527605
+Sending history publications: foods-history : buritto--1519267932.504185
+Sending history publications: foods-history : broccoli--1519267931.480349
+Sending history publications: foods-history : bread--1519267930.458278
+Sending history publications: foods-history : bluefish--1519267929.441159
+Sending history publications: foods-history : bisque--1519267928.42586
+Sending history publications: foods-history : beer--1519267927.40831
+Sending history publications: foods-history : barley--1519267926.406976
+Sending history publications: foods-history : bison--1519267925.383086
+Sending history publications: foods-history : BBQ--1519267924.365175
+Sending history publications: foods-history : baked beans--1519267923.354201
+Sending history publications: foods-history : bagels--1519267922.336118
+Sending history publications: foods-history : black beans--1519267921.314891
+Sending history publications: foods-history : bacon--1519267920.302409
+Sending history publications: foods-history : Bruscetta--1519267919.280257
+Sending history publications: foods-history : Avocado roll--1519267918.261852
+Sending history publications: foods-history : Apple juice--1519267917.244835
+Sending history publications: foods-history : albacore tuna--1519267916.225156
+Sending history publications: foods-history : ahi tuna--1519267915.212233
+Sending history publications: foods-history : antelope--1519267914.199617
+Sending history publications: foods-history : asian noodles--1519267913.181158
+Sending history publications: foods-history : applesauce--1519267912.166512
+Sending history publications: foods-history : artichoke--1519267911.153694
+Sending history publications: foods-history : arugala--1519267910.14015
+Sending history publications: foods-history : almond--1519267909.124595
+Sending history publications: foods-history : acorn squash--1519267908.107993
+Sending history publications: foods-history : alfalfa--1519267907.09823
+Sending history publications: foods-history : avacado--1519267906.084279
+Sending history publications: foods-history : apples--1519267905.071224
+Sending history publications: foods-history : asparagus--1519267904.05341
+Publication: 612 published chocolate with topic foods
+Heartbeat: 612 heartbeat
+Publication: 612 published chowder with topic foods
+Publication: 612 published clams with topic foods
+Publication: 612 published coffee with topic foods
+Publication: 612 published cookies with topic foods
+Publication: 612 published corn with topic foods
+Publication: 612 published cupcakes with topic foods
+Publication: 612 published crab with topic foods
+Publication: 612 published curry with topic foods
+Publication: 612 published cereal with topic foods
+Sending history publications: foods-history : cereal--1519267952.841748
+Sending history publications: foods-history : curry--1519267951.822647
+Sending history publications: foods-history : crab--1519267950.800416
+Sending history publications: foods-history : cupcakes--1519267949.787847
+Sending history publications: foods-history : corn--1519267948.769067
+Sending history publications: foods-history : cookies--1519267947.758967
+Sending history publications: foods-history : coffee--1519267946.741774
+Sending history publications: foods-history : clams--1519267945.71997
+Sending history publications: foods-history : chowder--1519267944.70472
+Sending history publications: foods-history : chocolate--1519267943.688786
+Sending history publications: foods-history : chips--1519267942.670103
+Sending history publications: foods-history : catfish--1519267941.653502
+Sending history publications: foods-history : chicken--1519267940.638603
+Sending history publications: foods-history : cheese--1519267939.621635
+Sending history publications: foods-history : celery--1519267938.600211
+Sending history publications: foods-history : carne asada--1519267937.589776
+Sending history publications: foods-history : carrots--1519267936.577276
+Sending history publications: foods-history : cake--1519267935.560618
+Sending history publications: foods-history : Cabbage--1519267934.548093
+Sending history publications: foods-history : babaganoosh--1519267933.527605
+Sending history publications: foods-history : buritto--1519267932.504185
+Sending history publications: foods-history : broccoli--1519267931.480349
+Sending history publications: foods-history : bread--1519267930.458278
+Sending history publications: foods-history : bluefish--1519267929.441159
+Sending history publications: foods-history : bisque--1519267928.42586
+Sending history publications: foods-history : beer--1519267927.40831
+Sending history publications: foods-history : barley--1519267926.406976
+Sending history publications: foods-history : bison--1519267925.383086
+Sending history publications: foods-history : BBQ--1519267924.365175
+Sending history publications: foods-history : baked beans--1519267923.354201
+Sending history publications: foods-history : bagels--1519267922.336118
+Sending history publications: foods-history : black beans--1519267921.314891
+Sending history publications: foods-history : bacon--1519267920.302409
+Sending history publications: foods-history : Bruscetta--1519267919.280257
+Sending history publications: foods-history : Avocado roll--1519267918.261852
+Sending history publications: foods-history : Apple juice--1519267917.244835
+Sending history publications: foods-history : albacore tuna--1519267916.225156
+Sending history publications: foods-history : ahi tuna--1519267915.212233
+Sending history publications: foods-history : antelope--1519267914.199617
+Sending history publications: foods-history : asian noodles--1519267913.181158
+Sending history publications: foods-history : applesauce--1519267912.166512
+Sending history publications: foods-history : artichoke--1519267911.153694
+Sending history publications: foods-history : arugala--1519267910.14015
+Sending history publications: foods-history : almond--1519267909.124595
+Sending history publications: foods-history : acorn squash--1519267908.107993
+Sending history publications: foods-history : alfalfa--1519267907.09823
+Sending history publications: foods-history : avacado--1519267906.084279
+Sending history publications: foods-history : apples--1519267905.071224
+Sending history publications: foods-history : asparagus--1519267904.05341
+Publication: 612 published chimichang with topic foods
+Heartbeat: 612 heartbeat
+Drop topic: 612 droped topic foods
+Publication: 612 published Aardvark with topic animals
+Publication: 612 published Abyssinian with topic animals
+Publication: 612 published Adelie Penguin with topic animals
+Publication: 612 published Affenpinscher with topic animals
+Publication: 612 published Afghan Hound with topic animals
+Publication: 612 published African Bush Elephant with topic animals
+Publication: 612 published African Civet with topic animals
+Publication: 612 published African Clawed Frog with topic animals
+Publication: 612 published African Forest Elephant with topic animals
+Heartbeat: 612 heartbeat
+Publication: 612 published African Palm Civet with topic animals
+Publication: 612 published African Penguin with topic animals
+Publication: 612 published African Tree Toad with topic animals
+Publication: 612 published African Wild Dog with topic animals
+Publication: 612 published Ainu Dog with topic animals
+Publication: 612 published Airedale Terrier with topic animals
+Publication: 612 published Akbash with topic animals
+Publication: 612 published Akita with topic animals
+Publication: 612 published Alaskan Malamute with topic animals
+Publication: 612 published Albatross with topic animals
+Heartbeat: 612 heartbeat
+Publication: 612 published Aldabra Giant Tortoise with topic animals
+Publication: 612 published Alligator with topic animals
+Publication: 612 published Alpine Dachsbracke with topic animals
+Publication: 612 published American Bulldog with topic animals
+Publication: 612 published American Cocker Spaniel with topic animals
+Publication: 612 published American Coonhound with topic animals
+Publication: 612 published American Eskimo Dog with topic animals
+Publication: 612 published American Foxhound with topic animals
+Publication: 612 published American Pit Bull Terrier with topic animals
+Publication: 612 published American Staffordshire Terrier with topic animals
+Heartbeat: 612 heartbeat
+Publication: 612 published American Water Spaniel with topic animals
+Publication: 612 published Anatolian Shepherd Dog with topic animals
+Publication: 612 published Angelfish with topic animals
+Publication: 612 published Ant with topic animals
+Publication: 612 published Anteater with topic animals
+Publication: 612 published Antelope with topic animals
+Publication: 612 published Appenzeller Dog with topic animals
+Publication: 612 published Arctic Fox with topic animals
+Publication: 612 published Arctic Hare with topic animals
+Publication: 612 published Arctic Wolf with topic animals
+Heartbeat: 612 heartbeat
+Publication: 612 published Armadillo with topic animals
+Publication: 612 published Asian Elephant with topic animals
+Publication: 612 published Asian Giant Hornet with topic animals
+Publication: 612 published Asian Palm Civet with topic animals
+Publication: 612 published Asiatic Black Bear with topic animals
+Publication: 612 published Australian Cattle Dog with topic animals
+Publication: 612 published Australian Kelpie Dog with topic animals
+Publication: 612 published Australian Mist with topic animals
+Publication: 612 published Australian Shepherd with topic animals
+Publication: 612 published Australian Terrier with topic animals
+Heartbeat: 612 heartbeat
+Publication: 612 published Avocet with topic animals
+Publication: 612 published Axolotl with topic animals
+Publication: 612 published Aye Ay with topic animals
+Drop topic: 612 droped topic animals
+Publication: 612 published MacBook with topic laptops
+Publication: 612 published MacBook Pro with topic laptops
+Publication: 612 published MacBook Air with topic laptops
+Publication: 612 published Inspiron with topic laptops
+Publication: 612 published Latitude with topic laptops
+Publication: 612 published XPS with topic laptops
+Publication: 612 published Alienware with topic laptops
+Heartbeat: 612 heartbeat
+Publication: 612 published Vostro with topic laptops
+Publication: 612 published Dell with topic laptops
+Publication: 612 published ThinkPad with topic laptops
+Publication: 612 published IdeaPad with topic laptops
+Publication: 612 published Yoga with topic laptops
+Publication: 612 published Legion with topic laptops
+Publication: 612 published Chromebook with topic laptops
+Publication: 612 published HP Pavilion with topic laptops
+Publication: 612 published HP EliteBook with topic laptops
+Heartbeat: 612 heartbeat
+Publication: 612 published HP ProBook with topic laptops
+Publication: 612 published HP Envy with topic laptops
+Publication: 612 published HP Omen with topic laptops
+Publication: 612 published HP Chromeboo with topic laptops
+Drop topic: 612 droped topic laptops
+Heartbeat: 612 heartbeat
+Heartbeat: 612 heartbeat
+Heartbeat: 612 heartbeat

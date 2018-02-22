@@ -8,6 +8,7 @@
 
 from ZMQHelper import ZMQHelper
 import time
+import random
 
 class Subscriber:
     def __init__(self, address, port, topic, history_count):
@@ -17,10 +18,12 @@ class Subscriber:
         self.history_topic = topic + '-history'
         self.history_count = history_count
         self.helper = ZMQHelper()
+        self.myID = str(random.randint(1, 100))
+        
+    def prepare(self):
         self.register_sub()
         self.add_sub_topic(self.history_topic)
         self.add_sub_topic(self.topic)
-
     #
     # This method should always be alive
     # handler is used to receive message from broker
@@ -31,6 +34,7 @@ class Subscriber:
     #
     def handler(self):
         current_time = time.time()
+        new_current_time = time.time()
         prev_time = 2e100
         # receive publications
         count = 0
@@ -47,17 +51,29 @@ class Subscriber:
                 count += 1e10
             if time_stamp < current_time and count < int(self.history_count) and prev_time > time_stamp:
                 count += 1
-                print('*************************************************')
-                print('Receipt Info:')
-                print('History Publication: %s' % received_msg)
-                print('Time Interval: %f' % (current_time - time_stamp)) 
+                print('*************************************************\n'
+                    'Receipt Info:\n'
+                    'History Publication: %s\n'
+                    'Time Interval: %f\n' % (received_msg, (current_time - time_stamp)))
+                logfile_name = './Output/' + self.myID + '-subscriber.log'
+                with open(logfile_name, 'a') as log:
+                    log.write('*************************************************\n')
+                    log.write('Receipt Info:\n')
+                    log.write('Receive History Publication: %s\n' % received_msg)
+                    log.write('Time: %f\n' % (current_time - time_stamp))
                 prev_time = time_stamp
-            if time_stamp >= current_time:
-                current_time = time.time()
-                print('*************************************************')
-                print('Receipt Info:')
-                print('Publication: %s' % received_msg)
-                print('Time Interval: %f' % (current_time - time_stamp))
+            if time_stamp >= new_current_time:
+                new_current_time = time.time()
+                print('*************************************************\n'
+                    'Receipt Info:\n'
+                    'Publication: %s\n'
+                    'Time Interval: %f\n' % (received_msg, (new_current_time - time_stamp)))
+                logfile_name = './Output/' + self.myID + '-subscriber.log'
+                with open(logfile_name, 'a') as log:
+                    log.write('*************************************************\n')
+                    log.write('Receipt Info:\n')
+                    log.write('Receive: %s\n' % received_msg)
+                    log.write('Time: %f\n' % (new_current_time - time_stamp))
                 
 
     # register subscriber

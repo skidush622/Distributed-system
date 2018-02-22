@@ -99,6 +99,7 @@ def parse(argv):
             topic = argv[6]
             count = argv[8]
             sub = Subscriber(address, port, topic, count)
+            sub.prepare()
             sub.handler()
         else:
             print('Illegal command.')

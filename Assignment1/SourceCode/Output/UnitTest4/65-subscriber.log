@@ -1,0 +1,404 @@
+ID: 65
+Topic: foods
+History publications: 20
+Connection: tcp://localhost:5557
+*************************************************
+Receipt Info:
+Receive: acorn squash
+Time: 0.000204
+*************************************************
+Receipt Info:
+Receive History Publication: alfalfa
+Time: 0.911440
+*************************************************
+Receipt Info:
+Receive History Publication: avacado
+Time: 1.925150
+*************************************************
+Receipt Info:
+Receive History Publication: apples
+Time: 2.948169
+*************************************************
+Receipt Info:
+Receive History Publication: asparagus
+Time: 3.967959
+*************************************************
+Receipt Info:
+Receive: almond
+Time: 0.000194
+*************************************************
+Receipt Info:
+Receive: arugala
+Time: 0.000192
+*************************************************
+Receipt Info:
+Receive: artichoke
+Time: 0.000241
+*************************************************
+Receipt Info:
+Receive: applesauce
+Time: 0.000370
+*************************************************
+Receipt Info:
+Receive: asian noodles
+Time: 0.000183
+*************************************************
+Receipt Info:
+Receive: antelope
+Time: 0.000222
+*************************************************
+Receipt Info:
+Receive: ahi tuna
+Time: 0.000160
+*************************************************
+Receipt Info:
+Receive: albacore tuna
+Time: 0.000168
+*************************************************
+Receipt Info:
+Receive: Apple juice
+Time: 0.000199
+*************************************************
+Receipt Info:
+Receive: Avocado roll
+Time: 0.000367
+*************************************************
+Receipt Info:
+Receive: Bruscetta
+Time: 0.000185
+*************************************************
+Receipt Info:
+Receive: bacon
+Time: 0.006544
+*************************************************
+Receipt Info:
+Receive: black beans
+Time: 0.006458
+*************************************************
+Receipt Info:
+Receive: bagels
+Time: 0.005845
+*************************************************
+Receipt Info:
+Receive: baked beans
+Time: 0.006113
+*************************************************
+Receipt Info:
+Receive: BBQ
+Time: 0.005774
+*************************************************
+Receipt Info:
+Receive: bison
+Time: 0.006617
+*************************************************
+Receipt Info:
+Receive: barley
+Time: 0.005845
+*************************************************
+Receipt Info:
+Receive: beer
+Time: 0.006515
+*************************************************
+Receipt Info:
+Receive: bisque
+Time: 0.005718
+*************************************************
+Receipt Info:
+Receive: bluefish
+Time: 0.006521
+*************************************************
+Receipt Info:
+Receive: bread
+Time: 0.006480
+*************************************************
+Receipt Info:
+Receive: broccoli
+Time: 0.005737
+*************************************************
+Receipt Info:
+Receive: buritto
+Time: 0.006562
+*************************************************
+Receipt Info:
+Receive: babaganoosh
+Time: 0.006501
+*************************************************
+Receipt Info:
+Receive: Cabbage
+Time: 0.006512
+*************************************************
+Receipt Info:
+Receive: cake
+Time: 0.006547
+*************************************************
+Receipt Info:
+Receive: carrots
+Time: 0.006609
+*************************************************
+Receipt Info:
+Receive: carne asada
+Time: 0.006573
+*************************************************
+Receipt Info:
+Receive: celery
+Time: 0.005452
+*************************************************
+Receipt Info:
+Receive: cheese
+Time: 0.006515
+*************************************************
+Receipt Info:
+Receive: chicken
+Time: 0.006553
+*************************************************
+Receipt Info:
+Receive: catfish
+Time: 0.005446
+*************************************************
+Receipt Info:
+Receive: chips
+Time: 0.006515
+*************************************************
+Receipt Info:
+Receive: chocolate
+Time: 0.006410
+*************************************************
+Receipt Info:
+Receive: chowder
+Time: 0.006517
+*************************************************
+Receipt Info:
+Receive: clams
+Time: 0.006524
+*************************************************
+Receipt Info:
+Receive: coffee
+Time: 0.006570
+*************************************************
+Receipt Info:
+Receive: cookies
+Time: 0.006651
+*************************************************
+Receipt Info:
+Receive: corn
+Time: 0.006477
+*************************************************
+Receipt Info:
+Receive: cupcakes
+Time: 0.006707
+*************************************************
+Receipt Info:
+Receive: crab
+Time: 0.006568
+*************************************************
+Receipt Info:
+Receive: curry
+Time: 0.006498
+*************************************************
+Receipt Info:
+Receive: cereal
+Time: 0.006531
+*************************************************
+Receipt Info:
+Receive: chimichang
+Time: 0.006499
+*************************************************
+Receipt Info:
+Receive: asparagus
+Time: 0.006461
+*************************************************
+Receipt Info:
+Receive: apples
+Time: 0.006537
+*************************************************
+Receipt Info:
+Receive: avacado
+Time: 0.006070
+*************************************************
+Receipt Info:
+Receive: alfalfa
+Time: 0.006540
+*************************************************
+Receipt Info:
+Receive: acorn squash
+Time: 0.006580
+*************************************************
+Receipt Info:
+Receive: almond
+Time: 0.012334
+*************************************************
+Receipt Info:
+Receive: arugala
+Time: 0.006612
+*************************************************
+Receipt Info:
+Receive: artichoke
+Time: 0.005514
+*************************************************
+Receipt Info:
+Receive: applesauce
+Time: 0.006150
+*************************************************
+Receipt Info:
+Receive: asian noodles
+Time: 0.006526
+*************************************************
+Receipt Info:
+Receive: antelope
+Time: 0.006566
+*************************************************
+Receipt Info:
+Receive: ahi tuna
+Time: 0.006520
+*************************************************
+Receipt Info:
+Receive: albacore tuna
+Time: 0.006668
+*************************************************
+Receipt Info:
+Receive: Apple juice
+Time: 0.006555
+*************************************************
+Receipt Info:
+Receive: Avocado roll
+Time: 0.006244
+*************************************************
+Receipt Info:
+Receive: Bruscetta
+Time: 0.006716
+*************************************************
+Receipt Info:
+Receive: bacon
+Time: 0.006695
+*************************************************
+Receipt Info:
+Receive: black beans
+Time: 0.005512
+*************************************************
+Receipt Info:
+Receive: bagels
+Time: 0.006772
+*************************************************
+Receipt Info:
+Receive: baked beans
+Time: 0.006558
+*************************************************
+Receipt Info:
+Receive: BBQ
+Time: 0.006814
+*************************************************
+Receipt Info:
+Receive: bison
+Time: 0.006380
+*************************************************
+Receipt Info:
+Receive: barley
+Time: 0.005670
+*************************************************
+Receipt Info:
+Receive: beer
+Time: 0.006662
+*************************************************
+Receipt Info:
+Receive: bisque
+Time: 0.006558
+*************************************************
+Receipt Info:
+Receive: bluefish
+Time: 0.005762
+*************************************************
+Receipt Info:
+Receive: bread
+Time: 0.006636
+*************************************************
+Receipt Info:
+Receive: broccoli
+Time: 0.005315
+*************************************************
+Receipt Info:
+Receive: buritto
+Time: 0.006538
+*************************************************
+Receipt Info:
+Receive: babaganoosh
+Time: 0.006047
+*************************************************
+Receipt Info:
+Receive: Cabbage
+Time: 0.006479
+*************************************************
+Receipt Info:
+Receive: cake
+Time: 0.010475
+*************************************************
+Receipt Info:
+Receive: carrots
+Time: 0.006041
+*************************************************
+Receipt Info:
+Receive: carne asada
+Time: 0.009914
+*************************************************
+Receipt Info:
+Receive: celery
+Time: 0.006525
+*************************************************
+Receipt Info:
+Receive: cheese
+Time: 0.006549
+*************************************************
+Receipt Info:
+Receive: chicken
+Time: 0.006555
+*************************************************
+Receipt Info:
+Receive: catfish
+Time: 0.005377
+*************************************************
+Receipt Info:
+Receive: chips
+Time: 0.006545
+*************************************************
+Receipt Info:
+Receive: chocolate
+Time: 0.006552
+*************************************************
+Receipt Info:
+Receive: chowder
+Time: 0.005700
+*************************************************
+Receipt Info:
+Receive: clams
+Time: 0.006167
+*************************************************
+Receipt Info:
+Receive: coffee
+Time: 0.005523
+*************************************************
+Receipt Info:
+Receive: cookies
+Time: 0.005686
+*************************************************
+Receipt Info:
+Receive: corn
+Time: 0.006211
+*************************************************
+Receipt Info:
+Receive: cupcakes
+Time: 0.005468
+*************************************************
+Receipt Info:
+Receive: crab
+Time: 0.005845
+*************************************************
+Receipt Info:
+Receive: curry
+Time: 0.005498
+*************************************************
+Receipt Info:
+Receive: cereal
+Time: 0.006568
+*************************************************
+Receipt Info:
+Receive: chimichang
+Time: 0.006539

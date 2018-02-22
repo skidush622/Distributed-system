@@ -1,0 +1,497 @@
+ID: 612 
+Init Topic: foods
+Connection Info: tcp://localhost:5556
+*************************************************
+Publish Info:
+Publish: asparagus
+Time: 1519267904.052906
+*************************************************
+Publish Info:
+Publish: apples
+Time: 1519267905.07066
+*************************************************
+Publish Info:
+Publish: avacado
+Time: 1519267906.083741
+*************************************************
+Publish Info:
+Publish: alfalfa
+Time: 1519267907.097705
+*************************************************
+Publish Info:
+Publish: acorn squash
+Time: 1519267908.107402
+*************************************************
+Publish Info:
+Publish: almond
+Time: 1519267909.124062
+*************************************************
+Publish Info:
+Publish: arugala
+Time: 1519267910.139092
+*************************************************
+Publish Info:
+Publish: artichoke
+Time: 1519267911.15316
+*************************************************
+Publish Info:
+Publish: applesauce
+Time: 1519267912.165917
+*************************************************
+Publish Info:
+Publish: asian noodles
+Time: 1519267913.180632
+*************************************************
+Publish Info:
+Publish: antelope
+Time: 1519267914.192768
+*************************************************
+Publish Info:
+Publish: ahi tuna
+Time: 1519267915.2116
+*************************************************
+Publish Info:
+Publish: albacore tuna
+Time: 1519267916.224488
+*************************************************
+Publish Info:
+Publish: Apple juice
+Time: 1519267917.237836
+*************************************************
+Publish Info:
+Publish: Avocado roll
+Time: 1519267918.261226
+*************************************************
+Publish Info:
+Publish: Bruscetta
+Time: 1519267919.273867
+*************************************************
+Publish Info:
+Publish: bacon
+Time: 1519267920.294629
+*************************************************
+Publish Info:
+Publish: black beans
+Time: 1519267921.30794
+*************************************************
+Publish Info:
+Publish: bagels
+Time: 1519267922.3299
+*************************************************
+Publish Info:
+Publish: baked beans
+Time: 1519267923.352643
+*************************************************
+Publish Info:
+Publish: BBQ
+Time: 1519267924.359139
+*************************************************
+Publish Info:
+Publish: bison
+Time: 1519267925.377058
+*************************************************
+Publish Info:
+Publish: barley
+Time: 1519267926.39954
+*************************************************
+Publish Info:
+Publish: beer
+Time: 1519267927.40759
+*************************************************
+Publish Info:
+Publish: bisque
+Time: 1519267928.418012
+*************************************************
+Publish Info:
+Publish: bluefish
+Time: 1519267929.433906
+*************************************************
+Publish Info:
+Publish: bread
+Time: 1519267930.451825
+*************************************************
+Publish Info:
+Publish: broccoli
+Time: 1519267931.473274
+*************************************************
+Publish Info:
+Publish: buritto
+Time: 1519267932.496636
+*************************************************
+Publish Info:
+Publish: babaganoosh
+Time: 1519267933.520583
+*************************************************
+Publish Info:
+Publish: Cabbage
+Time: 1519267934.540974
+*************************************************
+Publish Info:
+Publish: cake
+Time: 1519267935.559544
+*************************************************
+Publish Info:
+Publish: carrots
+Time: 1519267936.570655
+*************************************************
+Publish Info:
+Publish: carne asada
+Time: 1519267937.587031
+*************************************************
+Publish Info:
+Publish: celery
+Time: 1519267938.593795
+*************************************************
+Publish Info:
+Publish: cheese
+Time: 1519267939.614254
+*************************************************
+Publish Info:
+Publish: chicken
+Time: 1519267940.636818
+*************************************************
+Publish Info:
+Publish: catfish
+Time: 1519267941.64736
+*************************************************
+Publish Info:
+Publish: chips
+Time: 1519267942.666552
+*************************************************
+Publish Info:
+Publish: chocolate
+Time: 1519267943.681895
+*************************************************
+Publish Info:
+Publish: chowder
+Time: 1519267944.702386
+*************************************************
+Publish Info:
+Publish: clams
+Time: 1519267945.71333
+*************************************************
+Publish Info:
+Publish: coffee
+Time: 1519267946.735373
+*************************************************
+Publish Info:
+Publish: cookies
+Time: 1519267947.755252
+*************************************************
+Publish Info:
+Publish: corn
+Time: 1519267948.76248
+*************************************************
+Publish Info:
+Publish: cupcakes
+Time: 1519267949.781068
+*************************************************
+Publish Info:
+Publish: crab
+Time: 1519267950.793301
+*************************************************
+Publish Info:
+Publish: curry
+Time: 1519267951.816714
+*************************************************
+Publish Info:
+Publish: cereal
+Time: 1519267952.835116
+*************************************************
+Publish Info:
+Publish: chimichang
+Time: 1519267953.858101
+*************************************************
+Drop topic: foods
+*************************************************
+Publish Info:
+Publish: Aardvark
+Time: 1519267954.911875
+*************************************************
+Publish Info:
+Publish: Abyssinian
+Time: 1519267955.922544
+*************************************************
+Publish Info:
+Publish: Adelie Penguin
+Time: 1519267956.938456
+*************************************************
+Publish Info:
+Publish: Affenpinscher
+Time: 1519267957.961287
+*************************************************
+Publish Info:
+Publish: Afghan Hound
+Time: 1519267958.978528
+*************************************************
+Publish Info:
+Publish: African Bush Elephant
+Time: 1519267960.002565
+*************************************************
+Publish Info:
+Publish: African Civet
+Time: 1519267961.022739
+*************************************************
+Publish Info:
+Publish: African Clawed Frog
+Time: 1519267962.043952
+*************************************************
+Publish Info:
+Publish: African Forest Elephant
+Time: 1519267963.065795
+*************************************************
+Publish Info:
+Publish: African Palm Civet
+Time: 1519267964.08794
+*************************************************
+Publish Info:
+Publish: African Penguin
+Time: 1519267965.107601
+*************************************************
+Publish Info:
+Publish: African Tree Toad
+Time: 1519267966.127346
+*************************************************
+Publish Info:
+Publish: African Wild Dog
+Time: 1519267967.145701
+*************************************************
+Publish Info:
+Publish: Ainu Dog
+Time: 1519267968.166185
+*************************************************
+Publish Info:
+Publish: Airedale Terrier
+Time: 1519267969.185457
+*************************************************
+Publish Info:
+Publish: Akbash
+Time: 1519267970.206
+*************************************************
+Publish Info:
+Publish: Akita
+Time: 1519267971.227983
+*************************************************
+Publish Info:
+Publish: Alaskan Malamute
+Time: 1519267972.246049
+*************************************************
+Publish Info:
+Publish: Albatross
+Time: 1519267973.267701
+*************************************************
+Publish Info:
+Publish: Aldabra Giant Tortoise
+Time: 1519267974.28643
+*************************************************
+Publish Info:
+Publish: Alligator
+Time: 1519267975.309961
+*************************************************
+Publish Info:
+Publish: Alpine Dachsbracke
+Time: 1519267976.33382
+*************************************************
+Publish Info:
+Publish: American Bulldog
+Time: 1519267977.355795
+*************************************************
+Publish Info:
+Publish: American Cocker Spaniel
+Time: 1519267978.374462
+*************************************************
+Publish Info:
+Publish: American Coonhound
+Time: 1519267979.394293
+*************************************************
+Publish Info:
+Publish: American Eskimo Dog
+Time: 1519267980.41393
+*************************************************
+Publish Info:
+Publish: American Foxhound
+Time: 1519267981.436425
+*************************************************
+Publish Info:
+Publish: American Pit Bull Terrier
+Time: 1519267982.460323
+*************************************************
+Publish Info:
+Publish: American Staffordshire Terrier
+Time: 1519267983.478954
+*************************************************
+Publish Info:
+Publish: American Water Spaniel
+Time: 1519267984.495629
+*************************************************
+Publish Info:
+Publish: Anatolian Shepherd Dog
+Time: 1519267985.514893
+*************************************************
+Publish Info:
+Publish: Angelfish
+Time: 1519267986.533649
+*************************************************
+Publish Info:
+Publish: Ant
+Time: 1519267987.552652
+*************************************************
+Publish Info:
+Publish: Anteater
+Time: 1519267988.576705
+*************************************************
+Publish Info:
+Publish: Antelope
+Time: 1519267989.596194
+*************************************************
+Publish Info:
+Publish: Appenzeller Dog
+Time: 1519267990.620151
+*************************************************
+Publish Info:
+Publish: Arctic Fox
+Time: 1519267991.639482
+*************************************************
+Publish Info:
+Publish: Arctic Hare
+Time: 1519267992.660362
+*************************************************
+Publish Info:
+Publish: Arctic Wolf
+Time: 1519267993.683936
+*************************************************
+Publish Info:
+Publish: Armadillo
+Time: 1519267994.701656
+*************************************************
+Publish Info:
+Publish: Asian Elephant
+Time: 1519267995.721019
+*************************************************
+Publish Info:
+Publish: Asian Giant Hornet
+Time: 1519267996.741571
+*************************************************
+Publish Info:
+Publish: Asian Palm Civet
+Time: 1519267997.758879
+*************************************************
+Publish Info:
+Publish: Asiatic Black Bear
+Time: 1519267998.770498
+*************************************************
+Publish Info:
+Publish: Australian Cattle Dog
+Time: 1519267999.784888
+*************************************************
+Publish Info:
+Publish: Australian Kelpie Dog
+Time: 1519268000.798372
+*************************************************
+Publish Info:
+Publish: Australian Mist
+Time: 1519268001.822488
+*************************************************
+Publish Info:
+Publish: Australian Shepherd
+Time: 1519268002.844579
+*************************************************
+Publish Info:
+Publish: Australian Terrier
+Time: 1519268003.862976
+*************************************************
+Publish Info:
+Publish: Avocet
+Time: 1519268004.885326
+*************************************************
+Publish Info:
+Publish: Axolotl
+Time: 1519268005.909461
+*************************************************
+Publish Info:
+Publish: Aye Ay
+Time: 1519268006.93266
+*************************************************
+Drop topic: animals
+*************************************************
+Publish Info:
+Publish: MacBook
+Time: 1519268008.013785
+*************************************************
+Publish Info:
+Publish: MacBook Pro
+Time: 1519268009.036827
+*************************************************
+Publish Info:
+Publish: MacBook Air
+Time: 1519268010.05653
+*************************************************
+Publish Info:
+Publish: Inspiron
+Time: 1519268011.068036
+*************************************************
+Publish Info:
+Publish: Latitude
+Time: 1519268012.087743
+*************************************************
+Publish Info:
+Publish: XPS
+Time: 1519268013.107671
+*************************************************
+Publish Info:
+Publish: Alienware
+Time: 1519268014.127208
+*************************************************
+Publish Info:
+Publish: Vostro
+Time: 1519268015.145286
+*************************************************
+Publish Info:
+Publish: Dell
+Time: 1519268016.165054
+*************************************************
+Publish Info:
+Publish: ThinkPad
+Time: 1519268017.185597
+*************************************************
+Publish Info:
+Publish: IdeaPad
+Time: 1519268018.206594
+*************************************************
+Publish Info:
+Publish: Yoga
+Time: 1519268019.21626
+*************************************************
+Publish Info:
+Publish: Legion
+Time: 1519268020.237975
+*************************************************
+Publish Info:
+Publish: Chromebook
+Time: 1519268021.25695
+*************************************************
+Publish Info:
+Publish: HP Pavilion
+Time: 1519268022.269628
+*************************************************
+Publish Info:
+Publish: HP EliteBook
+Time: 1519268023.292879
+*************************************************
+Publish Info:
+Publish: HP ProBook
+Time: 1519268024.31161
+*************************************************
+Publish Info:
+Publish: HP Envy
+Time: 1519268025.334476
+*************************************************
+Publish Info:
+Publish: HP Omen
+Time: 1519268026.343525
+*************************************************
+Publish Info:
+Publish: HP Chromeboo
+Time: 1519268027.364113
+*************************************************
+Drop topic: laptops
