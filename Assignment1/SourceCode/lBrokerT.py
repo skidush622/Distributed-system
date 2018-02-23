@@ -3,11 +3,9 @@
 
 from Broker import Broker
 
-def main():
+if __name__ == '__main__':
 	xsub_port = '5556'
 	xpub_port = '5557'
+
 	broker = Broker(xsub_port, xpub_port)
 	broker.handler()
-
-if __name__ == '__main__':
-    main()

@@ -13,8 +13,6 @@ import sys
 import threading
 
 
-
-
 class Publisher:
     def __init__(self, address, port, init_topic):
         self.lock = threading.Lock()
@@ -79,11 +77,11 @@ class Publisher:
                 with self.lock:
                     if self.shutoff_check:
                         break
-                    else:  
+                    else:
                         send_str = 'heartbeat' + '#' + self.myID + '#'
                         self.heartbeat_helper.pub_send_msg(self.heartbeat_socket, send_str)
                 time.sleep(10)
-                
+
 
     # publisher fails, disconnect with broker
     def shutoff(self):
