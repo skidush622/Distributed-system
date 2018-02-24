@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/local/bin/python
+#!/usr/bin/env /usr/local/bin/python /usr/bin/python
 # encoding: utf-8
 # FileName: PubSub.py
 #
@@ -9,6 +9,7 @@
 from Broker import Broker
 from Subscriber import Subscriber
 from Publisher import Publisher
+import time
 
 pubsub_version = '0.1'
 pubsub_info = 'Dev MyPublisher/MySubscriber system based on ZeroMQ'
@@ -31,7 +32,8 @@ def help():
     print('       sub -r [address] -P [port] -t [topic] -h [history samples count] # register subscriber to an '
           'address with a port number and set its initial topic and history samples count')
 
-
+    print('****************************')
+    print('exit # exit program')
 pub = None
 broker = None
 sub = None
@@ -112,13 +114,16 @@ def parse(argv):
 if __name__ == '__main__':
 
     while True:
-        cmd = input('PubSub>> ')
+        time.sleep(0.1)
+        lcmd = raw_input('PubSub>> ')
+        if lcmd == 'exit':
+            break
         try:
-            cmd = cmd.split()
-            if cmd[0] != 'pubsub':
+            lcmd = lcmd.split()
+            if lcmd[0] != 'pubsub':
                 print('Illegal command.')
                 continue
-            opt = cmd[1]
+            opt = lcmd[1]
 
             # help info and version info
             if opt == '-h' or opt == 'help':
@@ -128,7 +133,7 @@ if __name__ == '__main__':
                 print('PubSub current version is: %s' % pubsub_version)
                 print('PubSub info is: %s' % pubsub_info)
                 continue
-            ret = parse(cmd[1:])
+            ret = parse(lcmd[1:])
             if ret is False:
                 print('Service failed.')
         except IndexError:
