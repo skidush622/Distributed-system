@@ -127,8 +127,6 @@ def main():
     print ('1. Bus Topology')
     print ('2. Star Topology')
     print ('3. Tree Topology')
-    print ('4. Ring Topology')
-    print ('5. Net Topology')
     print ('default: 1. Bus Topology\n')
 
     print ('Test cases options:')
@@ -178,7 +176,7 @@ def main():
         topo = RingTopology(pubnum=pub_num, subnum=sub_num)
         mainHelper(topo, test)
     '''
-    
+
 if __name__ == '__main__':
     main()
     #print(os.popen('sudo mn -c', 'r').read())
