@@ -45,10 +45,10 @@ class Publisher:
             print('Connecttion feedback: connected xsub socket succeed.')
             init_str = 'pub_init' + '#' + self.myID + '#' + self.init_topic + '#'
             current = time.time()
-            while True:
+            # repeatedly connect to broker, ensure publisher connect broker succeed
+            while time.time() - current < 3:
                 self.helper.pub_send_msg(self.socket, init_str)
-                if time.time() - current > 0.01:
-                    break
+                
             print('Connecttion feedback: %s initialized with initial topic %s succeed.' % (self.myID, self.init_topic))
             return True
 

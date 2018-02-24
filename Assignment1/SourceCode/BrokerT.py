@@ -8,6 +8,7 @@ def main():
 	xpub_port = '5557'
 	broker = Broker(xsub_port, xpub_port)
 	broker.handler()
-
+	while True:
+		pass
 if __name__ == '__main__':
     main()

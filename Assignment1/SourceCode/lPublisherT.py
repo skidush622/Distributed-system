@@ -1,7 +1,7 @@
 import time
 import sys
 import threading
-import PubFuncs
+from PubFuncs import *
 
 def common_func(address, port):
 	def pub1_op():

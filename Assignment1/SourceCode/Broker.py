@@ -16,7 +16,7 @@ log_file = './Output/broker.log'
 
 
 class Broker:
-    
+
     def __init__(self, xsub_port, xpub_port):
         self.shutoff_check = False
         self.heartbeat_lock = threading.Lock()
@@ -24,7 +24,7 @@ class Broker:
 
         # initialize MyBroker class
         self.helper = ZMQHelper()
-        
+
         # publisher dictionary
         # dictionary format
         # $(pubID):{$({$topic:[$history]})}
@@ -69,22 +69,24 @@ class Broker:
                         del self.heartbeat_dict[pubID]
                         break
             time.sleep(10)
-            
+
     # This helper function is used to send history publications un-interruptedly
     def history_helper(self):
-        while True:
-            with self.history_lock:
-                group = self.get_highest_strength_pubs()
-                for key in list(group.keys())[::-1]:
-                    for pubs in list(self.pub_dict[key][group[key]])[::-1]:
-                        his_topic = group[key] + '-history'
-                        print('Sending history publications: %s : %s' % (his_topic, pubs))
-                        with open(log_file, 'a') as logfile:
-                            logfile.write('Sending history publications: %s : %s\n' % (his_topic, pubs))
-                        self.helper.xpub_send_msg(self.xpubsocket, his_topic, pubs)
-            time.sleep(10)
+        try:
+            while True:
+                with self.history_lock:
+                    group = self.get_highest_strength_pubs()
+                    for key in list(group.keys())[::-1]:
+                        for pubs in list(self.pub_dict[key][group[key]])[::-1]:
+                            his_topic = group[key] + '-history'
+                            #print('Sending history publications: %s : %s' % (his_topic, pubs))
+                            #with open(log_file, 'a') as logfile:
+                            #    logfile.write('Sending history publications: %s : %s\n' % (his_topic, pubs))
+                            self.helper.xpub_send_msg(self.xpubsocket, his_topic, pubs)
+                time.sleep(10)
+        except Exception:
+            pass
 
-            
     # This method should always be alive to listen message from pubs & subs
     # Handler serves for either publisher and subscriber
     #
@@ -107,6 +109,7 @@ class Broker:
         history_thr = threading.Thread(target= self.history_helper, args= ())
         threading.Thread.setDaemon(history_thr, True)
         history_thr.start()
+
         while True:
             # receive message from publisher
             msg = self.xsubsocket.recv_string(0, 'utf-8')
@@ -116,6 +119,8 @@ class Broker:
                 continue
             print('\n************************************\n')
             print('Publication storage info: (pubID, {topic : [history]})')
+
+
             for x in self.pub_dict.keys():
                  print('PUB ID: %s' % x)
                  for y in self.pub_dict[x].keys():
@@ -140,7 +145,7 @@ class Broker:
                 # publisher registration
                 self.update_pub_dict('add_pub', pubID, topic, '')
                 self.update_pub_ownership_dict('add_pub', topic, pubID)
-                
+
             elif msg_type == 'publication':
                 pubID = message[1]
                 topic = message[2]
@@ -204,7 +209,7 @@ class Broker:
                         self.heartbeat_dict.update({pubID: time.time()})
                     else:
                         self.heartbeat_dict[pubID] = time.time()
-                
+
                 print('Heartbeat: %s heartbeat' % pubID)
                 print('\n************************************\n')
                 with open(log_file, 'a') as logfile:
@@ -243,7 +248,7 @@ class Broker:
                 del self.pub_dict[pubID]
         except KeyError:
             pass
-        
+
 
     # update publisher ownership strength dictionary
     #
@@ -261,7 +266,7 @@ class Broker:
                 else:
                     if pubID not in self.pub_ownership_dict[topic].keys():
                         self.pub_ownership_dict[topic].update({pubID: random.randint(1, 1000)})
-            
+
             elif update_type == 'drop_topic':
                 if topic not in self.pub_ownership_dict.keys():
                     print('     Broker filter feedback: drop topic %s for publisher %s failed, '
@@ -276,7 +281,7 @@ class Broker:
                             logfile.write('Broker filter feedback: drop topic %s for publisher %s failed, %s don\'t have this topic.\n' % (topic, pubID, pubID))
                     else:
                         del self.pub_ownership_dict[topic][pubID]
-                        
+
             elif update_type == 'shutoff':
                 for key in self.pub_ownership_dict.keys():
                     if pubID in self.pub_ownership_dict[key].keys():
@@ -284,7 +289,7 @@ class Broker:
 
         except KeyError:
             pass
-        
+
     # filter publisher ownership strength dictionary
     #
     # argument: current publisher & topic

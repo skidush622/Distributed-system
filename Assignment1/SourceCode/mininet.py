@@ -7,6 +7,7 @@ import argparse   # for command line parsing
 
 from signal import SIGINT
 import time
+import threading
 
 import subprocess
 
@@ -22,6 +23,8 @@ from mininet.util import pmonitor
 
 from BusTopology import BusTopology
 from StarTopology import StarTopology
+from TreeTopology import TreeTopology
+from RingTopology import RingTopology
 
 ##################################
 # Command line parsing
@@ -33,62 +36,58 @@ def parseCmdLineArgs ():
     # add optional arguments
     parser.add_argument ("-p", "--publisher", type=int, default=3, help="Number of publishers, default 3")
     parser.add_argument ("-s", "--subscriber", type=int, default=5, help="Number of subscriber, default 5")
-    parser.add_argument ("-T", "--topo", type=int, choices=[1, 2, 3, 4, 5], default=1, help='Topology choice options: 1. Bus Topology 2. Star Topology 3. Tree Topology 4. Ring Topology 5. Net Topology default: 1. Bus Topology')
-    parser.add_argument ("-t", "--test", type=int, choices=[1,2,3,4,5], default=1, help="Test case choice, default 1")
+    parser.add_argument ("-T", "--topo", type=int, choices=[1, 2, 3], default=1, help='Topology choice options: 1. Bus Topology 2. Star Topology 3. Tree Topology default: 1. Bus Topology')
+    parser.add_argument ("-t", "--test", type=int, choices=[1, 2, 3, 4, 5], default=1, help="Test case choice, default 1")
 
     # parse the args
     args = parser.parse_args ()
 
     return args
 
+def subT_helper(broker_ip, subHosts):
+     # Invoke subscribers
+    for sub in subHosts:
+        def sub_op():
+            command = 'xterm -e python mSubscriberT.py -a ' + broker_ip
+            sub.cmd(command)
+        threading.Thread(target=sub_op, args=()).start()
+        time.sleep(len(subHosts))
+
+def pubT_helper(broker_ip, test, pubHosts):
+    # Invoke publisher
+    for pub in pubHosts:
+        def pub_op():
+            command = 'xterm -e python mPublisherT.py -t ' + str(test) + ' -a '+ broker_ip
+            pub.cmd(command)
+        threading.Thread(target=pub_op, args=()).start()
+        time.sleep(len(pubHosts))
+
 def runTestCase(pubHosts, subHosts, brokerHost, test_choice):
     try:
-        popens = {}
         broker_ip = brokerHost.IP()
-        # Invoke broker
-        popens[brokerHost] = brokerHost.popen('python', './BrokerT.py', stdout=subprocess.PIPE)
-        if test_choice == 1:
-             # Invoker subscribers
-            for sub in subHosts:
-                popens[sub] = sub.popen('python', './mSubscriberT.py', '-a', broker_ip, stdout=subprocess.PIPE)
-            # Invoker publisher
-            for pub in pubHosts:
-                popens[pub] = pub.popen('python', './mPublisherT.py', '-t', str(1), '-a', broker_ip, stdout=subprocess.PIPE)
-        elif test_choice == 2:
-            # Invoker publisher
-            for pub in pubHosts:
-                popens[pub] = pub.popen('python', './mPublisherT.py', '-t', str(2), '-a', broker_ip, stdout=subprocess.PIPE)
-            # Invoker subscribers
-            for sub in subHosts:
-               popens[sub] = sub.popen('python', './mSubscriberT.py', '-a', broker_ip, stdout=subprocess.PIPE)
-        elif test_choice == 3:
-            # Invoker publisher
-            for pub in pubHosts:
-                popens[pub] = pub.popen('python', './mPublisherT.py', '-t', str(3), '-a', broker_ip, stdout=subprocess.PIPE)
-            # Invoker subscribers
-            for sub in subHosts:
-               popens[sub] = sub.popen('python', './mSubscriberT.py', '-a', broker_ip, stdout=subprocess.PIPE)
-        elif test_choice == 4:
-            # Invoker subscribers
-           for sub in subHosts:
-               popens[sub] = sub.popen('python', './mSubscriberT.py', '-a', broker_ip, stdout=subprocess.PIPE)
-           # Invoker publisher
-           for pub in pubHosts:
-               popens[pub] = pub.popen('python', './mPublisherT.py', '-t', str(4), '-a', broker_ip, stdout=subprocess.PIPE)
-        elif test_choice == 5:
-            # Invoker subscribers
-           for sub in subHosts:
-               popens[sub] = sub.popen('python', './mSubscriberT.py', '-a', broker_ip, stdout=subprocess.PIPE)
-           # Invoker publisher
-           for pub in pubHosts:
-               popens[pub] = pub.popen('python', './mPublisherT.py', '-t', str(5), '-a', broker_ip, stdout=subprocess.PIPE)
+
+        def broker_op():
+            # Invoke broker
+            command = 'xterm -e python BrokerT.py'
+            brokerHost.cmd(command)
+
+        threading.Thread(target=broker_op, args=()).start()
+
+        print('Waiting for Broker ready...')
+        time.sleep(5)
+
+        pubT_helper(broker_ip, test_choice, pubHosts)
+        subT_helper(broker_ip, subHosts)
+
+        while True:
+            pass
     except Exception as e:
         print(e)
 
 def mainHelper(topo, test):
     # create the network
     print('Instantiate network')
-    net = Mininet( topo=topo, host=CPULimitedHost, link=TCLink, autoStaticArp=True )
+    net = Mininet(topo=topo, link=TCLink)
 
     # activate the network
     print('Activate network')
@@ -114,13 +113,10 @@ def mainHelper(topo, test):
         elif 'Broker' in host.name:
             brokerhost = host
 
-    print('Publisher hosts: ', pubhosts)
-    print('Subscriber hosts: ', subhosts)
-
     runTestCase(pubhosts, subhosts, brokerhost, test)
 
-    time.sleep(200)
     net.stop()
+
 
 #####################
 # main program
@@ -174,19 +170,15 @@ def main():
         topo = TreeTopology(pubnum=pub_num, subnum=sub_num)
         mainHelper(topo, test)
 
+    '''
     # Ring Topology
     elif topo_choice == 4:
         # instantiate our topology
         print('Instantiate topology')
         topo = RingTopology(pubnum=pub_num, subnum=sub_num)
         mainHelper(topo, test)
-
-    # Net Topology
-    elif topo_choice == 5:
-        # instantiate our topology
-        print('Instantiate topology')
-        topo = NetTopology(pubnum=pub_num, subnum=sub_num)
-        mainHelper(topo, test)
+    '''
 
 if __name__ == '__main__':
     main()
+    #print(os.popen('sudo mn -c', 'r').read())

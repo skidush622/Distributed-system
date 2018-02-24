@@ -31,7 +31,7 @@ class BusTopology(Topo):
 
             # Add links for these Switches
             if i > 0:
-                self.addLink (self.mswitches[i-1], self.mswitches[i], delay='5ms')
+                self.addLink (self.mswitches[i-1], self.mswitches[i])
                 print('Add link between switches ' + self.mswitches[i-1] + ' and ' + self.mswitches[i])
 
         # Add publisher hosts
@@ -42,7 +42,7 @@ class BusTopology(Topo):
             print('Add publisher host ' + self.pubHosts[i])
 
             # Add link between publisher hosts and switches
-            self.addLink(self.pubHosts[i], self.mswitches[i], delay='1ms')
+            self.addLink(self.pubHosts[i], self.mswitches[i])
             print('Add link between publisher host ' + self.pubHosts[i] + ' and ' + 'switch ' + self.mswitches[i])
 
         # Add subscriber hosts
@@ -53,7 +53,7 @@ class BusTopology(Topo):
             print('Add subscriber host ' + self.subHosts[i])
 
             # Add link between subscriber hosts and switches
-            self.addLink(self.subHosts[i], self.mswitches[i+pubnum], delay='1ms')
+            self.addLink(self.subHosts[i], self.mswitches[i+pubnum])
             print('Add link between subscriber host ' + self.subHosts[i] + ' and ' + 'switch ' + self.mswitches[i+pubnum])
 
         # Add broker host

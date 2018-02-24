@@ -19,7 +19,7 @@ class Subscriber:
         self.history_count = history_count
         self.helper = ZMQHelper()
         self.myID = str(random.randint(1, 100))
-        
+
     def prepare(self):
         self.register_sub()
         self.add_sub_topic(self.history_topic)
@@ -74,13 +74,16 @@ class Subscriber:
                     log.write('Receipt Info:\n')
                     log.write('Receive: %s\n' % received_msg)
                     log.write('Time: %f\n' % (new_current_time - time_stamp))
-                
+
 
     # register subscriber
     def register_sub(self):
         connect_str = 'tcp://' + self.address + ':' + self.port
         print('Connection info: %s' % connect_str)
-        self.socket = self.helper.connect_sub2broker(connect_str)
+        current = time.time()
+        while time.time() - current < 3:
+            self.socket = self.helper.connect_sub2broker(connect_str)
+            
         if self.socket is None:
             print('Connection feedback: connected xpub socket failed.')
             return False
