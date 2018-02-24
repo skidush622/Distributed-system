@@ -25,7 +25,7 @@ class RingTopology(Topo):
         print('Broker Host #: 1 (default)')
 
 
-        # Add a switches
+        # Add switches
         for i in range(pubnum + subnum + 1):
             mswitch = self.addSwitch('s%d' % (i+1))
             self.mswitches.append(mswitch)
