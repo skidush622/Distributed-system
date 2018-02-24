@@ -54,26 +54,26 @@ class Subscriber:
                 print('*************************************************\n'
                     'Receipt Info:\n'
                     'History Publication: %s\n'
-                    'Time Interval: %f\n' % (received_msg, (current_time - time_stamp)))
+                    'Time Interval: %f\n' % (received_msg, abs(current_time - time_stamp)))
                 logfile_name = './Output/' + self.myID + '-subscriber.log'
                 with open(logfile_name, 'a') as log:
                     log.write('*************************************************\n')
                     log.write('Receipt Info:\n')
                     log.write('Receive History Publication: %s\n' % received_msg)
-                    log.write('Time: %f\n' % (current_time - time_stamp))
+                    log.write('Time: %f\n' % abs(current_time - time_stamp))
                 prev_time = time_stamp
             if time_stamp >= new_current_time:
                 new_current_time = time.time()
                 print('*************************************************\n'
                     'Receipt Info:\n'
                     'Publication: %s\n'
-                    'Time Interval: %f\n' % (received_msg, (new_current_time - time_stamp)))
+                    'Time Interval: %f\n' % (received_msg, abs(new_current_time - time_stamp)))
                 logfile_name = './Output/' + self.myID + '-subscriber.log'
                 with open(logfile_name, 'a') as log:
                     log.write('*************************************************\n')
                     log.write('Receipt Info:\n')
                     log.write('Receive: %s\n' % received_msg)
-                    log.write('Time: %f\n' % (new_current_time - time_stamp))
+                    log.write('Time: %f\n' % abs(new_current_time - time_stamp))
 
 
     # register subscriber
@@ -83,7 +83,7 @@ class Subscriber:
         current = time.time()
         while time.time() - current < 3:
             self.socket = self.helper.connect_sub2broker(connect_str)
-            
+
         if self.socket is None:
             print('Connection feedback: connected xpub socket failed.')
             return False
