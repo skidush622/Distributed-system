@@ -73,6 +73,12 @@
 # subscriber_num : type = int, default = 5
 # topology_type : choices = [1, 2, 3], (correspond to: 1: Bus topology, 2: Star topology, 3: Tree topology), default: 1: Bus topology
 # testcase_choice : choices = [1, 2, 3, 4, 5], (correspond to: 1: Multiple publishers & subscribers work concurrently 2: Subscribers receive history publications 3: Publisher failing 4: Ownership strength feature 5: Publisher drop topics), default: Test 1: Multiple publishers & subscribers work concurrently
+
+# note: 
+# 1. After run this command, please wait until all nodes launched up, you would see sorts of Xterm CLIs. Press Ctr+c if you want to exit program.
+# 2. Topics for publishers and subscribers are assigned radomlly, provided topics include: animals, foods, laptops, phones, universities and countries. If you find no subscriber received publications, please check if any publisher is publishing the expected topic.
+# 3. You can check log files under /Output directory. I suggest creating a folder to store all log files after you run a test case. 
+# 4. !!!Please run 'sudo mn -c' to clean all nodes before you run a new test.
 ```
  
  
