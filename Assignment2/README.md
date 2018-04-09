@@ -46,7 +46,14 @@
   - Manually test
   
 #### Topology Type:
-  1. Bus Topology
-  2. Star Topology
-  3. Tree Topology 
+  - Bus Topology
+  - Star Topology
+  - Tree Topology 
+  
+#### Test cases:
+- Multiple publishers & subscribers work concurrently
+- Subscribers receive history publications
+- Publisher failing
+- Ownership strength update
+- Publisher drop topics
  
