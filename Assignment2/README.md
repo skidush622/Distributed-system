@@ -40,3 +40,13 @@
    
  - If one of the broker finds that its predecessor dies, the message "My old precursor broker node died..." will be sent to all nodes in the range of 2^(m-1) in counterclockwise direction, and these nodes will be told to update Finger Table.
  
+#### Test Methods:
+  - Atomatically test using Mininet
+  - Atomatically test at localhost
+  - Manually test
+  
+#### Topology Type:
+  1. Bus Topology
+  2. Star Topology
+  3. Tree Topology 
+ 
