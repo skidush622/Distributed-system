@@ -15,3 +15,5 @@ Team members:
   
 ### File Description (/SourceCode/):
   - Broker.py : Broker class that defines  Broker's behavior
+  - Publisher.py : Publisher class that defines Publishers' behavior
+  - Subscriber.py : Subscriber class that defines Subscribers' behavior
