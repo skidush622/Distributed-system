@@ -30,7 +30,7 @@
  
 #### Related to DHT:
  - Every broker will send its heartbeat to its successor. After receiving the heartbeat message the successor checks out whether the heartbeat message is sent by its known predecessor. If not, it indicates that the previous node has already died, the precursor table needs to be updated.
- - If the node does not receive the heartbeat message from its predecessor, the predecessor has already died. So now the current node sends four kinds of messages to its predecessor (the predecessor of the previous predecessor):
+ - If the node does not receive the heartbeat message from its predecessor, the predecessor has already died. So now the current node sends three kinds of messages to its predecessor (the predecessor of the previous predecessor):
  
    1. The previous successor has already died, I will be your successor. You will receive all topics which your previous successor rules, which means that the backup data of your previous successor belongs to you now. You will also need to update hop count(hop count++) which is responsible for backing up your successor and pass the message of hop count++. Besides, you need to find all publishers and subscribers which are connected to your previous successor, notify them to update registered IP for your IP and reconnect to you.
    
