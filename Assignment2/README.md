@@ -20,5 +20,4 @@
   
 ### Broker Logic
 #### Related to publisher:  
-   - Receive registered message. First, check out whether the registered topic is ruled by current broker.
-  
+ - Receive registered message. First, check out whether the registered topic is ruled by current broker. If yes, register directly. Otherwise, begin DHT routing and record the topic and publisher in the corresponding broker. Meanwhile, the broker which rules the topic sends message to the publisher and tells the publisher to update the broker IP, so that later the broker will communicate directly with the publisher without DHT routing.
