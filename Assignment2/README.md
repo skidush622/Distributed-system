@@ -32,3 +32,5 @@
  - Every broker will send its heartbeat to its successor. After receiving the heartbeat message the successor checks out whether the heartbeat message is sent by its known predecessor. If not, it indicates that the previous node has already died, the precursor table needs to be updated.
  - If the node does not receive the heartbeat message from its predecessor, the predecessor has already died. So now the current node sends four kinds of messages to its predecessor (the predecessor of the previous predecessor):
  
+   1.
+ 
