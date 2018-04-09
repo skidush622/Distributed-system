@@ -1,6 +1,6 @@
 # Assignment 2: DHT Register/Lookup in Publish-Subscribe using ZMQ and Mininet
 
-Team members:
+### Team members
 
  - Zhuangwei Kang
  - Manyao Peng
@@ -19,3 +19,6 @@ Team members:
   - Subscriber.py : Subscriber class that defines Subscribers' behavior
   
 ### Broker Logic
+#### Related to publisher:  
+   - Receive registered message. First, check out whether the registered topic is ruled by current broker.
+  
