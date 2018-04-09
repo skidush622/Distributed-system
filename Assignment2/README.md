@@ -37,4 +37,6 @@
    2. Your previous successor backups for me. Since your previous successor dies, which means one copy is lost, you should update the hop count and pass the message of hop count++.
    
    3. Your previous successor backups for my successor(hop count == 0), since your previous successor died, you should backup for my successor, I will send the data to you, now you have the last copy of my successor(hop count == 0).
+   
+ - If one of the broker finds that its predecessor dies, the message "My old precursor broker node died..." will be sent to all nodes in the range of 2^(m-1) in counterclockwise direction, and these nodes will be told to update Finger Table.
  
