@@ -27,3 +27,7 @@
  
 #### Related to subscriber:
  - After receiving the registered message of the subscriber, the broker checks out whether the to be registered topic is ruled by itself. If yes, the broker will directly send the message to the subscriber. Otherwise, begin DHT routing, find the broker which rules the topic. The subscriber will update the registered IP, reconnect to the target broker. Since then, the target broker will send message to the subscriber. 
+ 
+#### Related to DHT:
+ - Every broker will send its heartbeat to its successor. After receiving the heartbeat message the successor checks out whether the heartbeat message is sent by its known predecessor. If not, it indicates that the previous node has already died, the precursor table needs to be updated.
+ 
