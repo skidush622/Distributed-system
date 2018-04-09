@@ -61,9 +61,18 @@
 ```sh
  $ sudo pip install simplejson
 ```
-- Command line:
+- Command Line:
 ```sh
  $ sudo python mininet.py -b [broker_number] -p [publisher_number] -s [subscriber_num] -T [topology_type] -t [testcase_choice]
+```
+- Tips:
+```sh
+# Arguements liminitions:
+# broker_num : type = int, default = 9
+# publisher_num : type = int, default = 3
+# subscriber_num : type = int, default = 5
+# topology_type : choices = [1, 2, 3], (correspond to: 1: Bus topology, 2: Star topology, 3: Tree topology), default: 1: Bus topology
+# testcase_choice : choices = [1, 2, 3, 4, 5], (correspond to: 1: Multiple publishers & subscribers work concurrently 2: Subscribers receive history publications 3: Publisher failing 4: Ownership strength feature 5: Publisher drop topics), default: Test 1: Multiple publishers & subscribers work concurrently
 ```
  
  
