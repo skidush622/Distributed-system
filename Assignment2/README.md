@@ -7,3 +7,8 @@ Team members:
  - Minhui Zhou
  - Yingqi Li
 
+### Environment
+  - Ubuntu 16.04
+  - Python
+  - Pyzmq
+  - Mininet
