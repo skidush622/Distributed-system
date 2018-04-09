@@ -35,4 +35,6 @@
    1. The previous successor has already died, I will be your successor. You will receive all topics which your previous successor rules, which means that the backup data of your previous successor belongs to you now. You will also need to update hop count(hop count++) which is responsible for backing up your successor and pass the message of hop count++. Besides, you need to find all publishers and subscribers which are connected to your previous successor, notify them to update registered IP for your IP and reconnect to you.
    
    2. Your previous successor backups for me. Since your previous successor dies, which means one copy is lost, you should update the hop count and pass the message of hop count++.
+   
+   3. Your previous successor backups for my successor(hop count == 0), since your previous successor died, you should backup for my successor, I will send the data to you, now you have the last copy of my successor(hop count == 0).
  
