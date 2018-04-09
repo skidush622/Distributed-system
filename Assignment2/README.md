@@ -56,4 +56,10 @@
 - Publisher failing
 - Ownership strength update
 - Publisher drop topics
+#### Atomatically Test using Mininet
+- prerequisite:
+```sh
+ $ sudo pip install simplejson
+```
+ 
  
