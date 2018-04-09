@@ -57,9 +57,13 @@
 - Ownership strength update
 - Publisher drop topics
 #### Atomatically Test using Mininet
-- prerequisite:
+- Prerequisite:
 ```sh
  $ sudo pip install simplejson
+```
+- Command line:
+```sh
+ $ sudo python mininet.py -b [broker_number] -p [publisher_number] -s [subscriber_num] -T [topology_type] -t [testcase_choice]
 ```
  
  
