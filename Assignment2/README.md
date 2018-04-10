@@ -80,5 +80,16 @@
 # 3. You can check log files under /Output directory. I suggest creating a folder to store all log files after you run a test case. 
 # 4. !!!Please run 'sudo mn -c' to clean all nodes before you run a new test.
 ```
+
+##### Atomatically Test at Localhost
+This test method will spawn 3 publishers, 5 subscribers and 9 brokers with some random topics.
+```sh
+# At broker side:
+$ sudo python BrokerT.py
+# Launch a new window (Publisher side)
+$ sudo python mPublisherT.py
+# Launch a new window (Subscriber side)
+$ sudo python mSubscriberT.py
+```
  
  
