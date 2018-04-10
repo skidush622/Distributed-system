@@ -17,7 +17,17 @@
   - Broker.py : Broker class that defines  Broker's behavior
   - Publisher.py : Publisher class that defines Publishers' behavior
   - Subscriber.py : Subscriber class that defines Subscribers' behavior
-  
+  - BrokerT.py : Broker test entrance at localhost
+  - mPublisherT.py : Publisher test file using mininet
+  - mSubscriberT.py : Subscriber test file using mininet
+  - PubFuncs.py : Contains some helper methods for publisher
+  - ZMQHelper.py : Custom API that encapsulates Pyzmq API
+  - hash_ring.py : Custom API that encapsulates hash ring API
+  - mininet.py : Entrance file for system test using mininet
+  - BusTopology.py : Used to build up bus topology
+  - StarTopology.py : Used to build up star topology
+  - TreeTopology.py : Used to build up tree topology
+    
 ### Broker Logic
 #### Related to publisher:  
  - Receive registered message. First, check out whether the registered topic is ruled by current broker. If yes, register directly. Otherwise, begin DHT routing and record the topic and publisher in the corresponding broker. Meanwhile, the broker which rules the topic sends message to the publisher and tells the publisher to update the broker IP, so that later the broker will communicate directly with the publisher without DHT routing.
