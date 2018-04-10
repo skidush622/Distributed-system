@@ -41,16 +41,21 @@
 #### Related to DHT:
  - Every broker has a view about the whole DHT itself.
  - Publishers and subscribers can connnect to arbitrary broker.
+ - Every broker has two successor brokers to backup for it. We use hop count to represent whether it is the original data or the backup data. If hop count == 2, the broker is the primary broker which stores the original data. If hop count == 1, the broker stores the first backup of its predecessor. If hop count == 0, the broker stores the second (last) backup of its predecessor of predecessor. 
  - Every broker will send its heartbeat to its predecessor. After receiving the heartbeat message the predecessor checks out whether the heartbeat message is sent by its known successor. If not, it indicates that the previous node has already died.
  - When a broker died, the successor of it inherits all its stored messages.
  
-   1. The previous successor has already died, I will be your successor. You will receive all topics which your previous successor rules, which means that the backup data of your previous successor belongs to you now. You will also need to update hop count(hop count++) which is responsible for backing up your successor and pass the message of hop count++. Besides, you need to find all publishers and subscribers which are connected to your previous successor, notify them to update registered IP for your IP and reconnect to you.
+ - Here is an instance to illustrate what will happen when a broker dies. B1, B2 and B3 are all brokers. The predecessor of B2 is B1 and the successor of B2 is B3. So B2 sends heartbeat to B1 and B3 sends heartbeat to B2. B1 passes data to B2 through port3 and B2 passes data to B3 similarly. When B2 dies, the following things will happen:
+ 
+   1. B1 tells all brokers to update the view of the whole DHT.
    
-   2. Your previous successor backups for me. Since your previous successor dies, which means one copy is lost, you should update the hop count and pass the message of hop count++.
+   2. B1 tells B3 its predecessor died and asks B3 to inherit all data from B2.
    
-   3. Your previous successor backups for my successor(hop count == 0), since your previous successor died, you should backup for my successor, I will send the data to you, now you have the last copy of my successor(hop count == 0).
+   3. B3 will do the following tasks:
    
- - If one of the broker finds that its predecessor dies, the message "My old precursor broker node died..." will be sent to all nodes in the range of 2^(m-1) in counterclockwise direction, and these nodes will be told to update Finger Table.
+     - Inherit all the backup which B2 manages.
+     - Notify all publishers and subscribers which were connected to B2 to reconnect to the new broker.
+     - Notify its successor to increase its hop count (hop count ++). It will pass the message of increasing hop count until hop count == 0. For example, when B2 died, the hop count of B3 is changed from 0 to 1, and B3 tells B4 to update its hop count to 0, then B4 will be the last copy of B1. 
  
 #### Test Methods:
   - Atomatically test using Mininet
