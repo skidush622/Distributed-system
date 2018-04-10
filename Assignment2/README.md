@@ -43,7 +43,6 @@
 #### Test Methods:
   - Atomatically test using Mininet
   - Atomatically test at localhost
-  - Manually test
   
 #### Topology Type:
   - Bus Topology
