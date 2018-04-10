@@ -65,13 +65,7 @@
   - Star Topology
   - Tree Topology 
   
-#### Test cases:
-- Multiple publishers & subscribers work concurrently
-- Subscribers receive history publications
-- Publisher failing
-- Ownership strength update
-- Publisher drop topics
-##### Atomatically Test using Mininet
+#### Atomatically Test using Mininet
 - Prerequisite:
 ```sh
  $ sudo pip install simplejson
