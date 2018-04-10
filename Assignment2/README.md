@@ -17,7 +17,7 @@
   - Broker.py : Broker class that defines  Broker's behavior
   - Publisher.py : Publisher class that defines Publishers' behavior
   - Subscriber.py : Subscriber class that defines Subscribers' behavior
-  - BrokerT.py : Broker test entrance at localhost
+  - BrokerT.py : Broker test file
   - mPublisherT.py : Publisher test file using mininet
   - mSubscriberT.py : Subscriber test file using mininet
   - PubFuncs.py : Contains some helper methods for publisher
