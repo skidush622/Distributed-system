@@ -61,3 +61,5 @@ class TreeTopology(Topo):
             # Add link between subscriber host and switch
             self.addLink(self.subHosts[i], self.mswitches[3], bandwidth=10000, max_queue_size=10000, use_htb=True, delay='0ms', loss=0)
             print('Add link between subscriber host ' + self.subHosts[i] + ' and switch ' + self.mswitches[3])
+
+            
