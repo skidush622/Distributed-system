@@ -72,3 +72,5 @@ class BusTopology(Topo):
             #    self.addLink(self.brokerHosts[i], self.brokerHosts[i-1], bandwidth=10000, max_queue_size=10000, use_htb=True, delay='0ms', loss=0)
 
         # self.addLink(self.brokerHosts[0], self.brokerHosts[brokernum-1], bandwidth=10000, max_queue_size=10000, use_htb=True, delay='0ms', loss=0)
+
+        
