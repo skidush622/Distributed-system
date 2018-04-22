@@ -14,8 +14,6 @@ from kazoo.client import KazooState
 
 
 class Publisher:
-    znode_path = './Publishers'
-
     def __init__(self, hosts, address, port, topic):
         '''
         :param hosts: ZooKeeper server hosts
@@ -29,6 +27,8 @@ class Publisher:
         self.helper = ZMQHelper()
         self.myID = str(random.randint(1, 1000))
         self.socket = None
+        self.znode_path = './Publishers/' + self.myID
+        self.broker_node_path = './Brokers/' + address
         self.hosts = hosts
         self.zk = KazooClient(hosts=self.hosts, timeout=20, randomize_hosts=True)
 
@@ -45,23 +45,13 @@ class Publisher:
         while self.zk.state != KazooState.CONNECTED:
             pass
         print('Connect to ZK.')
-        # create new znode: ./Publishers/pub_$self.myID
         self.zk.create(path=self.znode_path, value=self.myID, ephemeral=True, makepath=True)
         if self.zk.exists(self.znode_path):
             print('Create Znode succeed.')
-
-        connect_str = 'tcp://' + self.address + ':' + self.port
-        print('Connection info: %s' % connect_str)
-        self.socket = self.helper.connect_pub2broker(connect_str)
-        if self.socket is None:
-            print('Connection feedback: connected xsub socket failed.')
-            return False
-        else:
-            print('Connection feedback: connected xsub socket succeed.')
-            init_str = 'pub_init' + '#' + self.myID + '#' + self.topic + '#'
-            self.helper.pub_send_msg(self.socket, init_str)
-            print('Connection feedback: %s initialized with initial topic %s succeed.' % (self.myID, self.topic))
-            return True
+        init_str = 'pub_init' + '#' + self.myID + '#' + self.topic + '#'
+        lock = self.zk.Lock(self.broker_node_path, self.myID)
+        with lock:
+            self.zk.set(self.broker_node_path, value=init_str)
 
     def my_listener(self, state):
         '''
@@ -83,5 +73,7 @@ class Publisher:
         :return:
         '''
         send_str = 'publication' + '#' + self.myID + '#' + topic + '#' + msg
-        self.helper.pub_send_msg(self.socket, send_str)
+        lock = self.zk.Lock(self.broker_node_path, self.myID)
+        with lock:
+            self.zk.set(path=self.broker_node_path, value=send_str)
         print('Publication: publishing message %s' % send_str)
