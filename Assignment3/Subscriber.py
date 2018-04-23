@@ -48,10 +48,11 @@ class Subscriber:
             else:
                 self.leader_address = data
                 self.isConnected = True
-                self.request_history()
+                self.request_history(self.history_count)
                 self.register_sub()
+                self.receive_publication()
 
-    def request_history(self):
+    def request_history(self, history_count):
         # TODO: Connected to leader using REQ socket type, using 5558 as port number
         # TODO: Send history request message to leader
         # TODO: receive history publication from leader broker, then store these history publication into log file

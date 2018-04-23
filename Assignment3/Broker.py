@@ -25,13 +25,10 @@ class Broker:
         self.helper = ZMQHelper()
         '''
            {$(topic): {
-                   'publishers': {
-                       $(pubID): {
-                           'publications' : [$(publication)]
-                           'ownership strength': $(ownership_strength)
-                       }
-                   },
-                   'subscribers': [$(subID)]
+                   $(pubID): {
+                       'publications' : [$(publication)]
+                       'ownership strength': $(ownership_strength)
+                   }
                }
            }
         '''
@@ -51,6 +48,7 @@ class Broker:
             logfile.write('XSUB Port: ' + xsub_port + '\n')
             logfile.write('XPUB Port: ' + xpub_port + '\n')
             logfile.write('-------------------------------------------\n')
+        self.init_zk()
 
     def init_zk(self):
         self.zk.start()
@@ -72,12 +70,14 @@ class Broker:
         def watch_publishers(children):
             self.publisher_failed(children)
 
+        '''
         # watch subscriber znode
         sub_watch_path = './Subscribers'
-
+        
         @self.zk.ChildrenWatch(client=self.zk, path=sub_watch_path)
         def watch_subscribers(children):
             self.subscriber_failed(children)
+        '''
 
         # check if the leader has exists
         leader_path = './Leader'
@@ -133,11 +133,12 @@ class Broker:
         self.isLeader = True
         # TODO: win the election, start receiving msg from publisher
 
-    def receive_publication(self):
+    def receive_msg(self):
         '''
         Message type:
         1. publisher init
         2. publication
+        *3. subscriber init
         :return:
         '''
         # TODO: Store received data into self data storage
