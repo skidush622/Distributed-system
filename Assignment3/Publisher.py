@@ -76,4 +76,3 @@ class Publisher:
         lock = self.zk.Lock(self.broker_node_path, self.myID)
         with lock:
             self.zk.set(path=self.broker_node_path, value=send_str)
-        print('Publication: publishing message %s' % send_str)
