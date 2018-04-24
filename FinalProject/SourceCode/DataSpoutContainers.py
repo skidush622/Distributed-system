@@ -14,10 +14,11 @@ class DataSpoutContainers:
 
     def run_container(self, name, hostname, command):
         container = self.client.containers.run(image='dataspout',
-                                               detach=False,
+                                               detach=True,
                                                name=name,
                                                hostname=hostname,
                                                tty=True,
+                                               stdin_open=True,
                                                command=command)
         return container
 
