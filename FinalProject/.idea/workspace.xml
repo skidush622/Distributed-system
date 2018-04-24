@@ -4,7 +4,6 @@
     <list default="true" id="66d86916-591e-47f8-8746-c1716d9f752f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/SourceCode/DataSpoutContainers.py" afterPath="$PROJECT_DIR$/SourceCode/DataSpoutContainers.py" />
-      <change beforePath="$PROJECT_DIR$/SourceCode/Dockerfile" afterPath="$PROJECT_DIR$/SourceCode/Dockerfile" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/SourceCode/DataSpoutContainers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+              <caret line="30" column="51" lean-forward="true" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -233,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524542959431</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update">
+      <created>1524543151667</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524543151667</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -330,7 +336,7 @@
     <entry file="file://$PROJECT_DIR$/SourceCode/DataSpoutContainers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <caret line="30" column="51" lean-forward="true" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
