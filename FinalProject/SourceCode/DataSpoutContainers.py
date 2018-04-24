@@ -14,7 +14,7 @@ class DataSpoutContainers:
 
     def run_container(self, name, hostname, command):
         container = self.client.containers.run(image='dataspout',
-                                               detach=True,
+                                               detach=False,
                                                name=name,
                                                hostname=hostname,
                                                command=command)
