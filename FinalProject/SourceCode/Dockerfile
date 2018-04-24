@@ -12,7 +12,4 @@ RUN pip install pyzmq
 COPY DataSource /home/
 COPY SpoutingData.py /home/
 
-CMD cd /home/
-CMD chmod +x *
-
 EXPOSE 5556 5557 5558 5559 6000
