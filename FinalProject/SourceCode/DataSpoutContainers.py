@@ -10,6 +10,7 @@ class DataSpoutContainers:
         self.image = None
 
     def build_image(self):
+        print('Start building image....')
         self.image = self.client.images.build(path=self.dockerfile_path, tag=self.image_tag)
 
     def run_container(self, name, hostname, command):
@@ -31,6 +32,7 @@ class DataSpoutContainers:
         port = args.port
         for i in range(5):
             container_name = 'DataSpout' + str(i+1)
+            print('Start running container DataSpout %s' % str(i+1))
             command = 'python /home/SpoutingData.py -s ' + str(i+1) + ' -a ' + address + ' -p ' + port
             self.run_container(container_name, container_name, command)
 

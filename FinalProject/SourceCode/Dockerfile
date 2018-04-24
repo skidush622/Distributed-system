@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 RUN pip install pyzmq
 RUN apt-get install -y nano
 
-COPY DataSource /home/
+COPY DataSource /home/DataSource/
 COPY SpoutingData.py /home/
 
-EXPOSE 5556 5557 5558 5559 6000
+EXPOSE 2341
