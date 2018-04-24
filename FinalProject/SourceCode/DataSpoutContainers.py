@@ -5,7 +5,7 @@ import argparse
 class DataSpoutContainers:
     def __init__(self):
         self.client = docker.from_env()
-        self.dockerfile_path = './DockerFiles/'
+        self.dockerfile_path = './'
         self.image_tag = 'dataspout'
         self.image = None
 

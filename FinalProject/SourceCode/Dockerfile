@@ -9,7 +9,7 @@ RUN apt-get install -y python-pip
 RUN pip install --upgrade pip
 RUN pip install pyzmq
 
-COPY ../DataSource /home/
-COPY ../SpoutingData.py /home/
+COPY DataSource /home/
+COPY SpoutingData.py /home/
 
 EXPOSE 5556 5557 5558 5559 6000
