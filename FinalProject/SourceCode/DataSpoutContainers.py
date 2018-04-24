@@ -17,6 +17,7 @@ class DataSpoutContainers:
                                                detach=False,
                                                name=name,
                                                hostname=hostname,
+                                               tty=True,
                                                command=command)
         return container
 
