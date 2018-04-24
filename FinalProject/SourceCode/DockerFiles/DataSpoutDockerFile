@@ -1,16 +1,15 @@
 FROM ubuntu:16.04
 MAINTAINER Zhuangwei Kang
 
-RUN apt-get update\
-    apt-get install python\
-    apt-get install python-pip  python-dev build-essential\
-    pip install --upgrade pip\
-    pip install --upgrade virtualenv\
-    apt-get install nano\
-    pip install pyzmq\
-    mkdir /DataSource
+RUN apt-get update
+RUN apt-get install -y python
+RUN apt-get install -y python-pip
 
-COPY ../DataSource /home/DataSource
+# Install app dependencies
+RUN pip install --upgrade pip
+RUN pip install pyzmq
+
+COPY ../DataSource /home/
 COPY ../SpoutingData.py /home/
 
 EXPOSE 5556 5557 5558 5559 6000
