@@ -49,18 +49,21 @@ class Subscriber:
         if self.history_count > 0:
             self.request_history()
         if self.register_sub():
-            print('Sub %s connected with leader initially.' % self.myID)
+            print('Sub %s connected with leader.' % self.myID)
+            self.isConnected = True
 
-        # Sub watch changes in the leader znode
+        # High-level exist wather for leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
         def watch_leader(data, state):
-            if state.version > 0:
+            if state is None:
                 self.isConnected = False
                 print('Sub %s loses connection with old leader', % self.myID)
+            elif self.isConnected is False:
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
                 if self.register_sub():
                     print('Sub %s re-connected with new leader', % self.myID)
+                    self.isConnected = True
 
     # only called when a sub first join in
     def request_history(self):
@@ -116,7 +119,6 @@ class Subscriber:
             print('Connection feedback: connected xpub socket succeed.')
             # Add a topic for SUB socket to filter publication
             self.add_sub_topic(self.topic)
-            self.isConnected = True
             return True
 
     #  receive publications from leader

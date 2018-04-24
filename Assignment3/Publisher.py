@@ -39,28 +39,20 @@ class Publisher:
             pass
         print('Pub %s created Znode in ZooKeeper server.' % self.myID)
 
-        # register this pub with leader leader it created
         leader_path = './Leader'
-        while self.zk.exists(leader_path) is None:
-            pass
-        data, state = self.zk.get(leader_path)
-        self.leader_address = data.decode("utf-8")
-        if self.register_pub():
-            print('Pub %s connected with leader initially.' % self.myID)
-            self.leader_alive = True
-        
-        # pub watch changes in the leader znode
+        # High-level exist watcher to leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
         def watch_leader(data, state):
             print('Data in Leader Znode is: %s' % data.decode("utf-8"))
-            print('%s changes happened to the Leader' % state.version)
-            if state.version > 0:
+            if state is None:
                 self.leader_alive = False
+            else:
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
                 if self.register_pub():
-                    print('pub %s re-connected with new leader', % self.myID)
+                    print('pub %s connected with leader', % self.myID)
                     self.leader_alive = True
+
 
     # register publisher, connect with leader
     def register_pub(self):
