@@ -35,6 +35,9 @@ if __name__ == '__main__':
                 socket.send_string(line)
                 time.sleep(random.uniform(0.0, 0.3))
 
+    for file in data_files:
+        read_file(file)
+
 
 
 

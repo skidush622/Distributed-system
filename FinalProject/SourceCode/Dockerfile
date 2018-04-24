@@ -8,10 +8,9 @@ RUN apt-get install -y python-pip
 # Install app dependencies
 RUN pip install --upgrade pip
 RUN pip install pyzmq
+RUN apt-get install -y nano
 
 COPY DataSource /home/
 COPY SpoutingData.py /home/
-
-CMD cd /home/
 
 EXPOSE 5556 5557 5558 5559 6000
