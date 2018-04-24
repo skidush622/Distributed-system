@@ -13,7 +13,7 @@ class DataSpoutContainers:
         self.image = self.client.images.build(path=self.dockerfile_path, tag=self.image_tag)
 
     def run_container(self, name, hostname, command):
-        container = self.client.containers.run(image=self.image,
+        container = self.client.containers.run(image='dataspout',
                                                detach=True,
                                                name=name,
                                                hostname=hostname,

@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     socket = connect_2_k8s(address, port)
 
-    data_files = glob.glob('/home/DataSource/*.txt')
+    data_files = glob.glob('./DataSource/*.txt')
     if spout != 5:
         data_files = data_files[(spout-1)*10:spout*10]
     else:
