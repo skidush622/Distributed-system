@@ -1,8 +1,6 @@
 import glob
 import argparse
 import zmq
-import random
-import time
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -35,7 +33,6 @@ if __name__ == '__main__':
         with open(file_path, 'r') as f:
             for line in f:
                 socket.send_string(file_path + '--' + line)
-                time.sleep(random.uniform(0.0, 0.3))
 
     for file in data_files:
         read_file(file)
