@@ -29,7 +29,7 @@ class DataSpoutContainers:
         port = args.port
         for i in range(5):
             container_name = 'DataSpout' + str(i+1)
-            command = 'python SpoutingData.py -s ' + str(i+1) + ' -a ' + address + ' -p ' + port
+            command = 'cd /home/ && python SpoutingData.py -s ' + str(i+1) + ' -a ' + address + ' -p ' + port
             self.run_container(container_name, container_name, command)
 
 
