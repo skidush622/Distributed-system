@@ -22,7 +22,7 @@ class Publisher:
         self.socket = None
         self.zk = KazooClient(zk_server)
         self.leader_address = None
-        self.leader_alive = False
+        self.leader_alive = False 
         self.init_zk()
 
     def init_zk(self):
@@ -45,9 +45,9 @@ class Publisher:
             pass
         data, state = self.zk.get(leader_path)
         self.leader_address = data.decode("utf-8")
-        self.leader_alive = True
-        if(self.register_pub()):
+        if self.register_pub():
             print('Pub %s connected with leader initially.' % self.myID)
+            self.leader_alive = True
         
         # pub watch changes in the leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
@@ -55,10 +55,12 @@ class Publisher:
             print('Data in Leader Znode is: %s' % data.decode("utf-8"))
             print('%s changes happened to the Leader' % state.version)
             if state.version > 0:
+                self.leader_alive = False
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
-                if(self.register_pub()):
+                if self.register_pub():
                     print('pub %s re-connected with new leader', % self.myID)
+                    self.leader_alive = True
 
     # register publisher, connect with leader
     def register_pub(self):
