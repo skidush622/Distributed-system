@@ -14,7 +14,6 @@ import threading
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 
-
 class Publisher:
     def __init__(self, zk_server, topic):
         self.topic = topic
@@ -23,37 +22,37 @@ class Publisher:
         self.socket = None
         self.zk = KazooClient(zk_server)
         self.leader_address = None
+        self.leader_alive = False 
         self.init_zk()
-        self.leader_alive = False
 
     def init_zk(self):
         self.zk.start()
+        
         while self.zk.state != KazooState.CONNECTED:
             pass
-        print('Connected ZooKeeper Server.')
+        print('Pub %s connected to local ZooKeeper Server.' % self.myID)
 
         # create a Znode for this publisher
         znode_path = './Publishers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
-        while self.zk.exists(znode_path) is False:
+        while self.zk.exists(znode_path) is None:
             pass
-        print('Publisher %s created Znode in ZooKeeper server.' % self.myID)
+        print('Pub %s created Znode in ZooKeeper server.' % self.myID)
 
-        # Publisher needs to watch the leader Znode in ZooKeeper
         leader_path = './Leader'
-
+        # High-level exist watcher to leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
         def watch_leader(data, state):
-            print('Data in Leader Znode is: %s' % data)
-            print('State of Leader Znode is %s' % state)
+            print('Data in Leader Znode is: %s' % data.decode("utf-8"))
             if state is None:
                 self.leader_alive = False
             else:
-                self.leader_alive = True
-                self.leader_address = data
-                # TODO: Reconnect to new leader broker
+                self.leader_address = data.decode("utf-8")
                 self.socket = None
-                self.register_pub()
+                if self.register_pub():
+                    print('pub %s connected with leader', % self.myID)
+                    self.leader_alive = True
+
 
     # register publisher, connect with leader
     def register_pub(self):
@@ -79,7 +78,7 @@ class Publisher:
     def main(self, topic, input_file):
         with open(input_file, 'r') as f:
             for line in f:
-                self.send_pub(topic, line)
-                time.sleep(random.uniform(0.5, 3.0))
                 while self.leader_alive is False:
                     pass
+                self.send_pub(topic, line)
+                time.sleep(random.uniform(0.5, 3.0))

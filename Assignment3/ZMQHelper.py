@@ -74,3 +74,19 @@ class ZMQHelper:
     # xpub socket sends message
     def xpub_send_msg(self, socket, string1, string2):
         socket.send_string('%s %s' % (string1, string2))
+
+    # client sends msg to server
+    def csreq(self, address, port):
+        context = zmq.Context()
+        socket = context.socket(zmq.REQ)
+        socket.connect('tcp://' + address + ':' + port)
+        return socket
+    
+    
+    # server receives msg from client
+    def csrecv(self, port):
+        context = zmq.Context()
+        socket = context.socket(zmq.REP)
+        socket.bind("tcp://*" + ':' + port)
+        return socket
+
