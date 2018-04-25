@@ -82,7 +82,6 @@ class ZMQHelper:
         socket.connect('tcp://' + address + ':' + port)
         return socket
     
-    
     # server receives msg from client
     def csrecv(self, port):
         context = zmq.Context()
@@ -90,3 +89,16 @@ class ZMQHelper:
         socket.bind("tcp://*" + ':' + port)
         return socket
 
+    # followers pull msg from Leader
+    def sinkpull(self, port):
+        context = zmq.Context()
+        socket = context.socket(zmq.PULL)
+        socket.bind("tcp://*" + ':' + port)
+        return socket
+
+    # Leader push msg to followers
+    def sourcepush(self, address, port)
+        context = zmq.Context()
+        socket = context.socket(zmq.PUSH)
+        socket.connect('tcp://' + address + ':' + port)
+        return socket

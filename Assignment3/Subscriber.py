@@ -51,8 +51,8 @@ class Subscriber:
         if self.register_sub():
             print('Sub %s connected with leader.' % self.myID)
             self.isConnected = True
-
-        # High-level exist wather for leader znode
+        
+        # set High-level exist watcher for leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
         def watch_leader(data, state):
             if state is None:
@@ -62,13 +62,16 @@ class Subscriber:
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
                 if self.register_sub():
-                    print('Sub %s re-connected with new leader', % self.myID)
+                    print('Sub %s reconnected with new leader', % self.myID)
                     self.isConnected = True
+            
+        print('Sub %s starts receiving publicaitons.' % self.myID)
+        receive_publication()
 
-    # only called when a sub first join in
+    # only called when a sub join in
     def request_history(self):
         # Connected to new leader using REQ socket type, using 5558 as port number
-        self.hisIPsocket = self.zmqhelper.csreq(self.leader_address, '5558')
+        self.hisIPsocket = self.helper.csreq(self.leader_address, '5558')
         time.sleep(3)
         # Send history request message to leader
         msg = 'request_history_publication' + '#' + self.topic + '#' + str(self.history_count) + '#'
@@ -123,24 +126,25 @@ class Subscriber:
 
     #  receive publications from leader
     def receive_publication(self):
-        while self.isConnected:
-            received_pub = self.helper.sub_recieve_msg(self.socket)
-            message = received_pub.split()
-            received_msg = ' '.join(message[1:])
-            received_msg = received_msg.split('--')
-            time_stamp = float(received_msg[1])
-            received_msg = received_msg[0]
-            current = time.time()
-            print('*************************************************\n'
-                'Receipt Info:\n'
-                'Publication: %s\n'
-                'Time Interval: %f\n' % (received_msg, abs(current - time_stamp)))
-            logfile_name = './Output/' + self.myID + '-subscriber.log'
-            with open(logfile_name, 'a') as log:
-                log.write('*************************************************\n')
-                log.write('Receipt Info:\n')
-                log.write('Receive: %s\n' % received_msg)
-                log.write('Time: %f\n' % abs(current - time_stamp))
+        while True:
+            if self.isConnected:
+               received_pub = self.helper.sub_recieve_msg(self.socket)
+               message = received_pub.split()
+               received_msg = ' '.join(message[1:])
+               received_msg = received_msg.split('--')
+               time_stamp = float(received_msg[1])
+               received_msg = received_msg[0]
+               current = time.time()
+               print('*************************************************\n'
+                   'Receipt Info:\n'
+                   'Publication: %s\n'
+                   'Time Interval: %f\n' % (received_msg, abs(current - time_stamp)))
+               logfile_name = './Output/' + self.myID + '-subscriber.log'
+               with open(logfile_name, 'a') as log:
+                   log.write('*************************************************\n')
+                   log.write('Receipt Info:\n')
+                   log.write('Receive: %s\n' % received_msg)
+                   log.write('Time: %f\n' % abs(current - time_stamp))
 
     # add a subscription topic
     def add_sub_topic(self, topic):
