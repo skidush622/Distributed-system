@@ -241,7 +241,7 @@ class Broker:
         :return:
         '''
         # Use a while loop to receive sync msg from leader
-        while !self.isLeader:
+        while not self.isLeader:
             msg = self.syncsocket.recv_string()
             print('received msg from leader: %s' % msg)
             message = msg.split('#')
