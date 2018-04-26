@@ -97,7 +97,7 @@ class ZMQHelper:
         return socket
 
     # Leader push msg to followers
-    def sourcepush(self, address, port)
+    def sourcepush(self, address, port):
         context = zmq.Context()
         socket = context.socket(zmq.PUSH)
         socket.connect('tcp://' + address + ':' + port)
