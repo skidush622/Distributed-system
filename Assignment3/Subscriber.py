@@ -64,9 +64,7 @@ class Subscriber:
                 if self.register_sub():
                     print('Sub %s reconnected with new leader', % self.myID)
                     self.isConnected = True
-            
-        print('Sub %s starts receiving publicaitons.' % self.myID)
-        receive_publication()
+
 
     # only called when a sub join in
     def request_history(self):
