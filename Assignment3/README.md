@@ -29,6 +29,8 @@
   
 ### Main Logic
   - The whole system has 3 brokers, n publishers, n subscribers, 1 zookeeper server, all of which are mininet host.
+  - In ZooKeeper server, there are permanent nodes like Brokers, Publishers and Subscribers and ephemeral node like Leader.
+  Brokers contain three ephemeral znodes Broker1, Broker2 and Broker3. Publishers contain ephemeral znodes, n concrete  publishers. Subscribers contain ephemeral znodes, n concrete subscribers.
   
 
  
