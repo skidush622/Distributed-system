@@ -34,7 +34,7 @@ class Publisher:
 
         # create a Znode for this publisher
         znode_path = './Publishers/' + self.myID
-        self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
+        self.zk.create(path=znode_path, value=b(''+self.myID), ephemeral=True, makepath=True)
         while self.zk.exists(znode_path) is None:
             pass
         print('Pub %s created Znode in ZooKeeper server.' % self.myID)
@@ -50,7 +50,7 @@ class Publisher:
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
                 if self.register_pub():
-                    print('pub %s connected with leader', % self.myID)
+                    print('pub %s connected with leader' % self.myID)
                     self.leader_alive = True
 
 

@@ -126,8 +126,9 @@ class Broker:
         '''
         # delete all entries of the pub which not in the current children list
         for key in self.data.keys():
-            if pubID in self.data[key].keys() and pubID is not in children:
-                del self.data[key][pubID]
+            for pubID in self.data[key].keys():
+                if pubID is not in children:
+                    del self.data[key][pubID]
        
     '''
     def subscriber_failed(self, children):

@@ -49,7 +49,7 @@ class Subscriber:
         if self.history_count > 0:
             self.request_history()
         if self.register_sub():
-            print('Sub %s connected with leader.' % self.myID)
+            print('Sub %s connected with leader' % self.myID)
             self.isConnected = True
         
         # set High-level exist watcher for leader znode
