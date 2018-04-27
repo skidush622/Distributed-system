@@ -48,7 +48,7 @@ def subT_helper(brokerIPs, subHosts):
     # Invoke subscribers
     for sub in subHosts:
         def sub_op():
-            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP()
+            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP() + '-z' + zk_server()
             sub.cmd(command)
         threading.Thread(target=sub_op, args=()).start()
         time.sleep(1.5*len(subHosts))
@@ -57,11 +57,10 @@ def pubT_helper(brokerIPs, pubHosts):
     # Invoke publisher
     for pub in pubHosts:
         def pub_op():
-            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP()
+            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP() + '-z' + zk_server()
             pub.cmd(command)
         threading.Thread(target=pub_op, args=()).start()
         time.sleep(1.5*len(pubHosts))
-
 
 def runTestCase(pubHosts, subHosts, brokerHosts):
     try:

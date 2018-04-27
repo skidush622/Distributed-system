@@ -15,6 +15,7 @@ def parseCmdLineArgs ():
     # add optional arguments
     parser.add_argument('-a', '--address', type=str, help='Please enter ip address of broker.')
     parser.add_argument('-i', '--ip', type=str, help='Self ip address')
+    parser.add_argument("-z", '--zk_ip', type=str, help='zookeeper ip address')
     # parse the args
     args = parser.parse_args ()
 
