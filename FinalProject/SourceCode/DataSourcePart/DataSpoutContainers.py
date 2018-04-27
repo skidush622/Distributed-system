@@ -1,5 +1,7 @@
 import docker
 import argparse
+from kazoo.client import KazooClient
+from kazoo.client import KazooState
 
 
 class DataSpoutContainers:

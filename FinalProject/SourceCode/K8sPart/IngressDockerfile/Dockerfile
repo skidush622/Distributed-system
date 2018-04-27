@@ -9,9 +9,7 @@ RUN apt-get install -y python-pip
 RUN pip install --upgrade pip
 RUN pip install pyzmq
 RUN apt-get install -y nano
-RUN pip install kazoo
 
-COPY DataSource /home/DataSource/
-COPY SpoutingData.py /home/
+RUN pip install kazoo
 
 EXPOSE 2341
