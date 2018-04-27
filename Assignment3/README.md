@@ -31,6 +31,10 @@
   - The whole system has 3 brokers, n publishers, n subscribers, 1 zookeeper server, all of which are mininet host.
   - In ZooKeeper server, there are permanent nodes like Brokers, Publishers and Subscribers and ephemeral node like Leader.
   Brokers contain three ephemeral znodes Broker1, Broker2 and Broker3. Publishers contain ephemeral znodes, n concrete  publishers. Subscribers contain ephemeral znodes, n concrete subscribers.
+  - Broker: 
+    - Connect to ZooKeeper and create Broker znodes.
+    - Watch Publishers.
+    - Watch Leaders. In the initial state, the first broker of the system creates leader, build leader znode. Every broker should watch leader. Leader znode stores the IP of broker leader. When the second broker wants to join into the system and create znode, it will find the leader znode has already exists, so the second broker becomes the follower automatically.
   
 
  
