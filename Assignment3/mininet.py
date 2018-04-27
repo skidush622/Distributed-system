@@ -1,6 +1,7 @@
 #!/usr/bin/env /usr/local/bin/python /usr/bin/python
 # encoding: utf-8
 
+
 import os              # OS level utilities
 import sys
 import argparse   # for command line parsing
@@ -26,6 +27,8 @@ from BusTopology import BusTopology
 from StarTopology import StarTopology
 from TreeTopology import TreeTopology
 
+ZK_SERVER_IP = '10.0.0.1'
+
 ##################################
 # Command line parsing
 ##################################
@@ -48,7 +51,7 @@ def subT_helper(brokerIPs, subHosts):
     # Invoke subscribers
     for sub in subHosts:
         def sub_op():
-            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP() + '-z' + zk_server()
+            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP() + ' -z' + ZK_SERVER_IP
             sub.cmd(command)
         threading.Thread(target=sub_op, args=()).start()
         time.sleep(1.5*len(subHosts))
@@ -57,7 +60,7 @@ def pubT_helper(brokerIPs, pubHosts):
     # Invoke publisher
     for pub in pubHosts:
         def pub_op():
-            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP() + '-z' + zk_server()
+            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP() + ' -z' + ZK_SERVER_IP
             pub.cmd(command)
         threading.Thread(target=pub_op, args=()).start()
         time.sleep(1.5*len(pubHosts))

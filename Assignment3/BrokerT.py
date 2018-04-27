@@ -4,6 +4,7 @@ from Broker import Broker
 
 import time
 import argparse   # for command line parsing
+ZK_SERVER_IP = '10.0.0.1'
 
 def parseCmdLineArgs ():
 	# parse the command line
@@ -11,7 +12,6 @@ def parseCmdLineArgs ():
 	# add optional arguments
 	parser.add_argument("-b", "--brokers", type=str, help='all brokers ip address')
 	parser.add_argument("-i", "--ip", type=str, help='self ip address')
-	parser.add_argument("-z", "--zk_ip", type=str, help='zookeeper ip address')
 	# parse the args
 	args = parser.parse_args()
 	return args
@@ -21,7 +21,10 @@ if __name__ == '__main__':
 	brokerIPs = args.brokers
 	ip = args.ip
 	brokerIPs = brokerIPs.split('-')
-	broker = Broker(zk_server, my_address, '5556', '5557')
+	#broker = Broker(zk_server, my_address, '5556', '5557')
+	for b_ip in brokerIPs:
+		broker = Broker('10.0.0.1', b_ip, '5556', '5557')
+
 
 	broker.handler()
 	while True:

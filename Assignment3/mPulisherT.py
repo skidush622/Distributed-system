@@ -6,6 +6,8 @@ import random
 import time
 from Publisher import Publisher
 
+ZK_SERVER_IP = '10.0.0.1'
+
 
 # Get publications from file
 def get_publications(file_path):
@@ -22,7 +24,7 @@ def get_publications(file_path):
 def unitTest12(ip, address):
     topics = {1:'animals', 2:'countries', 3:'foods', 4:'countries', 5:'phones', 6:'universities', 7: 'phones', 8: 'laptops', 9: 'foods', 10:'laptops', 11:'laptops', 12:'animals'}
     topic = topics[random.randint(1, 12)]
-    publisher = Publisher(zk_server, topic)
+    publisher = Publisher(ZK_SERVER_IP, topic)
     publisher.register()
     # wait()
 
@@ -36,7 +38,6 @@ def parseCmdLineArgs ():
     # add optional arguments
     parser.add_argument('-a', '--address', type=str, help='Please enter ip address of broker.')
     parser.add_argument('-i', '--ip', type=str, help='current publisher ip address')
-    parser.add_argument("-z", '--zk_ip', type=str, help='zookeeper ip address')
     # parse the args
     args = parser.parse_args ()
 
