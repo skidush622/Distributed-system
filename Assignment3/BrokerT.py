@@ -26,6 +26,6 @@ if __name__ == '__main__':
 		broker = Broker('10.0.0.1', b_ip, '5556', '5557')
 
 
-	broker.handler()
+    #broker.handler()
 	while True:
 		pass
