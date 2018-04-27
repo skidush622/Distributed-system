@@ -35,16 +35,17 @@
     - Connect to ZooKeeper and create Broker znodes.
     - Watch Publishers.
     - Watch Leaders. In the initial state, the first broker of the system creates leader, build leader znode. Every broker should watch leader. Leader znode stores the IP of broker leader. When the second broker wants to join into the system and create znode, it will find the leader znode has already exists, so the second broker becomes the follower automatically.
+    - After receiving the message, the broker synchronizes the message to the follower and sends message to the subscriber.
   
   - Publishers:
-    - Every publisher watches leader znode.
+    - Every publisher watches leader znode and Publishers only send messages to leader according to IP address stored in Leader znode.
     - When one publisher dies, the corresponding ephemeral znode disappears. Leader watches that the number of children of publishers changes and checks in the storage that the corresponding publisher disappears, so it deletes all contents about the died publisher.
     
   - Subscribers:
     - Subsribers are similar to Publishers, every subscriber watches leader znode.
-    - There is one difference that subscribers deal with history publication.
+    - There is one difference that subscribers deal with not only new sent publication but also history publication.
     
-  - Leader:
+  - Leader: If Broker1 is leader, now it died. Because both Broker2 and Broker3 watch leader, a leader election begins. Publishers stop sending messages until a new leader appears. Similarly, Subscribers stop receiving messages until a new leader appears. Because the leader IP changes, every publisher should reconnect to the new leader.
   
 
  
