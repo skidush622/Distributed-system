@@ -31,6 +31,7 @@ if __name__ == '__main__':
               13: 'animals', 14: 'countries', 15: 'laptops', 16: 'laptops', 17: 'animals', 18: 'phones', 19: 'foods', 20: 'phones'}
     topic = topics[random.randint(1, 20)]
     hist = random.randint(0, 20)
+    sub.receive_publication()
     sub = Subscriber(ZK_SERVER_IP, topic, history_count)
     sub_logfile = './Output/' + sub.subID + '-subscriber.log'
     with open(sub_logfile, 'w') as log:
@@ -38,7 +39,6 @@ if __name__ == '__main__':
         log.write('Topic: ' + sub.topic + '\n')
         log.write('History publications: %s\n' % sub.history_count)
         log.write('Connection: tcp://%s:%s\n' % (address,port))
-    sub.handler()
 
     exit_opt = input('Would you like to stop subscriber? (y/n) ')
     if exit_opt != 'y':
