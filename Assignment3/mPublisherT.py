@@ -25,7 +25,7 @@ def unitTest12(ip, address):
     topics = {1:'animals', 2:'countries', 3:'foods', 4:'countries', 5:'phones', 6:'universities', 7: 'phones', 8: 'laptops', 9: 'foods', 10:'laptops', 11:'laptops', 12:'animals'}
     topic = topics[random.randint(1, 12)]
     publisher = Publisher(ZK_SERVER_IP, topic)
-    input_file = 'Input/'+topic + '.txt'
+    input_file = './Input/'+topic + '.txt'
     print (input_file)
     publisher.main(topic, input_file)
 
