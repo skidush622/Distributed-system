@@ -12,6 +12,8 @@ import time
 from ZMQHelper import ZMQHelper
 from kazoo.client import KazooState
 from kazoo.client import KazooClient
+import logging
+logging.basicConfig()
 
 class Broker:
 

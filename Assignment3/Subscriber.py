@@ -11,7 +11,8 @@ import time
 import random
 from kazoo.client import KazooState
 from kazoo.client import KazooClient
-
+import logging
+logging.basicConfig()
 
 class Subscriber:
     def __init__(self, zk_server, topic, history_count):

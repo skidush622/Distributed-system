@@ -13,6 +13,8 @@ import sys
 import threading
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
+import logging
+logging.basicConfig()
 
 class Publisher:
     def __init__(self, zk_server, topic):
