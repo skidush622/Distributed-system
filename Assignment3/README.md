@@ -47,5 +47,15 @@
     
   - Leader: If Broker1 is leader, now it died. Because both Broker2 and Broker3 watch leader, a leader election begins. Publishers stop sending messages until a new leader appears. Similarly, Subscribers stop receiving messages until a new leader appears. Because the leader IP changes, every publisher should reconnect to the new leader.
   
+#### Test Methods:
+  - Atomatically test using Mininet
+  
+#### Topology Type:
+  - Bus Topology
+  - Star Topology
+  - Tree Topology 
+  
+#### Atomatically Test using Mininet
+  
 
  
