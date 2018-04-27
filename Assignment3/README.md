@@ -36,5 +36,15 @@
     - Watch Publishers.
     - Watch Leaders. In the initial state, the first broker of the system creates leader, build leader znode. Every broker should watch leader. Leader znode stores the IP of broker leader. When the second broker wants to join into the system and create znode, it will find the leader znode has already exists, so the second broker becomes the follower automatically.
   
+  - Publishers:
+    - Every publisher watches leader znode.
+    - When one publisher dies, the corresponding ephemeral znode disappears. Leader watches that the number of children of publishers changes and checks in the storage that the corresponding publisher disappears, so it deletes all contents about the died publisher.
+    
+  - Subscribers:
+    - Subsribers are similar to Publishers, every subscriber watches leader znode.
+    - There is one difference that subscribers deal with history publication.
+    
+  - Leader:
+  
 
  
