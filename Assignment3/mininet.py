@@ -141,7 +141,6 @@ def main():
     print('---------------------------------------------------')
 
     args = parseCmdLineArgs()
-    broker_num = args.broker
     pub_num = args.publisher
     sub_num = args.subscriber
     topo_choice = args.topo
