@@ -129,7 +129,7 @@ class Broker:
         # delete all entries of the pub which not in the current children list
         for key in self.data.keys():
             for pubID in self.data[key].keys():
-                if pubID is not in children:
+                if pubID not in children:
                     del self.data[key][pubID]
        
     '''
