@@ -6,7 +6,7 @@ import random
 import time
 from Publisher import Publisher
 
-ZK_SERVER_IP = '10.0.0.1'
+ZK_SERVER_IP = '127.0.0.1:2183'
 
 
 # Get publications from file

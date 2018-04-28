@@ -27,7 +27,7 @@ from BusTopology import BusTopology
 from StarTopology import StarTopology
 from TreeTopology import TreeTopology
 
-ZK_SERVER_IP = '10.0.0.1'
+ZK_SERVER_IP = '127.0.0.1:2183'
 
 ##################################
 # Command line parsing

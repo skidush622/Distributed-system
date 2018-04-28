@@ -4,7 +4,7 @@ from Broker import Broker
 
 import time
 import argparse   # for command line parsing
-ZK_SERVER_IP = '10.0.0.1'
+ZK_SERVER_IP = '127.0.0.1:2183'
 
 def parseCmdLineArgs ():
 	# parse the command line

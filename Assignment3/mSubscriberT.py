@@ -5,7 +5,7 @@ import argparse   # for command line parsing
 from Subscriber import Subscriber
 import random
 
-ZK_SERVER_IP = '10.0.0.1'
+ZK_SERVER_IP = '127.0.0.1:2183'
 
 ##################################
 # Command line parsing
