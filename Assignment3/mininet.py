@@ -122,6 +122,7 @@ def mainHelper(topo):
     pubhosts =[]
     subhosts = []
     brokerhosts = []
+    zk_host = None
     for host in net.hosts:
         if 'PUB' in host.name:
             pubhosts.append(host)
