@@ -27,7 +27,6 @@ from BusTopology import BusTopology
 from StarTopology import StarTopology
 from TreeTopology import TreeTopology
 
-ZK_SERVER_IP = '127.0.0.1:2183'
 
 ##################################
 # Command line parsing
@@ -47,26 +46,32 @@ def parseCmdLineArgs ():
     return args
 
 
-def subT_helper(brokerIPs, subHosts):
+def subT_helper(brokerIPs, subHosts, zk_host):
     # Invoke subscribers
     for sub in subHosts:
         def sub_op():
-            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP()
+            command = 'sudo xterm -hold -e python mSubscriberT.py -a ' + brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + sub.IP() + ' -z ' + zk_host.IP()
             sub.cmd(command)
         threading.Thread(target=sub_op, args=()).start()
         time.sleep(1.5*len(subHosts))
 
-def pubT_helper(brokerIPs, pubHosts):
+def pubT_helper(brokerIPs, pubHosts, zk_host):
     # Invoke publisher
     for pub in pubHosts:
         def pub_op():
-            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP()
+            command = 'sudo xterm -hold -e python mPublisherT.py' + ' -a '+ brokerIPs[random.randint(0, len(brokerIPs)-1)] + ' -i ' + pub.IP() + ' -z ' + zk_host.IP()
             pub.cmd(command)
         threading.Thread(target=pub_op, args=()).start()
         time.sleep(1.5*len(pubHosts))
 
-def runTestCase(pubHosts, subHosts, brokerHosts):
+def runTestCase(pubHosts, subHosts, brokerHosts, zk_host):
     try:
+        def zk_op():
+            start_command = 'sudo xterm -hold -e ./zookeeper-3.4.10/bin/zkServer.sh start'
+            zk_host.cmd(start_command)
+        threading.Thread(target=zk_op, args=()).start()
+        time.sleep(3)
+
         brokerIPs = []
         for broker in brokerHosts:
             brokerIPs.append(broker.IP())
@@ -78,6 +83,8 @@ def runTestCase(pubHosts, subHosts, brokerHosts):
             else:
                 command += broker
 
+        command += ' -z ' + zk_host.IP()
+
         for broker in brokerHosts:
             def broker_op():
                 # Invoke broker
@@ -87,9 +94,9 @@ def runTestCase(pubHosts, subHosts, brokerHosts):
 
             print('Waiting for Broker ready...')
 
-        pubT_helper(brokerIPs, pubHosts)
+        pubT_helper(brokerIPs, pubHosts, zk_host)
         time.sleep(6)
-        subT_helper(brokerIPs, subHosts)
+        subT_helper(brokerIPs, subHosts, zk_host)
 
     except Exception as e:
         print(e)
@@ -122,8 +129,10 @@ def mainHelper(topo):
             subhosts.append(host)
         elif 'Broker' in host.name:
             brokerhosts.append(host)
+        else:
+            zk_host = host
 
-    runTestCase(pubhosts, subhosts, brokerhosts)
+    runTestCase(pubhosts, subhosts, brokerhosts, zk_host)
 
     # net.stop()
 
@@ -167,4 +176,6 @@ def main():
         mainHelper(topo)
 
 if __name__ == '__main__':
+    # STOP ZK
+    os.system('sudo ./zookeeper-3.4.10/bin/zkServer.sh stop')
     main()

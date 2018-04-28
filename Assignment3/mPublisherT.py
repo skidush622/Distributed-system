@@ -6,8 +6,6 @@ import random
 import time
 from Publisher import Publisher
 
-ZK_SERVER_IP = '127.0.0.1:2183'
-
 
 # Get publications from file
 def get_publications(file_path):
@@ -21,10 +19,10 @@ def get_publications(file_path):
         print('Open or write file error.')
         return []
 
-def unitTest12(ip, address):
+def unitTest12(ip, address, zk_address):
     topics = {1:'animals', 2:'countries', 3:'foods', 4:'countries', 5:'phones', 6:'universities', 7: 'phones', 8: 'laptops', 9: 'foods', 10:'laptops', 11:'laptops', 12:'animals'}
     topic = topics[random.randint(1, 12)]
-    publisher = Publisher(ZK_SERVER_IP, topic)
+    publisher = Publisher(zk_address, topic)
     input_file = './Input/'+topic + '.txt'
     print (input_file)
     publisher.main(topic, input_file)
@@ -41,6 +39,7 @@ def parseCmdLineArgs ():
     # add optional arguments
     parser.add_argument('-a', '--address', type=str, help='Please enter ip address of broker.')
     parser.add_argument('-i', '--ip', type=str, help='current publisher ip address')
+    parser.add_argument('-z', '--zk', type=str, help='ZK address')
     # parse the args
     args = parser.parse_args ()
 
@@ -54,4 +53,5 @@ if __name__ == '__main__':
     args = parseCmdLineArgs()
     address = args.address
     ip = args.ip
-    unitTest12(ip, address)
+    zk_address = args.zk
+    unitTest12(ip, address, zk_address)

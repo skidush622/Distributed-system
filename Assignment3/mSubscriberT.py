@@ -5,7 +5,6 @@ import argparse   # for command line parsing
 from Subscriber import Subscriber
 import random
 
-ZK_SERVER_IP = '127.0.0.1:2183'
 
 ##################################
 # Command line parsing
@@ -17,6 +16,7 @@ def parseCmdLineArgs ():
     # add optional arguments
     parser.add_argument('-a', '--address', type=str, help='Please enter ip address of broker.')
     parser.add_argument('-i', '--ip', type=str, help='Self ip address')
+    parser.add_argument('-z', '--zk', type=str, help='ZK address')
     # parse the args
     args = parser.parse_args ()
 
@@ -27,11 +27,12 @@ if __name__ == '__main__':
     address = args.address
     ip = args.ip
     port = '5557'
+    zk_address = args.zk
     topics = {1:'animals', 2:'countries', 3:'animals', 4:'laptops', 5:'phones', 6:'laptops', 7:'animals', 8:'animals', 9:'foods', 10:'phones', 11:'phones', 12:'foods',
               13: 'animals', 14: 'countries', 15: 'laptops', 16: 'laptops', 17: 'animals', 18: 'phones', 19: 'foods', 20: 'phones'}
     topic = topics[random.randint(1, 20)]
     hist = random.randint(0, 20)
-    sub = Subscriber(ZK_SERVER_IP, topic, hist)
+    sub = Subscriber(zk_address, topic, hist)
     sub.receive_publication()
     sub_logfile = './Output/' + sub.subID + '-subscriber.log'
     with open(sub_logfile, 'w') as log:

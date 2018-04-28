@@ -1,0 +1,1765 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{}
+************************************
+Init msg: 10.0.0.5 init with topic animals
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Notify publisher 10.0.0.5 start sending publication.
+
+************************************
+
+************************************
+Notify successor broker to update replica data, new publisher 10.0.0.5 registered.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": [], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Aardvark with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {}, "hop_count": 0}, "10.0.0.2": {"topics": {}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New subscriber 10.0.0.8 registered with topic laptops.
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New Publisher 10.0.0.6 registered.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": [], "ownership_strength": "7"}}}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: asparagus
+
+************************************
+
+************************************
+Recieved IP info from subscriber 10.0.0.9
+
+************************************
+
+************************************
+Notify successor broker update replica data.
+
+************************************
+
+************************************
+Subscriber is requesting history publication.
+
+************************************
+
+************************************
+Send history publication to subscriber.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus"], "ownership_strength": "7"}}}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New Publisher 10.0.0.7 registered.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Abyssinian with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": [], "ownership_strength": "92"}}}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: apples
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": [], "ownership_strength": "92"}}}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Antigua and Barbuda
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Adelie Penguin with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda"], "ownership_strength": "92"}}}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New subscriber 10.0.0.10 registered with topic countries.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Argentina
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: avacado
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Affenpinscher with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Armenia
+
+************************************
+
+************************************
+Recieved IP info from subscriber 10.0.0.11
+
+************************************
+
+************************************
+Notify successor broker update replica data.
+
+************************************
+
+************************************
+Subscriber is requesting history publication.
+
+************************************
+
+************************************
+Send history publication to subscriber.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: alfalfa
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Afghan Hound with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Aruba
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: acorn squash
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Bush Elephant with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Belize
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: almond
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Civet with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Benin
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Bhutan
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: arugala
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Clawed Frog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Bolivia
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Forest Elephant with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: artichoke
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Bosnia and Herzegovina
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: applesauce
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Palm Civet with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Botswana
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: asian noodles
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Penguin with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.7.
+Content: Chad
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Tree Toad with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.3: 
+New publication from 10.0.0.6.
+Content: antelope
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published African Wild Dog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Ainu Dog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Airedale Terrier with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Update hash ring, 10.0.0.3 died.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Akbash with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Store the backup for the precursor node of my precursor node.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New Publisher 10.0.0.7 registered.
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "countries": {"publishers": {"10.0.0.7": {"publications": [], "ownership_strength": "92"}}}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New Publisher 10.0.0.6 registered.
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Akita with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": [], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": [], "ownership_strength": "92"}}}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Chile
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": [], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile"], "ownership_strength": "92"}}}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New subscriber 10.0.0.10 registered with topic countries.
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": [], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: ahi tuna
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: China
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Alaskan Malamute with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: albacore tuna
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Colombia
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: Apple juice
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Comoros
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Albatross with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Aldabra Giant Tortoise with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: Avocado roll
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: 
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", ""], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: Bruscetta
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Alligator with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", ""], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bacon
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", ""], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Estonia
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Alpine Dachsbracke with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: black beans
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bagels
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Ethiopia
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Bulldog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: baked beans
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Cocker Spaniel with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Fiji
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Coonhound with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: BBQ
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Finland
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Eskimo Dog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bison
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: France
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Foxhound with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: barley
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: French Guiana
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: beer
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Pit Bull Terrier with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Gabon
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Staffordshire Terrier with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Receive heartbeat msg from successor broker node: broker_heartbeat#10.0.0.4#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bisque
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Gambia
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published American Water Spaniel with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84", "American Water Spaniel--1524592902.88"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon", "Gambia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bluefish
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque", "bluefish"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon", "Gambia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Georgia
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque", "bluefish"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon", "Gambia", "Georgia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: bread
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84", "American Water Spaniel--1524592902.88"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Anatolian Shepherd Dog with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84", "American Water Spaniel--1524592902.88", "Anatolian Shepherd Dog--1524592910.94"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************
+
+************************************
+Send heart beat msg to precursor broker node: 10.0.0.2
+Heartbeat msg broker_heartbeat#10.0.0.1#
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque", "bluefish", "bread"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon", "Gambia", "Georgia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.6.
+Content: broccoli
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Replica Data:
+{"10.0.0.4": {"topics": {}, "hop_count": 0}, "10.0.0.3": {"topics": {"foods": {"publishers": {"10.0.0.6": {"publications": ["asparagus", "apples", "avacado", "alfalfa", "acorn squash", "almond", "arugala", "artichoke", "applesauce", "asian noodles", "antelope"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Chad"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 0}, "10.0.0.2": {"topics": {"laptops": {"subscribers": ["10.0.0.8"]}, "foods": {"publishers": {"10.0.0.6": {"publications": ["ahi tuna", "albacore tuna", "Apple juice", "Avocado roll", "Bruscetta", "bacon", "black beans", "bagels", "baked beans", "BBQ", "bison", "barley", "beer", "bisque", "bluefish", "bread", "broccoli"], "ownership_strength": "7"}}}, "countries": {"publishers": {"10.0.0.7": {"publications": ["Chile", "China", "Colombia", "Comoros", "", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Guiana", "Gabon", "Gambia", "Georgia"], "ownership_strength": "92"}}, "subscribers": ["10.0.0.10"]}}, "hop_count": 1}}
+************************************
+
+************************************
+Update Replica data for 10.0.0.2: 
+New publication from 10.0.0.7.
+Content: Germany
+
+************************************
+
+************************************
+Notify my successor node update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84", "American Water Spaniel--1524592902.88", "Anatolian Shepherd Dog--1524592910.94"], "ownership_strength": 90}}}
+************************************
+Publication: 10.0.0.5 published Angelfish with topic animals
+
+************************************
+
+************************************
+Notify successor node to update replica data.
+
+************************************
+
+************************************
+Publication storage info: (pubID, {topic : [history]})
+{"animals": {"10.0.0.5": {"publications": ["Aardvark--1524592691.8", "Abyssinian--1524592702.83", "Adelie Penguin--1524592705.85", "Affenpinscher--1524592712.89", "Afghan Hound--1524592718.95", "African Bush Elephant--1524592723.97", "African Civet--1524592732.0", "African Clawed Frog--1524592737.04", "African Forest Elephant--1524592742.1", "African Palm Civet--1524592749.12", "African Penguin--1524592756.14", "African Tree Toad--1524592760.15", "African Wild Dog--1524592768.21", "Ainu Dog--1524592772.24", "Airedale Terrier--1524592814.3", "Akbash--1524592822.39", "Akita--1524592829.51", "Alaskan Malamute--1524592835.52", "Albatross--1524592842.53", "Aldabra Giant Tortoise--1524592846.55", "Alligator--1524592852.58", "Alpine Dachsbracke--1524592857.6", "American Bulldog--1524592862.6", "American Cocker Spaniel--1524592866.63", "American Coonhound--1524592873.67", "American Eskimo Dog--1524592877.71", "American Foxhound--1524592883.76", "American Pit Bull Terrier--1524592889.8", "American Staffordshire Terrier--1524592894.84", "American Water Spaniel--1524592902.88", "Anatolian Shepherd Dog--1524592910.94", "Angelfish--1524592913.96"], "ownership_strength": 90}}}
+************************************
+Heartbeat: 10.0.0.5 heartbeat
+
+************************************

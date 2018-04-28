@@ -22,12 +22,14 @@ class Subscriber:
         self.history_count = history_count if history_count > 0 else 0
         self.helper = ZMQHelper()
         self.myID = str(random.randint(1, 100))
-        self.zk = KazooClient(zk_server)
+        self.logfile_name = './Output/' + self.myID + '-subscriber.log'
+        zk_connect_addr = zk_server + ':2181'
+        self.zk = KazooClient(zk_connect_addr)
         self.isConnected = False
         self.socket = None
         self.hisIPsocket = None
         self.init_zk()
-    
+
     def init_zk(self):
         if self.zk.state != KazooState.CONNECTED:
             self.zk.start()
@@ -36,14 +38,14 @@ class Subscriber:
         print('Sub %s connected to ZooKeeper server.' % self.myID)
 
         # Create a Znode for this subscriber
-        znode_path = './Subscribers/' + self.myID
+        znode_path = '/Subscribers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
         while self.zk.exists(znode_path) is False:
             pass
         print('Sub %s created Znode in ZooKeeper server.' % self.myID)
-        
+
         # register this sub with leader once leader created
-        leader_path = './Leader'
+        leader_path = '/Leader'
         while self.zk.exists(leader_path) is None:
             pass
         data, state = self.zk.get(leader_path)
@@ -53,7 +55,7 @@ class Subscriber:
         if self.register_sub():
             print('Sub %s connected with leader' % self.myID)
             self.isConnected = True
-        
+
         # set High-level exist watcher for leader znode
         @self.zk.DataWatch(client=self.zk, path=leader_path)
         def watch_leader(data, state):
@@ -105,8 +107,8 @@ class Subscriber:
                 log.write('Receive: %s\n' % history[0])
                 log.write('Time: %f\n' % abs(time.time() - float(history[1])))
                 log.write('\n*************************************************\n')
-    
-    
+
+
     # register subscriber
     def register_sub(self):
         connect_str = 'tcp://' + self.leader_address + ':' + '5557'

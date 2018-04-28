@@ -1,0 +1,26 @@
+2018-04-28 02:08:13,611 [myid:] - INFO  [main:QuorumPeerConfig@134] - Reading configuration from: /home/zhuangwei/Documents/zookeeper-3.4.10/bin/../conf/zoo.cfg
+2018-04-28 02:08:13,615 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
+2018-04-28 02:08:13,615 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 0
+2018-04-28 02:08:13,615 [myid:] - INFO  [main:DatadirCleanupManager@101] - Purge task is not scheduled.
+2018-04-28 02:08:13,618 [myid:] - WARN  [main:QuorumPeerMain@113] - Either no config or no quorum defined in config, running  in standalone mode
+2018-04-28 02:08:13,633 [myid:] - INFO  [main:QuorumPeerConfig@134] - Reading configuration from: /home/zhuangwei/Documents/zookeeper-3.4.10/bin/../conf/zoo.cfg
+2018-04-28 02:08:13,633 [myid:] - INFO  [main:ZooKeeperServerMain@96] - Starting server
+2018-04-28 02:08:13,640 [myid:] - INFO  [main:Environment@100] - Server environment:zookeeper.version=3.4.10-39d3a4f269333c922ed3db283be479f9deacaa0f, built on 03/23/2017 10:13 GMT
+2018-04-28 02:08:13,640 [myid:] - INFO  [main:Environment@100] - Server environment:host.name=zhuangwei-VirtualBox
+2018-04-28 02:08:13,640 [myid:] - INFO  [main:Environment@100] - Server environment:java.version=9.0.4
+2018-04-28 02:08:13,640 [myid:] - INFO  [main:Environment@100] - Server environment:java.vendor=Oracle Corporation
+2018-04-28 02:08:13,641 [myid:] - INFO  [main:Environment@100] - Server environment:java.home=/usr/lib/jvm/java-9-oracle
+2018-04-28 02:08:13,641 [myid:] - INFO  [main:Environment@100] - Server environment:java.class.path=/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../build/classes:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../build/lib/*.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../lib/slf4j-log4j12-1.6.1.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../lib/slf4j-api-1.6.1.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../lib/netty-3.10.5.Final.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../lib/log4j-1.2.16.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../lib/jline-0.9.94.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../zookeeper-3.4.10.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../src/java/lib/*.jar:/home/zhuangwei/Documents/zookeeper-3.4.10/bin/../conf:
+2018-04-28 02:08:13,641 [myid:] - INFO  [main:Environment@100] - Server environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+2018-04-28 02:08:13,641 [myid:] - INFO  [main:Environment@100] - Server environment:java.io.tmpdir=/tmp
+2018-04-28 02:08:13,641 [myid:] - INFO  [main:Environment@100] - Server environment:java.compiler=<NA>
+2018-04-28 02:08:13,642 [myid:] - INFO  [main:Environment@100] - Server environment:os.name=Linux
+2018-04-28 02:08:13,642 [myid:] - INFO  [main:Environment@100] - Server environment:os.arch=amd64
+2018-04-28 02:08:13,642 [myid:] - INFO  [main:Environment@100] - Server environment:os.version=4.14.0-041400-generic
+2018-04-28 02:08:13,642 [myid:] - INFO  [main:Environment@100] - Server environment:user.name=zhuangwei
+2018-04-28 02:08:13,642 [myid:] - INFO  [main:Environment@100] - Server environment:user.home=/home/zhuangwei
+2018-04-28 02:08:13,643 [myid:] - INFO  [main:Environment@100] - Server environment:user.dir=/home/zhuangwei/Documents/zookeeper-3.4.10/bin
+2018-04-28 02:08:13,648 [myid:] - INFO  [main:ZooKeeperServer@829] - tickTime set to 2000
+2018-04-28 02:08:13,648 [myid:] - INFO  [main:ZooKeeperServer@838] - minSessionTimeout set to -1
+2018-04-28 02:08:13,648 [myid:] - INFO  [main:ZooKeeperServer@847] - maxSessionTimeout set to -1
+2018-04-28 02:08:13,657 [myid:] - INFO  [main:NIOServerCnxnFactory@89] - binding to port 0.0.0.0/0.0.0.0:2181

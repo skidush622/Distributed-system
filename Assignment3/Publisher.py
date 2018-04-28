@@ -22,31 +22,32 @@ class Publisher:
         self.helper = ZMQHelper()
         self.myID = str(random.randint(1, 1000))
         self.socket = None
-        self.zk = KazooClient(zk_server)
+        zk_connect_addr = zk_server + ':2181'
+        self.zk = KazooClient(hosts=zk_connect_addr)
         self.leader_address = None
-        self.leader_alive = False 
+        self.leader_alive = False
         self.init_zk()
 
     def init_zk(self):
         if self.zk.state != KazooState.CONNECTED:
             self.zk.start()
-        
+
         while self.zk.state != KazooState.CONNECTED:
             pass
         print('Pub %s connected to local ZooKeeper Server.' % self.myID)
 
         # create a Znode for this publisher
-        znode_path = './Publishers/' + self.myID
-        self.zk.create(path=znode_path, value=b(''+self.myID), ephemeral=True, makepath=True)
+        znode_path = '/Publishers/' + self.myID
+        self.zk.create(path=znode_path, value=self.myID, ephemeral=True, makepath=True)
         while self.zk.exists(znode_path) is None:
             pass
         print('Pub %s created Znode in ZooKeeper server.' % self.myID)
 
-        leader_path = './Leader'
+        leader_path = '/Leader'
         # High-level exist watcher to leader znode
-        @self.zk.DataWatch(client=self.zk, path=leader_path)
+        @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
-            print('Data in Leader Znode is: %s' % data.decode("utf-8"))
+            print('Data in Leader Znode is: %s' % data)
             if state is None:
                 self.leader_alive = False
             else:

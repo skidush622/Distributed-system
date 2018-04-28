@@ -56,3 +56,11 @@ class StarTopology(Topo):
             # Add link between subscriber host and switch
             self.addLink(self.subHosts[i], self.switch, bandwidth=10000, max_queue_size=10000, use_htb=True, delay='0ms', loss=0)
             print('Add link between subscriber host ' + self.subHosts[i] + ' and switch ' + self.switch)
+
+        # Add ZooKeeper Server
+        self.zk_host = self.addHost('ZK')
+        print('Add ZK host.')
+
+        # Add Link between ZK and switch
+        self.addLink(self.zk_host, self.switch, bandwidth=10000, max_queue_size=10000, use_htb=True, delay='0ms', loss=0)
+        print('Add link between ZK and switch.')

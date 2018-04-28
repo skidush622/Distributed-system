@@ -42,10 +42,11 @@ class Broker:
         self.historysocket = self.zmqhelper.csrecv('5558')
         self.myID = str(random.randint(1, 1000))
         self.log_file = './Output/' + self.myID + '.log'
-        self.zk = KazooClient(zk_server)
+        zk_server = zk_server + ':2181'
+        self.zk = KazooClient(hosts=zk_server)
         self.isLeader = False
         self.my_address = my_address
-        
+
         print('\n************************************\n')
         print('Init MyBroker succeed.')
         print('\n************************************\n')
@@ -63,41 +64,55 @@ class Broker:
             pass
         print('Broker %s connected to ZooKeeper server.' % self.myID)
 
+        if self.zk.exists('/Brokers') is False:
+            self.zk.create(path='/Brokers', value=b'', ephemeral=False, makepath=True)
+        flag = False
+        while self.zk.exists('/Brokers') is False:
+            flag = True
+        if flag:
+            print('Create Znode Brokers.')
         # Create a Znode in ZooKeeper
-        znode_path = './Brokers/' + self.myID
+        znode_path = '/Brokers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
         while self.zk.exists(znode_path) is False:
             pass
         print('Broker %s created a znode in ZooKeeper server.' % self.myID)
 
         # watch publishers znode
-        pub_watch_path = './Publishers'
+        pub_watch_path = '/Publishers'
+        if self.zk.exists(pub_watch_path) is False:
+            self.zk.create(path=pub_watch_path, value=b'', ephemeral=False, makepath=True)
+        flag = False
+        while self.zk.exists(pub_watch_path) is False:
+            flag = True
+        if flag:
+            print('Create Publishers znode.')
 
-        @self.zk.ChildrenWatch(client=self.zk, path=pub_watch_path)
+        @self.zk.ChildrenWatch(path=pub_watch_path)
         def watch_publishers(children):
             self.publisher_failed(children)
 
         '''
         # watch subscriber znode
         sub_watch_path = './Subscribers'
-        
+
         @self.zk.ChildrenWatch(client=self.zk, path=sub_watch_path)
         def watch_subscribers(children):
             self.subscriber_failed(children)
         '''
 
         # check if the leader has exists
-        leader_path = './Leader'
+        leader_path = '/Leader'
         if self.zk.exists(leader_path):
             # If the leader znode already exists, specify this broker as follower
             self.isLeader = False
             # followers start watching leader znode for potential election
-            leader_monitor()
+            self.leader_monitor()
             # connect to leader using PULL socket type
             self.syncsocket = self.zmqhelper.sinkpull('5559')
             # TODO: listen sync message from leader and update data storage
-            sync_data()
-        
+            self.sync_data()
+
         else:
             # If the leader is not existing, create it and receive msg
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
@@ -111,14 +126,14 @@ class Broker:
 
     def leader_monitor(self):
         # Run this method in another thread, because the election.run() method will be blocked until it won
-        election_path = './Brokers/'
-        leader_path = './Leader'
+        election_path = '/Brokers/'
+        leader_path = '/Leader'
 
         # watch leader znode
-        @self.zk.DataWatch(client=self.zk, path=leader_path)
+        @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
             if state is None:
-                election = self.zk.Election(self.zk, election_path, self.myID)
+                election = self.zk.Election(election_path, self.myID)
                 election.run(self.win_election)
 
 
@@ -132,13 +147,13 @@ class Broker:
             for pubID in self.data[key].keys():
                 if pubID not in children:
                     del self.data[key][pubID]
-       
+
     '''
     def subscriber_failed(self, children):
-    
+
         :param children: current children list under Subscribers Znode
         :return:
-        
+
         # TODO: Check which subscriber in data storage has failed,
         # if you get one, delete the data related to this subscriber
         pass
@@ -146,13 +161,14 @@ class Broker:
 
     # win the election, start receiving msg from publisher
     def win_election(self):
+        leader_path = '/Leader'
         if self.zk.exists(path=leader_path) is False:
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
         self.isLeader = True
         print('Broker %s became leader.' % self.myID)
         self.syncsocket = self.zmqhelper.sourcepush(self.my_address,'5559')
         self.receive_msg()
-        
+
     # only leader call this method
     def receive_msg(self):
         '''
@@ -166,25 +182,25 @@ class Broker:
             # Store received data into self data storage
             # Send received data to subscribers
             # Send received data to followers using PUSH socket
-            
+
             # receive message from publisher
-            msg = self.xsubsocket.recv_string(0, 'utf-8')
+            msg = self.xsubsocket.recv_string()
             message = msg.split('#')
             msg_type = message[0]
             # publisher init
-            if msg_type == 'pub_init' and message[1] not in self.data[message[2]].keys():
+            if msg_type == 'pub_init':
                 pubID = message[1]
                 topic = message[2]
                 print('\n************************************\n')
                 print('Init msg: %s init with topic %s' % (pubID, topic))
                 print('\n************************************\n')
-                with open(log_file, 'a') as logfile:
+                with open(self.log_file, 'a') as logfile:
                     logfile.write('Init msg: %s init with topic %s\n' % (pubID, topic))
                 # update storage
                 self.update_data('add_pub', pubID, topic, '')
                 # send msg to followers
                 self.syncsocket.send_string('add_pub' + '#' + pubID + '#' + topic + '#')
-        
+
             #  publication
             elif msg_type == 'publication':
                 pubID = message[1]
@@ -193,7 +209,7 @@ class Broker:
                 print('\n************************************\n')
                 print('Publication: %s published %s with topic %s' % (pubID, publication, topic))
                 print('\n************************************\n')
-                with open(log_file, 'a') as logfile:
+                with open(self.log_file, 'a') as logfile:
                     logfile.write('Publication: %s published %s with topic %s\n' % (pubID, publication, topic))
                 # update storage
                 self.update_data('add_publication', pubID, topic, publication)
@@ -214,7 +230,7 @@ class Broker:
                     log.write('\n************************************\n')
                     log.write('Subscriber is requesting history publication.\n')
                     log.write('\n************************************\n')
-                topic = message[1]
+                topic = str(message[1])
                 history_count = int(message[2])
                 # get pubID who has the highest ownership strength
                 for pub in self.data[topic].keys():
@@ -238,7 +254,7 @@ class Broker:
                     log.write('Send history publication to subscriber.\n')
                     log.write('\n************************************\n')
 
-            
+
     def sync_data(self):
         '''
         Receive sync msg from leader if this broker is a follower
@@ -259,7 +275,7 @@ class Broker:
                 topic = message[2]
                 publication = message[3]
                 update_data(msg_type, pubID, topic, publication)
-                    
+
 
     def update_data(self, update_typ, pubID, topic, publication):
         '''
@@ -279,17 +295,18 @@ class Broker:
                     self.data.update({topic: {pubID: {'publications': [], 'ownership strength': ownership_strength}}})
                 elif pubID not in self.data[topic].keys():
                     self.data[topic].update({pubID: {'publications': [], 'ownership strength': ownership_strength}})
-
+                print(self.data)
+                print(update_typ)
             elif update_typ == 'add_publication':
                 stored_publication = publication + '--' + str(time.time())
                 self.data[topic][pubID]['publications'].append(stored_publication)
-    
+
         except KeyError as ex:
             print('\n----------------------------------------\n')
             print('Error happened while updating publication dictionary...')
             print(ex)
             print('\n----------------------------------------\n')
-    
+
     # To examine if this pubID has the highest ownership
     #
     # argument: current publisher & topic
