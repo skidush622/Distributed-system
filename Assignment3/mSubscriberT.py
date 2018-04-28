@@ -31,8 +31,8 @@ if __name__ == '__main__':
               13: 'animals', 14: 'countries', 15: 'laptops', 16: 'laptops', 17: 'animals', 18: 'phones', 19: 'foods', 20: 'phones'}
     topic = topics[random.randint(1, 20)]
     hist = random.randint(0, 20)
+    sub = Subscriber(ZK_SERVER_IP, topic, hist)
     sub.receive_publication()
-    sub = Subscriber(ZK_SERVER_IP, topic, history_count)
     sub_logfile = './Output/' + sub.subID + '-subscriber.log'
     with open(sub_logfile, 'w') as log:
         log.write('ID: ' + sub.subID + '\n')
