@@ -94,6 +94,7 @@ def runTestCase(pubHosts, subHosts, brokerHosts, zk_host):
 
             print('Waiting for Broker ready...')
 
+        time.sleep(6)
         pubT_helper(brokerIPs, pubHosts, zk_host)
         time.sleep(6)
         subT_helper(brokerIPs, subHosts, zk_host)
@@ -122,7 +123,6 @@ def mainHelper(topo):
     pubhosts =[]
     subhosts = []
     brokerhosts = []
-    
     for host in net.hosts:
         if 'PUB' in host.name:
             pubhosts.append(host)

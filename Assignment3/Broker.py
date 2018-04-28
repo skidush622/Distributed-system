@@ -46,6 +46,7 @@ class Broker:
         self.zk = KazooClient(hosts=zk_server)
         self.isLeader = False
         self.my_address = my_address
+        self.count = 1
 
         print('\n************************************\n')
         print('Init MyBroker succeed.')
@@ -68,9 +69,11 @@ class Broker:
             self.zk.create(path='/Brokers', value=b'', ephemeral=False, makepath=True)
         flag = False
         while self.zk.exists('/Brokers') is False:
-            flag = True
+            pass
+        flag = True
         if flag:
             print('Create Znode Brokers.')
+        
         # Create a Znode in ZooKeeper
         znode_path = '/Brokers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
@@ -84,10 +87,11 @@ class Broker:
             self.zk.create(path=pub_watch_path, value=b'', ephemeral=False, makepath=True)
         flag = False
         while self.zk.exists(pub_watch_path) is False:
-            flag = True
+            pass
+        flag = True
         if flag:
             print('Create Publishers znode.')
-
+    
         @self.zk.ChildrenWatch(path=pub_watch_path)
         def watch_publishers(children):
             self.publisher_failed(children)
@@ -106,6 +110,7 @@ class Broker:
         if self.zk.exists(leader_path):
             # If the leader znode already exists, specify this broker as follower
             self.isLeader = False
+            print('Broker %s is follower.' % self.myID)
             # followers start watching leader znode for potential election
             self.leader_monitor()
             # connect to leader using PULL socket type
@@ -121,8 +126,11 @@ class Broker:
             print('Broker %s is the first leader.' % self.myID)
             self.isLeader = True
             self.syncsocket = self.zmqhelper.sourcepush(self.my_address,'5559')
+            subscriber_thr = threading.Thread(target=self.receive_hisreq, args= ())
+            threading.Thread.setDaemon(subscriber_thr, True)
+            subscriber_thr.start()
             self.receive_msg()
-
+            
 
     def leader_monitor(self):
         # Run this method in another thread, because the election.run() method will be blocked until it won
@@ -143,10 +151,15 @@ class Broker:
         :return:
         '''
         # delete all entries of the pub which not in the current children list
-        for key in self.data.keys():
-            for pubID in self.data[key].keys():
-                if pubID not in children:
-                    del self.data[key][pubID]
+        if self.count != 1:
+           for key in self.data.keys():
+               for pubID in self.data[key].keys():
+                   if pubID not in children:
+                       del self.data[key][pubID]
+                       print('delete publisher %s from topic %s\n' % (pubID, key))
+        else:
+            self.count = 0
+                               
 
     '''
     def subscriber_failed(self, children):
@@ -178,13 +191,14 @@ class Broker:
         3. subscriber request
         :return:
         '''
-        while self.isLeader:
+        while True:
             # Store received data into self data storage
             # Send received data to subscribers
             # Send received data to followers using PUSH socket
 
             # receive message from publisher
             msg = self.xsubsocket.recv_string()
+            print(msg)
             message = msg.split('#')
             msg_type = message[0]
             # publisher init
@@ -212,24 +226,27 @@ class Broker:
                 with open(self.log_file, 'a') as logfile:
                     logfile.write('Publication: %s published %s with topic %s\n' % (pubID, publication, topic))
                 # update storage
+                self.update_data('add_pub', pubID, topic, '')
                 self.update_data('add_publication', pubID, topic, publication)
                 # send msg to followers
                 self.syncsocket.send_string('add_publication' + '#' + pubID + '#' + topic + '#' + publication + '#')
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
                     # send publication to subscribers using xpubsocket
+                    print('send to sub')
                     publication = publication + '--' + str(time.time())
                     self.zmqhelper.xpub_send_msg(self.xpubsocket, topic, publication)
 
-            # receive history request msg from subscribers
-            msg = self.historysocket.recv_string(0, 'utf-8')
-            message = msg.split('#')
-            msg_type = message[0]
-            if msg_type == 'request_history_publication':
-                with open(self.log_file, 'a') as log:
-                    log.write('\n************************************\n')
-                    log.write('Subscriber is requesting history publication.\n')
-                    log.write('\n************************************\n')
+    def receive_hisreq(self):
+        # receive history request msg from subscribers
+        msg = self.historysocket.recv_string(0, 'utf-8')
+        message = msg.split('#')
+        msg_type = message[0]
+        if msg_type == 'request_history_publication':
+            with open(self.log_file, 'a') as log:
+                log.write('\n************************************\n')
+                log.write('Subscriber is requesting history publication.\n')
+                log.write('\n************************************\n')
                 topic = str(message[1])
                 history_count = int(message[2])
                 # get pubID who has the highest ownership strength
@@ -261,6 +278,7 @@ class Broker:
         :return:
         '''
         # Use a while loop to receive sync msg from leader
+        print('start sync with leader')
         while not self.isLeader:
             msg = self.syncsocket.recv_string()
             print('received msg from leader: %s' % msg)
@@ -300,6 +318,8 @@ class Broker:
             elif update_typ == 'add_publication':
                 stored_publication = publication + '--' + str(time.time())
                 self.data[topic][pubID]['publications'].append(stored_publication)
+                print(self.data)
+                print(update_typ)
 
         except KeyError as ex:
             print('\n----------------------------------------\n')

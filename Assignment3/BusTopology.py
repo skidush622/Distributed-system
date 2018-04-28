@@ -18,6 +18,7 @@ class BusTopology(Topo):
         self.subHosts = []
         self.brokerHosts = []
         self.mswitches = []
+        self.serverHost = None
         brokernum = 3
 
         print('Topology Architecture: Bus Topology')
@@ -36,7 +37,7 @@ class BusTopology(Topo):
                 self.addLink(self.mswitches[i], self.mswitches[i - 1], bandwidth=10000, max_queue_size=10000,
                              use_htb=True, delay='0ms', loss=0)
                 print('Add link between switches.')
-
+        
         # Add publisher hosts
         for i in range(pubnum):
             # Add publisher host
@@ -73,3 +74,7 @@ class BusTopology(Topo):
                          delay='0ms', loss=0)
             print('Add link between broker host ' + self.brokerHosts[i] + ' and ' + 'switch ' + self.mswitches[1])
 
+        # Add server host
+        self.serverHost = self.addHost('server')
+        self.addLink(self.serverHost, self.mswitches[0], bandwidth=10000, max_queue_size=10000, use_htb=True,
+             delay='0ms', loss=0)

@@ -57,7 +57,7 @@ class Subscriber:
             self.isConnected = True
 
         # set High-level exist watcher for leader znode
-        @self.zk.DataWatch(client=self.zk, path=leader_path)
+        @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
             if state is None:
                 self.isConnected = False

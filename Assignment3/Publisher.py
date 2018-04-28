@@ -57,7 +57,7 @@ class Publisher:
                     print('pub %s connected with leader' % self.myID)
                     self.leader_alive = True
 
-
+    
     # register publisher, connect with leader
     def register_pub(self):
         connect_str = 'tcp://' + self.leader_address + ':5556'
@@ -72,6 +72,7 @@ class Publisher:
             self.helper.pub_send_msg(self.socket, init_str)
             print('Connection feedback: %s initialized with initial topic %s succeed.' % (self.myID, self.topic))
             return True
+
 
     # send publication to broker
     def send_pub(self, topic, msg):
