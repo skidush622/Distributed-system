@@ -28,7 +28,8 @@ class Publisher:
         self.init_zk()
 
     def init_zk(self):
-        self.zk.start()
+        if self.zk.state != KazooState.CONNECTED:
+            self.zk.start()
         
         while self.zk.state != KazooState.CONNECTED:
             pass
