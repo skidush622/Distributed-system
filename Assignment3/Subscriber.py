@@ -85,10 +85,10 @@ class Subscriber:
         histories = self.hisIPsocket.recv_string()
         print('Received histories: ' + histories)
         with open(self.logfile_name, 'a') as log:
-        log.write('\n*************************************************\n')
-        log.write('Received history publications from broker: ')
-        log.write(histories)
-        log.write('\n*************************************************\n')
+            log.write('\n*************************************************\n')
+            log.write('Received history publications from broker: ')
+            log.write(histories)
+            log.write('\n*************************************************\n')
         # parse msg
         histories = simplejson.loads(histories.split('#')[1])
         # write all history publications into logfile
