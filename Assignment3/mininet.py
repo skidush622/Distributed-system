@@ -122,7 +122,7 @@ def mainHelper(topo):
     pubhosts =[]
     subhosts = []
     brokerhosts = []
-    zk_host = net.zk_host
+    
     for host in net.hosts:
         if 'PUB' in host.name:
             pubhosts.append(host)
@@ -131,7 +131,7 @@ def mainHelper(topo):
         elif 'Broker' in host.name:
             brokerhosts.append(host)
         else:
-            zk_host = net.zk_host
+            zk_host = host
 
     runTestCase(pubhosts, subhosts, brokerhosts, zk_host)
 
