@@ -31,10 +31,10 @@ class Ingress:
         self.down_stream_socket = []
         self.operators = []
 
-        self.parent_path = './' + spout + '/Ingress_operators/'
+        self.parent_path = '/' + spout + '/Ingress_operators/'
         self.leader_path = self.parent_path + '/leader'
         self.znode_path = self.parent_path + '/' + self.my_address
-        self.operator_path = './' + self.spout + '/operators/'
+        self.operator_path = '/' + self.spout + '/operators/'
 
         self.init_zk()
 
@@ -103,9 +103,6 @@ class Ingress:
                 self.buffer[state].append(msg)
             else:
                 self.buffer.update({state: msg})
-
-    def notify_slave(self):
-        pass
 
     # TODO: 如何将数据并行发送，并且将buffer状态同步
 

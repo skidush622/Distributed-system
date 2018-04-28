@@ -44,7 +44,6 @@ def create_deployment_object():
 
     return deployment
 
-
 def create_deployment(api_instance, deployment):
     # Create deployement
     api_response = api_instance.create_namespaced_deployment(

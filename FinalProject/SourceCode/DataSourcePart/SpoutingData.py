@@ -13,23 +13,24 @@ if __name__ == '__main__':
     args = parser.parse_args()
     spout = args.spout
     socket = None
-    ingress_alived = False
+    ingress_alive = False
 
-    zk_address = args.zk_address
+    zk_address = args.zk_address + ':2181'
     # connect to ZK server
-    zk = KazooClient(zk_address)
+    zk = KazooClient(hosts=zk_address)
     zk.start()
-    ingress_path = './' + spout + '/' + '/Ingress_operators/leader'
+    ingress_path = '/' + spout + '/' + '/Ingress_operators/leader'
+    # Watch the change in Leader node
 
     @zk.DataWatch(ingress_path)
     def watch_ingress(data, stat):
         global socket
-        global ingress_alived
+        global ingress_alive
         if stat == KazooState.CONNECTED:
             socket = connect_2_k8s(data)
-            ingress_alived = True
+            ingress_alive = True
         else:
-            ingress_alived = False
+            ingress_alive = False
 
     def connect_2_k8s(address):
         connect_str = 'tcp://' + address
@@ -39,17 +40,14 @@ if __name__ == '__main__':
         return socket
 
     data_files = glob.glob('home/DataSource/*.txt')
-    if spout != 5:
-        data_files = data_files[(spout-1)*10:spout*10]
-    else:
-        data_files = data_files[(spout-1)*10:]
+    data_files = data_files[spout-1]
 
     print(data_files)
 
     def read_file(file_path):
         with open(file_path, 'r') as f:
             for line in f:
-                while ingress_alived is False:
+                while ingress_alive is False:
                     pass
                 state = file_path.split('/')[2]
                 state = state.split('.')[0]
@@ -62,8 +60,7 @@ if __name__ == '__main__':
                 socket.send_string(simplejson.dumps(event))
                 print(socket.recv_string())
 
-    for file in data_files:
-        read_file(file)
+    read_file(data_files)
 
 
 
