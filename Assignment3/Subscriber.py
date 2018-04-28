@@ -59,12 +59,12 @@ class Subscriber:
         def watch_leader(data, state):
             if state is None:
                 self.isConnected = False
-                print('Sub %s loses connection with old leader', % self.myID)
+                print('Sub %s loses connection with old leader' % self.myID)
             elif self.isConnected is False:
                 self.leader_address = data.decode("utf-8")
                 self.socket = None
                 if self.register_sub():
-                    print('Sub %s reconnected with new leader', % self.myID)
+                    print('Sub %s reconnected with new leader' % self.myID)
                     self.isConnected = True
 
 
