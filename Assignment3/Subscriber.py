@@ -31,7 +31,7 @@ class Subscriber:
     def init_zk(self):
         if self.zk.state != KazooState.CONNECTED:
             self.zk.start()
-        if self.zk.state != KazooState.CONNECTED:
+        while self.zk.state != KazooState.CONNECTED:
             pass
         print('Sub %s connected to ZooKeeper server.' % self.myID)
 
