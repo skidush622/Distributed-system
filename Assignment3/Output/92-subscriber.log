@@ -1,0 +1,40 @@
+
+*************************************************
+Send history publications request to broker...
+*************************************************
+
+*************************************************
+Received history publications from broker: history_publication#["Afghan Hound\n--1524975214.89", "African Bush Elephant\n--1524975217.49"]
+*************************************************
+
+*************************************************
+History Publication Receipt Info:
+Receive: Afghan Hound
+
+Time: 4.431250
+
+*************************************************
+
+*************************************************
+History Publication Receipt Info:
+Receive: African Bush Elephant
+
+Time: 1.831289
+
+*************************************************
+*************************************************
+Receipt Info:
+Receive: African Forest Elephant 
+Time: 0.002600
+*************************************************
+Receipt Info:
+Receive: African Palm Civet 
+Time: 0.003304
+*************************************************
+Receipt Info:
+Receive: African Penguin 
+Time: 0.000223
+*************************************************
+Receipt Info:
+Receive: African Tree Toad 
+Time: 0.005527

@@ -1,0 +1,143 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Publication: 207 published apples
+ with topic foods
+Publication: 207 published avacado
+ with topic foods
+Publication: 397 published MacBook Pro
+ with topic laptops
+Publication: 207 published alfalfa
+ with topic foods
+Publication: 397 published MacBook Air
+ with topic laptops
+Publication: 207 published acorn squash
+ with topic foods
+Publication: 207 published almond
+ with topic foods
+Publication: 397 published Inspiron
+ with topic laptops
+Publication: 972 published Argentina
+ with topic countries
+Publication: 397 published Latitude
+ with topic laptops
+Publication: 972 published Armenia
+ with topic countries
+Publication: 207 published arugala
+ with topic foods
+Publication: 972 published Aruba
+ with topic countries
+Publication: 972 published Belize
+ with topic countries
+Publication: 207 published artichoke
+ with topic foods
+Publication: 397 published XPS
+ with topic laptops
+Publication: 972 published Benin
+ with topic countries
+Publication: 207 published applesauce
+ with topic foods
+Publication: 397 published Alienware
+ with topic laptops
+Publication: 397 published Vostro
+ with topic laptops
+Publication: 207 published asian noodles
+ with topic foods
+Publication: 972 published Bhutan
+ with topic countries
+Publication: 397 published Dell
+ with topic laptops
+Publication: 972 published Bolivia
+ with topic countries
+Publication: 207 published antelope
+ with topic foods
+Publication: 972 published Bosnia and Herzegovina
+ with topic countries
+Publication: 397 published ThinkPad
+ with topic laptops
+Publication: 207 published ahi tuna
+ with topic foods
+Publication: 207 published albacore tuna
+ with topic foods
+Publication: 397 published IdeaPad
+ with topic laptops
+Publication: 972 published Botswana
+ with topic countries
+Publication: 972 published Chad
+ with topic countries
+
+************************************
+Subscriber is requesting history publication.
+
+************************************
+Publication: 207 published Apple juice
+ with topic foods
+Publication: 972 published Chile
+ with topic countries
+Publication: 397 published Yoga
+ with topic laptops
+Publication: 207 published Avocado roll
+ with topic foods
+Publication: 207 published Bruscetta
+ with topic foods
+Publication: 972 published China
+ with topic countries
+Publication: 397 published Legion
+ with topic laptops
+Publication: 972 published Colombia
+ with topic countries
+Publication: 207 published bacon
+ with topic foods
+Publication: 397 published Chromebook
+ with topic laptops
+Publication: 972 published Comoros
+ with topic countries
+Publication: 207 published black beans
+ with topic foods
+Publication: 397 published HP Pavilion
+ with topic laptops
+Publication: 972 published 
+ with topic countries
+Publication: 207 published bagels
+ with topic foods
+Publication: 972 published Estonia
+ with topic countries
+Publication: 397 published HP EliteBook
+ with topic laptops
+Publication: 207 published baked beans
+ with topic foods
+Publication: 397 published HP ProBook
+ with topic laptops
+Publication: 972 published Ethiopia
+ with topic countries
+Publication: 207 published BBQ
+ with topic foods
+Publication: 207 published bison
+ with topic foods
+Publication: 397 published HP Envy
+ with topic laptops
+Publication: 972 published Fiji
+ with topic countries
+Publication: 207 published barley
+ with topic foods
+Publication: 397 published HP Omen
+ with topic laptops
+Publication: 972 published Finland
+ with topic countries
+Publication: 397 published HP Chromebook
+ with topic laptops
+Publication: 972 published France
+ with topic countries
+Publication: 207 published beer
+ with topic foods
+Publication: 397 published MacBook
+ with topic laptops
+Publication: 972 published French Guiana
+ with topic countries
+Publication: 397 published MacBook Pro
+ with topic laptops
+Publication: 207 published bisque
+ with topic foods
+Publication: 972 published Gabon
+ with topic countries

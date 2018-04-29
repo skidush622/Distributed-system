@@ -1,0 +1,44 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Publication: 488 published MacBook Pro
+ with topic laptops
+Publication: 488 published MacBook Air
+ with topic laptops
+Publication: 488 published Inspiron
+ with topic laptops
+Publication: 488 published Latitude
+ with topic laptops
+Publication: 488 published XPS
+ with topic laptops
+Publication: 721 published Apple
+ with topic phones
+Publication: 721 published Nokia
+ with topic phones
+Publication: 721 published Sony
+ with topic phones
+Publication: 488 published Alienware
+ with topic laptops
+Publication: 488 published Vostro
+ with topic laptops
+Publication: 721 published LG
+ with topic phones
+Publication: 103 published apples
+ with topic foods
+Publication: 488 published Dell
+ with topic laptops
+Publication: 721 published HTC
+ with topic phones
+Publication: 488 published ThinkPad
+ with topic laptops
+Publication: 103 published avacado
+ with topic foods
+Publication: 721 published Motorola
+ with topic phones
+Publication: 488 published IdeaPad
+ with topic laptops
+Publication: 103 published alfalfa
+ with topic foods
+Publication: 103 published acorn squash
+ with topic foods

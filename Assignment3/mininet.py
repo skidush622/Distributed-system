@@ -76,18 +76,13 @@ def runTestCase(pubHosts, subHosts, brokerHosts, zk_host):
         for broker in brokerHosts:
             brokerIPs.append(broker.IP())
 
-        command = 'sudo xterm -hold -e python BrokerT.py -b '
-        for index, broker in enumerate(brokerIPs):
-            if index != len(brokerIPs)-1:
-                command += broker + '-'
-            else:
-                command += broker
-
+        command = 'sudo xterm -hold -e python BrokerT.py'
         command += ' -z ' + zk_host.IP()
 
         for broker in brokerHosts:
             def broker_op():
                 # Invoke broker
+                print(broker.IP())
                 broker.cmd('%s -i %s' % (command, broker.IP()))
             threading.Thread(target=broker_op, args=()).start()
             time.sleep(1.5*len(brokerHosts))

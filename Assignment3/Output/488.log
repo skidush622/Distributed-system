@@ -1,0 +1,34 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Publication: 742 published Princeton University
+ with topic universities
+Publication: 742 published Harvard University
+ with topic universities
+Publication: 742 published University of Chicago
+ with topic universities
+Publication: 237 published MacBook Pro
+ with topic laptops
+Publication: 742 published Yale University
+ with topic universities
+Publication: 237 published MacBook Air
+ with topic laptops
+Publication: 742 published Columbia University
+ with topic universities
+Publication: 237 published Inspiron
+ with topic laptops
+Publication: 723 published MacBook Pro
+ with topic laptops
+Publication: 742 published Massachusetts Institute of Technology
+ with topic universities
+Publication: 723 published MacBook Air
+ with topic laptops
+Publication: 723 published Inspiron
+ with topic laptops
+Publication: 237 published Latitude
+ with topic laptops
+Publication: 723 published Latitude
+ with topic laptops
+Publication: 742 published Stanford University
+ with topic universities

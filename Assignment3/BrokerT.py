@@ -9,7 +9,6 @@ def parseCmdLineArgs ():
 	# parse the command line
 	parser = argparse.ArgumentParser ()
 	# add optional arguments
-	parser.add_argument("-b", "--brokers", type=str, help='all brokers ip address')
 	parser.add_argument("-i", "--ip", type=str, help='self ip address')
 	parser.add_argument('-z', '--zk', type=str, help='ZK address')
 	# parse the args
@@ -18,14 +17,10 @@ def parseCmdLineArgs ():
 
 if __name__ == '__main__':
 	args = parseCmdLineArgs()
-	brokerIPs = args.brokers
 	ip = args.ip
-	brokerIPs = brokerIPs.split('-')
 	zk_address = args.zk
 	print('ZooKeeper Address: ' + zk_address)
-	#broker = Broker(zk_server, my_address, '5556', '5557')
-	for b_ip in brokerIPs:
-		broker = Broker(zk_address, b_ip, '5556', '5557')
+	broker = Broker(zk_address, ip, '5556', '5557')
 
     #broker.handler()
 	while True:

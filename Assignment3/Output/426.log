@@ -1,0 +1,36 @@
+Init Broker:
+XSUB Port: 5556
+XPUB Port: 5557
+-------------------------------------------
+Publication: 309 published Argentina
+ with topic countries
+
+************************************
+Send history publication to subscriber.
+
+************************************
+
+************************************
+Subscriber is requesting history publication.
+
+************************************
+
+************************************
+Send history publication to subscriber.
+
+************************************
+
+************************************
+Subscriber is requesting history publication.
+
+************************************
+
+************************************
+Send history publication to subscriber.
+
+************************************
+
+************************************
+Subscriber is requesting history publication.
+
+************************************

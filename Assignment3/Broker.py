@@ -19,6 +19,7 @@ logging.basicConfig()
 class Broker:
 
     def __init__(self, zk_server, my_address, xsub_port, xpub_port):
+        print('My address is %s' % my_address)
         '''
         :param zk_server: IP address of ZooKeeper Server
         :param my_address: IP address of current broker
@@ -74,7 +75,7 @@ class Broker:
         flag = True
         if flag:
             print('Create Znode Brokers.')
-        
+
         # Create a Znode in ZooKeeper
         znode_path = '/Brokers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
@@ -92,7 +93,7 @@ class Broker:
         flag = True
         if flag:
             print('Create Publishers znode.')
-    
+
         @self.zk.ChildrenWatch(path=pub_watch_path)
         def watch_publishers(children):
             self.publisher_failed(children)
@@ -136,7 +137,7 @@ class Broker:
             threading.Thread.setDaemon(subscriber_thr, True)
             subscriber_thr.start()
             self.receive_msg()
-            
+
 
     def leader_monitor(self):
         # Run this method in another thread, because the election.run() method will be blocked until it won
@@ -165,7 +166,7 @@ class Broker:
                        print('delete publisher %s from topic %s\n' % (pubID, key))
         else:
             self.count = 0
-                               
+
 
     '''
     def subscriber_failed(self, children):
@@ -339,7 +340,7 @@ class Broker:
             elif update_typ == 'add_publication':
                 stored_publication = publication + '--' + str(time.time())
                 self.data[topic][pubID]['publications'].append(stored_publication)
-    
+
 
         except KeyError as ex:
             print('\n----------------------------------------\n')
