@@ -77,6 +77,8 @@
 # 3. You can check log files under /Output directory. I suggest creating a folder to store all log files after you run a test case. 
 # 4. !!!Please run 'sudo mn -c' to clean all nodes before you run a new test.
 ```
-  
+### Result
+
+The screenshots are in the result folder to show the correctness of our implementation.
 
  
