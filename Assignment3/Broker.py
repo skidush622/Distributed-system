@@ -191,7 +191,7 @@ class Broker:
             pass    
 
         self.isLeader = True
-               print('Broker %s became new leader' % self.myID)
+        print('Broker %s became new leader' % self.myID)
         # self.syncsocket = None
         self.syncsocket = self.zmqhelper.sourcepush('5559')
         if self.syncsocket != None:
