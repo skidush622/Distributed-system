@@ -249,6 +249,11 @@ class Broker:
                 self.update_data('add_publication', pubID, topic, publication)
                 # send msg to followers
                 self.syncsocket.send_string('add_publication' + '#' + pubID + '#' + topic + '#' + publication + '#')
+<<<<<<< HEAD
+=======
+                self.syncsocket.recv_string()
+                print('debug2')
+>>>>>>> abbc67e2a1e84291d49aa00ffccf92eea46b4aed
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
                     # send publication to subscribers using xpubsocket
