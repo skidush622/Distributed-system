@@ -50,7 +50,7 @@ class Publisher:
         def watch_leader(data, state):
             print('Data in Leader Znode is: %s' % data)
             if self.zk.exists(path=leader_path) is None:
-                self.leader_alive = False
+                self.leader_alive = True
             else:
                 self.leader_address = data
                 # self.socket = None
@@ -64,6 +64,7 @@ class Publisher:
         connect_str = 'tcp://' + self.leader_address + ':5556'
         print('Connection info: %s' % connect_str)
         self.socket = self.helper.connect_pub2broker(connect_str)
+        time.sleep(0.5)
         if self.socket is None:
             print('Connection feedback: connected xsub socket failed.')
             return False
@@ -84,7 +85,6 @@ class Publisher:
         with open(input_file, 'r') as f:
             for line in f:
                 while self.leader_alive is False:
-                    print('Waiting leader available....')
                     time.sleep(0.5)
                 self.send_pub(topic, line)
                 time.sleep(random.uniform(0.5, 3.0))

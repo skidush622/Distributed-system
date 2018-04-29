@@ -117,7 +117,6 @@ class Broker:
 
             # socket for follower to receive msg from leader
             leader_address = str(self.zk.get(leader_path)[0])
-            print(leader_address)
             self.syncsocket = self.zmqhelper.sinkpull(leader_address, '5559')
             if self.syncsocket != None:
                 print('follower: syncsocket ok')
@@ -189,10 +188,10 @@ class Broker:
         if self.zk.exists(path=leader_path) is None:
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
         while self.zk.exists(path=leader_path) is None:
-            pass
+            pass    
 
         self.isLeader = True
-        print('Broker %s became new leader' % self.myID)
+               print('Broker %s became new leader' % self.myID)
         # self.syncsocket = None
         self.syncsocket = self.zmqhelper.sourcepush('5559')
         if self.syncsocket != None:
@@ -215,7 +214,6 @@ class Broker:
             # Send received data to followers using PUSH socket
 
             # receive message from publisher
-            print('Enter resciving msg')
             msg = self.xsubsocket.recv_string()
             print(msg)
             message = msg.split('#')
@@ -249,11 +247,6 @@ class Broker:
                 self.update_data('add_publication', pubID, topic, publication)
                 # send msg to followers
                 self.syncsocket.send_string('add_publication' + '#' + pubID + '#' + topic + '#' + publication + '#')
-<<<<<<< HEAD
-=======
-                self.syncsocket.recv_string()
-                print('debug2')
->>>>>>> abbc67e2a1e84291d49aa00ffccf92eea46b4aed
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
                     # send publication to subscribers using xpubsocket
@@ -313,7 +306,7 @@ class Broker:
             try:
                 msg = self.syncsocket.recv_string()
             except Exception as e:
-                print('Sync data timeout')
+                print('Sync data time out')
                 continue
             print('\n************************************\n')
             print('received sync msg from leader')
