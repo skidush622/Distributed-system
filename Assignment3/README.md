@@ -79,7 +79,7 @@
 ```
 ### Result
 
-The screenshots are in the result folder to show the correctness of our implementation.
+The following screenshots can show the correctness of our implementation.
 - When the old leader dies, the election process goes well, the follower becomes the new leader and publishers and subscribers can reconnect to the new leader well.
 - When publisher dies, the broker will delete all the information about the died publisher.
 
