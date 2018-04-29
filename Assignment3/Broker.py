@@ -243,7 +243,7 @@ class Broker:
                 # send msg to followers
                 print('debug')
                 self.syncsocket.send_string('add_publication' + '#' + pubID + '#' + topic + '#' + publication + '#')
-                self.syncsocket.recv_string();
+                self.syncsocket.recv_string()
                 print('debug2')
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
