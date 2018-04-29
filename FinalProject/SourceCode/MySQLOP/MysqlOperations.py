@@ -78,9 +78,31 @@ def get_first_row(db_handler, db_name, tb_name):
 	db_handler.execute(get_first)
 	return db_handler.fetchall()
 
+def count_rows(db_handler, db_name, tb_name):
+	useDB(db_handler, db_name)
+	count_cmd = 'SELECT COUNT(*) FROM ' + tb_name
+	db_handler.execute(count_cmd)
+	return int(db_handler.fetchall()[0][0])
 
-	
+def count_spec_rows(db_handler, db_name, tb_name, spec_column, expect_val):
+	useDB(db_handler, db_name)
+	count_spec = 'SELECT COUNT(' + spec_column + ') FROM ' + tb_name + ' WHERE ' + spec_column + '=' + '\'' + expect_val + '\''
+	db_handler.execute(count_spec)
+	return int(db_handler.fetchall()[0][0])
 
+def update_rows(db_handler, db_connection, db_name, tb_name, spec_column, new_value, row_num):
+	useDB(db_handler, db_name)
+	update_cmd = 'UPDATE ' + tb_name + ' SET ' + spec_column + '=' + '\'' + new_value + '\'' + ' LIMIT ' + str(row_num)
+	try:
+		db_handler.execute(update_cmd)
+		db_connection.commit()
+	except:
+		db_connection.rollback()
 
+def query_first_N(db_handler, db_name, tb_name, n):
+	useDB(db_handler, db_name)
+	query_cmd = 'SELECT * FROM ' + tb_name + ' LIMIT ' + str(n)
+	db_handler.execute(query_cmd)
+	return db_handler.fetchall() 
 
 	

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import zmq
 import random
 import threading
@@ -95,7 +97,8 @@ class Ingress:
             context = zmq.Context()
             socket = context.socket(zmq.REQ)
             socket.connect('tcp://' + address + ':2341')
-            self.down_stream_socket.append(socket)
+            socket.setsockopt(zmq.RCVTIMEO, 30000)
+            self.down_stream_sockets.append(socket)
 
         def win_election():
             print('Yeah, I won the election.')
@@ -132,17 +135,32 @@ class Ingress:
             mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, vals)
 
     def distribute_data(self):
-        while True:
-            data = mysqlop.get_first_row(self.db_handler, self.db_name, self.tb_name)
-            if data not None and data[2] == 'Recv':
-                time = data[0]
-                data = data[1]
-                op_num = len(self.down_stream_sockets)
-                socket = self.down_stream_sockets[random.randint(0, op_num-1)]
-                socket.send_sting(data)
-                # Update data status in DB
-                mysqlop.update_tb(self.db_handler, self.connection, self.db_name, self.tb_name, 'Status', 'Sending', 'Time', time)
-                msg = socket.recv_string()
-                # Remove this line from DB
-                mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time', time)
-            
+        while :
+            if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
+                # get row count in db
+                row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
+                mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status', 'Sending', min(row_count, 100))
+
+                # 读取前100/row_count 行数据
+                data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 100))
+                temp_data = []
+                for item in data:
+                    temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
+                data = temp_data
+                # 开始并行发送
+                def send_data(socket, my_data):
+                    for __data in data:
+                        __data = simplejson.dumps(__data)
+                        socket.send_string(__data)
+                        ack = socket.recv_string()
+                        # Ack msg format: 'ack--' + $time
+                        ack_time = ack.split('--')[1]
+                        # Update DB
+                        mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time', ack_time)
+                socket_count = len(self.down_stream_sockets)
+                each_count = len(data)/socket_count
+                for i in range(socket_count):
+                    if i != socket_count - 1:
+                        threading.Thread(target=send_data, args=(self.down_stream_sockets[i], data[i*each_count:(i+1)*each_count])).start()
+                    else:
+                        threading.Thread(target=send_data, args=(self.down_stream_sockets[i], data[i*each_count:])).start()
