@@ -81,4 +81,6 @@
 
 The screenshots are in the result folder to show the correctness of our implementation.
 
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/2085115318.jpg)
+
  
