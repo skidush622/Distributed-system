@@ -90,15 +90,15 @@ class ZMQHelper:
         return socket
 
     # followers pull msg from Leader
-    def sinkpull(self, port):
+    def sinkpull(self, address, port):
         context = zmq.Context()
         socket = context.socket(zmq.PULL)
-        socket.bind("tcp://*" + ':' + port)
+        socket.connect('tcp://' + address + ':' + port)
         return socket
 
     # Leader push msg to followers
-    def sourcepush(self, address, port):
+    def sourcepush(self, port):
         context = zmq.Context()
         socket = context.socket(zmq.PUSH)
-        socket.connect('tcp://' + address + ':' + port)
+        socket.bind("tcp://*" + ':' + port)
         return socket

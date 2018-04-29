@@ -45,18 +45,20 @@ class Publisher:
 
         leader_path = '/Leader'
         # High-level exist watcher to leader znode
+        
         @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
             print('Data in Leader Znode is: %s' % data)
-            if state is None:
+            if data is None:
                 self.leader_alive = False
+                print('debug')
             else:
-                self.leader_address = data.decode("utf-8")
+                self.leader_address = data
                 self.socket = None
+                print('pub %s try to reconnect with leader' % self.myID)
                 if self.register_pub():
                     print('pub %s connected with leader' % self.myID)
                     self.leader_alive = True
-
     
     # register publisher, connect with leader
     def register_pub(self):

@@ -94,9 +94,8 @@ def runTestCase(pubHosts, subHosts, brokerHosts, zk_host):
 
             print('Waiting for Broker ready...')
 
-        time.sleep(6)
         pubT_helper(brokerIPs, pubHosts, zk_host)
-        time.sleep(6)
+        time.sleep(3)
         subT_helper(brokerIPs, subHosts, zk_host)
 
     except Exception as e:

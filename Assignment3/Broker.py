@@ -6,6 +6,7 @@
 # Group member: Peng Manyao, Li Yingqi, Zhou Minhui, Zhuangwei Kang
 #
 
+import simplejson
 import random
 import threading
 import time
@@ -65,10 +66,10 @@ class Broker:
             pass
         print('Broker %s connected to ZooKeeper server.' % self.myID)
 
-        if self.zk.exists('/Brokers') is False:
+        if self.zk.exists('/Brokers') is None:
             self.zk.create(path='/Brokers', value=b'', ephemeral=False, makepath=True)
         flag = False
-        while self.zk.exists('/Brokers') is False:
+        while self.zk.exists('/Brokers') is None:
             pass
         flag = True
         if flag:
@@ -77,16 +78,16 @@ class Broker:
         # Create a Znode in ZooKeeper
         znode_path = '/Brokers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
-        while self.zk.exists(znode_path) is False:
+        while self.zk.exists(znode_path) is None:
             pass
         print('Broker %s created a znode in ZooKeeper server.' % self.myID)
 
         # watch publishers znode
         pub_watch_path = '/Publishers'
-        if self.zk.exists(pub_watch_path) is False:
+        if self.zk.exists(pub_watch_path) is None:
             self.zk.create(path=pub_watch_path, value=b'', ephemeral=False, makepath=True)
         flag = False
-        while self.zk.exists(pub_watch_path) is False:
+        while self.zk.exists(pub_watch_path) is None:
             pass
         flag = True
         if flag:
@@ -113,8 +114,10 @@ class Broker:
             print('Broker %s is follower.' % self.myID)
             # followers start watching leader znode for potential election
             self.leader_monitor()
-            # connect to leader using PULL socket type
-            self.syncsocket = self.zmqhelper.sinkpull('5559')
+            # socket for follower to receive msg from leader
+            self.syncsocket = self.zmqhelper.sinkpull(self.my_address, '5559')
+            if self.syncsocket != None:
+                print('follower: syncsocket ok')
             # TODO: listen sync message from leader and update data storage
             self.sync_data()
 
@@ -125,7 +128,10 @@ class Broker:
                 pass
             print('Broker %s is the first leader.' % self.myID)
             self.isLeader = True
-            self.syncsocket = self.zmqhelper.sourcepush(self.my_address,'5559')
+            # socket for leader to send sync request to followers
+            self.syncsocket = self.zmqhelper.sourcepush('5559')
+            if self.syncsocket != None:
+                print('leader: syncsocket ok')
             subscriber_thr = threading.Thread(target=self.receive_hisreq, args= ())
             threading.Thread.setDaemon(subscriber_thr, True)
             subscriber_thr.start()
@@ -175,11 +181,16 @@ class Broker:
     # win the election, start receiving msg from publisher
     def win_election(self):
         leader_path = '/Leader'
-        if self.zk.exists(path=leader_path) is False:
+        if self.zk.exists(path=leader_path) is None:
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
+        while self.zk.exists(path=leader_path) is None:
+            pass
         self.isLeader = True
-        print('Broker %s became leader.' % self.myID)
-        self.syncsocket = self.zmqhelper.sourcepush(self.my_address,'5559')
+        print('Broker %s became new leader' % self.myID)
+        self.syncsocket = None
+        self.syncsocket = self.zmqhelper.sourcepush('5559')
+        if self.syncsocket != None:
+            print('Broker %s started receive msg' % self.myID)
         self.receive_msg()
 
     # only leader call this method
@@ -197,6 +208,7 @@ class Broker:
             # Send received data to followers using PUSH socket
 
             # receive message from publisher
+            print('debug %s' % self.my_address)
             msg = self.xsubsocket.recv_string()
             print(msg)
             message = msg.split('#')
@@ -213,7 +225,7 @@ class Broker:
                 # update storage
                 self.update_data('add_pub', pubID, topic, '')
                 # send msg to followers
-                self.syncsocket.send_string('add_pub' + '#' + pubID + '#' + topic + '#')
+                #self.syncsocket.send_string('add_pub' + '#' + pubID + '#' + topic + '#')
 
             #  publication
             elif msg_type == 'publication':
@@ -233,43 +245,50 @@ class Broker:
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
                     # send publication to subscribers using xpubsocket
-                    print('send to sub')
+                    print('sending to sub')
                     publication = publication + '--' + str(time.time())
                     self.zmqhelper.xpub_send_msg(self.xpubsocket, topic, publication)
 
     def receive_hisreq(self):
+        while True:
         # receive history request msg from subscribers
-        msg = self.historysocket.recv_string(0, 'utf-8')
-        message = msg.split('#')
-        msg_type = message[0]
-        if msg_type == 'request_history_publication':
-            with open(self.log_file, 'a') as log:
-                log.write('\n************************************\n')
-                log.write('Subscriber is requesting history publication.\n')
-                log.write('\n************************************\n')
-                topic = str(message[1])
-                history_count = int(message[2])
-                # get pubID who has the highest ownership strength
-                for pub in self.data[topic].keys():
-                    target = self.filter_pub_ownership(pub, topic)
-                    if target is not None:
-                        break
-                data = []
-                i = len(self.data[topic][target]['publications'])
-                if i <= history_count:
-                    data.extend(self.data[topic][target]['publications'][:])
-                else:
-                    data.extend(self.data[topic][target]['publications'][-history_count:])
-                msg = 'history_publication' + '#' + simplejson.dumps(data)
-                self.historysocket.send_string(msg)
-                print('\n************************************\n')
-                print('Send history publications to subscriber...')
-                print(msg)
-                print('\n************************************\n')
-                with open(self.log_file, 'a') as log:
-                    log.write('\n************************************\n')
-                    log.write('Send history publication to subscriber.\n')
-                    log.write('\n************************************\n')
+            if self.historysocket is None:
+               print('historysocket is none')
+            msg = self.historysocket.recv_string(0, 'utf-8')
+            print(msg)
+            message = msg.split('#')
+            msg_type = message[0]
+            if msg_type == 'request_history_publication':
+               with open(self.log_file, 'a') as log:
+                  log.write('\n************************************\n')
+                  log.write('Subscriber is requesting history publication.\n')
+                  log.write('\n************************************\n')
+                  topic = str(message[1])
+                  history_count = int(message[2])
+                  i = 0
+                  data = []
+                  # get pubID who has the highest ownership strength
+                  if topic in self.data.keys():
+                     for pub in self.data[topic].keys():
+                         target = self.filter_pub_ownership(pub, topic)
+                         if target is not None:
+                             break
+                     print('debug %s' % target)
+                     i = len(self.data[topic][target]['publications'])
+                     if i <= history_count:
+                         data.extend(self.data[topic][target]['publications'][:])
+                     else:
+                         data.extend(self.data[topic][target]['publications'][-history_count:])
+                  msg = 'history_publication' + '#' + simplejson.dumps(data)
+                  self.historysocket.send_string(msg)
+                  print('\n************************************\n')
+                  print('Send history publications to subscriber...')
+                  print(msg)
+                  print('\n************************************\n')
+                  with open(self.log_file, 'a') as log:
+                      log.write('\n************************************\n')
+                      log.write('Send history publication to subscriber.\n')
+                      log.write('\n************************************\n')
 
 
     def sync_data(self):
@@ -281,18 +300,22 @@ class Broker:
         print('start sync with leader')
         while not self.isLeader:
             msg = self.syncsocket.recv_string()
-            print('received msg from leader: %s' % msg)
+            print('\n************************************\n')
+            print('received sync msg from leader')
             message = msg.split('#')
             msg_type = message[0]
             if msg_type == 'add_pub':
                 pubID = message[1]
                 topic = message[2]
-                update_data(msg_type, pubID, topic)
+                self.update_data(msg_type, pubID, topic, '')
             elif msg_type == 'add_publication':
                 pubID = message[1]
                 topic = message[2]
                 publication = message[3]
-                update_data(msg_type, pubID, topic, publication)
+                self.update_data('add_pub', pubID, topic, '')
+                self.update_data(msg_type, pubID, topic, publication)
+                print('sync with topic %s pub %s' % (topic, pubID))
+                print('\n************************************\n')
 
 
     def update_data(self, update_typ, pubID, topic, publication):
@@ -313,13 +336,10 @@ class Broker:
                     self.data.update({topic: {pubID: {'publications': [], 'ownership strength': ownership_strength}}})
                 elif pubID not in self.data[topic].keys():
                     self.data[topic].update({pubID: {'publications': [], 'ownership strength': ownership_strength}})
-                print(self.data)
-                print(update_typ)
             elif update_typ == 'add_publication':
                 stored_publication = publication + '--' + str(time.time())
                 self.data[topic][pubID]['publications'].append(stored_publication)
-                print(self.data)
-                print(update_typ)
+    
 
         except KeyError as ex:
             print('\n----------------------------------------\n')
@@ -334,7 +354,7 @@ class Broker:
     #
     def filter_pub_ownership(self, pubID, topic):
         try:
-            if self.data[topic][pubID]['ownership strength'] == max([pub['ownership strength'] for pub in data[topic].values()]):
+            if self.data[topic][pubID]['ownership strength'] == max([pub['ownership strength'] for pub in self.data[topic].values()]):
                 return pubID
             else:
                 return None
