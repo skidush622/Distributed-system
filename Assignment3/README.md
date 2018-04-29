@@ -56,6 +56,10 @@
   - Tree Topology 
   
 #### Atomatically Test using Mininet
+- Prerequisite:
+```sh
+ $ sudo pip install simplejson
+```
 - Command Line:
 ```sh
  $ sudo python mininet.py -p [publisher_number] -s [subscriber_num] -T [topology_type]
