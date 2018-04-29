@@ -31,7 +31,7 @@ if __name__ == '__main__':
     topics = {1:'animals', 2:'countries', 3:'animals', 4:'laptops', 5:'phones', 6:'laptops', 7:'animals', 8:'animals', 9:'foods', 10:'phones', 11:'phones', 12:'foods',
               13: 'animals', 14: 'countries', 15: 'laptops', 16: 'laptops', 17: 'animals', 18: 'phones', 19: 'foods', 20: 'phones'}
     topic = topics[random.randint(1, 20)]
-    hist = 1
+    hist = 0
     sub = Subscriber(zk_address, topic, hist)
     sub.receive_publication()
     sub_logfile = './Output/' + sub.subID + '-subscriber.log'

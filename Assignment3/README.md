@@ -56,6 +56,10 @@
   - Tree Topology 
   
 #### Atomatically Test using Mininet
+- Prerequisite:
+```sh
+ $ sudo pip install simplejson
+```
 - Command Line:
 ```sh
  $ sudo python mininet.py -p [publisher_number] -s [subscriber_num] -T [topology_type]
@@ -73,6 +77,19 @@
 # 3. You can check log files under /Output directory. I suggest creating a folder to store all log files after you run a test case. 
 # 4. !!!Please run 'sudo mn -c' to clean all nodes before you run a new test.
 ```
-  
+### Result
+
+The following screenshots can show the correctness of our implementation.
+- When the old leader dies, the election process goes well, the follower becomes the new leader and publishers and subscribers can reconnect to the new leader well.
+- When publisher dies, the broker will delete all the information about the died publisher.
+
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/1898260920.jpg)
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/2085115318.jpg)
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/676698115.jpg)
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/1412264256.jpg)
+![Image text](https://github.com/ZhuangweiKang/CS6381/blob/master/Assignment3/result/2139863283.jpg)
+
+
+
 
  

@@ -45,24 +45,26 @@ class Publisher:
 
         leader_path = '/Leader'
         # High-level exist watcher to leader znode
+
         @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
             print('Data in Leader Znode is: %s' % data)
-            if state is None:
-                self.leader_alive = False
+            if self.zk.exists(path=leader_path) is None:
+                self.leader_alive = True
             else:
-                self.leader_address = data.decode("utf-8")
-                self.socket = None
+                self.leader_address = data
+                # self.socket = None
+                print('pub %s try to reconnect with leader' % self.myID)
                 if self.register_pub():
                     print('pub %s connected with leader' % self.myID)
                     self.leader_alive = True
 
-    
     # register publisher, connect with leader
     def register_pub(self):
         connect_str = 'tcp://' + self.leader_address + ':5556'
         print('Connection info: %s' % connect_str)
         self.socket = self.helper.connect_pub2broker(connect_str)
+        time.sleep(0.5)
         if self.socket is None:
             print('Connection feedback: connected xsub socket failed.')
             return False
@@ -72,7 +74,6 @@ class Publisher:
             self.helper.pub_send_msg(self.socket, init_str)
             print('Connection feedback: %s initialized with initial topic %s succeed.' % (self.myID, self.topic))
             return True
-
 
     # send publication to broker
     def send_pub(self, topic, msg):
@@ -84,6 +85,6 @@ class Publisher:
         with open(input_file, 'r') as f:
             for line in f:
                 while self.leader_alive is False:
-                    pass
+                    time.sleep(0.5)
                 self.send_pub(topic, line)
                 time.sleep(random.uniform(0.5, 3.0))

@@ -9,6 +9,7 @@
 from ZMQHelper import ZMQHelper
 import time
 import random
+import simplejson
 from kazoo.client import KazooState
 from kazoo.client import KazooClient
 import logging
@@ -28,11 +29,16 @@ class Subscriber:
         self.isConnected = False
         self.socket = None
         self.hisIPsocket = None
+        
+        print('\n**************************************\n')
+        print(' init with topic ' + topic)
+        print('\n**************************************\n')
+        
         self.init_zk()
 
     def init_zk(self):
-        if self.zk.state != KazooState.CONNECTED:
-            self.zk.start()
+        
+        self.zk.start(timeout=9999999)
         while self.zk.state != KazooState.CONNECTED:
             pass
         print('Sub %s connected to ZooKeeper server.' % self.myID)
@@ -40,7 +46,7 @@ class Subscriber:
         # Create a Znode for this subscriber
         znode_path = '/Subscribers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
-        while self.zk.exists(znode_path) is False:
+        while self.zk.exists(znode_path) is None:
             pass
         print('Sub %s created Znode in ZooKeeper server.' % self.myID)
 
