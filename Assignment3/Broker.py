@@ -42,7 +42,7 @@ class Broker:
         self.syncsocket = None
         self.historysocket = self.zmqhelper.csrecv('5558')
         self.myID = str(random.randint(1, 1000))
-        self.log_file = './Output/' + self.myID + '.log'
+        self.log_file = './Output/Broker' + self.myID + '.log'
         zk_server = zk_server + ':2181'
         self.zk = KazooClient(hosts=zk_server)
         self.isLeader = False
@@ -74,7 +74,7 @@ class Broker:
         flag = True
         if flag:
             print('Create Znode Brokers.')
-        
+
         # Create a Znode in ZooKeeper
         znode_path = '/Brokers/' + self.myID
         self.zk.create(path=znode_path, value=b'', ephemeral=True, makepath=True)
@@ -92,7 +92,7 @@ class Broker:
         flag = True
         if flag:
             print('Create Publishers znode.')
-    
+
         @self.zk.ChildrenWatch(path=pub_watch_path)
         def watch_publishers(children):
             self.publisher_failed(children)
@@ -114,29 +114,34 @@ class Broker:
             print('Broker %s is follower.' % self.myID)
             # followers start watching leader znode for potential election
             self.leader_monitor()
+
             # socket for follower to receive msg from leader
-            self.syncsocket = self.zmqhelper.csrecv('5559')
+            leader_address = str(self.zk.get(leader_path)[0])
+            print(leader_address)
+            self.syncsocket = self.zmqhelper.sinkpull(leader_address, '5559')
             if self.syncsocket != None:
                 print('follower: syncsocket ok')
-            # TODO: listen sync message from leader and update data storage
+            # NOTE: listen sync message from leader and update data storage
             self.sync_data()
-
         else:
             # If the leader is not existing, create it and receive msg
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
-            while self.zk.exists(path=leader_path) is False:
+            while self.zk.exists(path=leader_path) is None:
                 pass
             print('Broker %s is the first leader.' % self.myID)
             self.isLeader = True
             # socket for leader to send sync request to followers
-            self.syncsocket = self.zmqhelper.csreq(self.my_address, '5559')
+            self.syncsocket = self.zmqhelper.sourcepush('5559')
             if self.syncsocket != None:
                 print('leader: syncsocket ok')
-            subscriber_thr = threading.Thread(target=self.receive_hisreq, args= ())
-            threading.Thread.setDaemon(subscriber_thr, True)
-            subscriber_thr.start()
-            self.receive_msg()
-            
+                
+        subscriber_thr = threading.Thread(target=self.receive_hisreq, args= ())
+        threading.Thread.setDaemon(subscriber_thr, True)
+        subscriber_thr.start()
+
+        recv_thr = threading.Thread(target=self.receive_msg, args=())
+        threading.Thread.setDaemon(recv_thr, True)
+        recv_thr.start()
 
     def leader_monitor(self):
         # Run this method in another thread, because the election.run() method will be blocked until it won
@@ -146,10 +151,10 @@ class Broker:
         # watch leader znode
         @self.zk.DataWatch(path=leader_path)
         def watch_leader(data, state):
-            if state is None:
+            if self.zk.exists(path=leader_path) is None:
+                time.sleep(random.randint(0, 3))
                 election = self.zk.Election(election_path, self.myID)
                 election.run(self.win_election)
-
 
     def publisher_failed(self, children):
         '''
@@ -165,7 +170,7 @@ class Broker:
                        print('delete publisher %s from topic %s\n' % (pubID, key))
         else:
             self.count = 0
-                               
+
 
     '''
     def subscriber_failed(self, children):
@@ -185,13 +190,13 @@ class Broker:
             self.zk.create(leader_path, value=self.my_address, ephemeral=True, makepath=True)
         while self.zk.exists(path=leader_path) is None:
             pass
+
         self.isLeader = True
         print('Broker %s became new leader' % self.myID)
-        self.syncsocket = None
+        # self.syncsocket = None
         self.syncsocket = self.zmqhelper.sourcepush('5559')
         if self.syncsocket != None:
             print('Broker %s started receive msg' % self.myID)
-        self.receive_msg()
 
     # only leader call this method
     def receive_msg(self):
@@ -202,13 +207,15 @@ class Broker:
         3. subscriber request
         :return:
         '''
+        while self.isLeader is False:
+            pass
         while True:
             # Store received data into self data storage
             # Send received data to subscribers
             # Send received data to followers using PUSH socket
 
             # receive message from publisher
-            print('debug %s' % self.my_address)
+            print('Enter resciving msg')
             msg = self.xsubsocket.recv_string()
             print(msg)
             message = msg.split('#')
@@ -241,10 +248,7 @@ class Broker:
                 self.update_data('add_pub', pubID, topic, '')
                 self.update_data('add_publication', pubID, topic, publication)
                 # send msg to followers
-                print('debug')
                 self.syncsocket.send_string('add_publication' + '#' + pubID + '#' + topic + '#' + publication + '#')
-                self.syncsocket.recv_string();
-                print('debug2')
                 # check if this pubID has the highest ownership
                 if self.filter_pub_ownership(pubID, topic) is not None:
                     # send publication to subscribers using xpubsocket
@@ -276,7 +280,6 @@ class Broker:
                          target = self.filter_pub_ownership(pub, topic)
                          if target is not None:
                              break
-                     print('debug %s' % target)
                      i = len(self.data[topic][target]['publications'])
                      if i <= history_count:
                          data.extend(self.data[topic][target]['publications'][:])
@@ -301,11 +304,12 @@ class Broker:
         '''
         # Use a while loop to receive sync msg from leader
         print('start sync with leader')
-        while not self.isLeader:
-            print('debug')
-            msg = self.syncsocket.recv_string()
-            self.syncsocket.send_string('OK')
-            print('debug: sent')
+        while self.isLeader is False:
+            try:
+                msg = self.syncsocket.recv_string()
+            except Exception as e:
+                print('Sync data timeout')
+                continue
             print('\n************************************\n')
             print('received sync msg from leader')
             message = msg.split('#')
@@ -322,7 +326,6 @@ class Broker:
                 self.update_data(msg_type, pubID, topic, publication)
                 print('sync with topic %s pub %s' % (topic, pubID))
                 print('\n************************************\n')
-
 
     def update_data(self, update_typ, pubID, topic, publication):
         '''
@@ -345,7 +348,7 @@ class Broker:
             elif update_typ == 'add_publication':
                 stored_publication = publication + '--' + str(time.time())
                 self.data[topic][pubID]['publications'].append(stored_publication)
-    
+
 
         except KeyError as ex:
             print('\n----------------------------------------\n')
