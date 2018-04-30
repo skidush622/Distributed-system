@@ -15,9 +15,9 @@ if [[ ! -f /opt/zookeeper/data/zoo_dynamic.cfg ]]; then
   done
 fi
 
-sed -i "s/zookeeper-1/10.0.0.179/g" /opt/zookeeper/data/zoo_dynamic.cfg
-sed -i "s/zookeeper-2/10.0.0.221/g" /opt/zookeeper/data/zoo_dynamic.cfg
-sed -i "s/zookeeper-3/10.0.0.186/g" /opt/zookeeper/data/zoo_dynamic.cfg
+sed -i "s/zookeeper-1/10.109.10.218/g" /opt/zookeeper/data/zoo_dynamic.cfg
+sed -i "s/zookeeper-2/10.102.126.196/g" /opt/zookeeper/data/zoo_dynamic.cfg
+sed -i "s/zookeeper-3/10.99.71.84/g" /opt/zookeeper/data/zoo_dynamic.cfg
 
 echo ${ZK_MYID} > /opt/zookeeper/data/myid
 
