@@ -4,163 +4,147 @@ import zmq
 import random
 import threading
 import simplejson
+import time
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
 
 
 class Ingress:
-    def __init__(self, spout, my_address, zk_address, db_address, db_user, db_pwd):
-        # Connect to MySQL server
-        self.tb_name = 'IngressOperator'
-        self.db_name = 'Spout--' + spout
-        self.columns = ['Time', 'State', 'Data', 'Status']
-        self.columns_type = ['char(50)', 'char(20)', 'char(100)', 'char(10)']
-        self.db_connection, self.db_handler = self.init_db(db_address, db_user, db_pwd)
-        
-        self.spout = spout
-        self.zk_address = zk_address
-        self.id = str(random.randint(1, 1000))
-        self.my_address = my_address
-        self.zk = None
-        self.up_stream_socket = None
-        self.down_stream_sockets = []
-        self.operators = []
+	def __init__(self, spout, my_address, zk_address, db_address, db_user, db_pwd):
+		# Connect to MySQL server
+		self.tb_name = 'IngressOperator'
+		self.db_name = 'Spout--' + spout
+		self.columns = ['Time', 'State', 'Data', 'Status']
+		self.columns_type = ['char(50)', 'char(20)', 'char(100)', 'char(10)']
+		self.db_connection, self.db_handler = self.init_db(db_address, db_user, db_pwd)
 
-        self.parent_path = '/' + spout + '/Ingress_operators/'
-        self.leader_path = self.parent_path + '/leader'
-        self.znode_path = self.parent_path + '/' + self.my_address
-        self.operator_path = '/' + self.spout + '/operators/'
+		self.spout = spout
+		self.zk_address = zk_address
+		self.id = str(random.randint(1, 1000))
+		self.my_address = my_address
+		self.zk = None
+		self.up_stream_socket = None
+		self.down_stream_sockets = []
+		self.operators = []
 
-        self.init_zk()
+		self.parent_path = '/Spout--' + str(spout) + '/Ingress_operators'
+		self.leader_path = self.parent_path + '/Leader'
+		self.znode_path = self.parent_path + '/Ingress--' + self.id
+		self.operator_path = '/Spout--' + str(self.spout) + '/Operators/'
 
-    def init_db(self, db_address, db_user, db_pwd):
-        # Connect to Mysql server
-        db_connection, db_handler = mysqlop.connectMysql(db_address, db_user, db_pwd)
-        # Create DB
-        mysqlop.createDB(db_handler, db_name)
-        # Create Table
-        mysqlop.createTable(db_handler, self.db_name, self.tb_name, self.columns, self.columns_type)
-        # Add primary key for the table
-        mysqlop.add_primary_key(db_handler, db_connection, self.db_name, self.tb_name, self.columns[0])
-        return db_connection, db_handler
+		self.isLeader = False
 
-    def init_zk(self):
-        self.zk = KazooClient(hosts=self.zk_address)
-        self.zk.start()
-        while (self.zk.state == KazooState.CONNECTED) is False:
-            pass
-        print('Connected to ZooKeeper server.')
+		self.init_zk()
 
-        # Create parent path in zookeeper
-        if self.zk.exists(path=self.parent_path) is None:
-            self.zk.create(path=self.parent_path, value=b'', ephemeral=False, makepath=True)
-            while self.zk.exists(path=self.parent_path) is None:
-                pass
-            print('Create parent znode path for ingress operator znode.')
+	def init_db(self, db_address, db_user, db_pwd):
+		# Connect to Mysql server
+		db_connection, db_handler = mysqlop.connectMysql(db_address, db_user, db_pwd)
+		# Create DB
+		mysqlop.createDB(db_handler, self.db_name)
+		# Create Table
+		mysqlop.createTable(db_handler, self.db_name, self.tb_name, self.columns, self.columns_type)
+		# Add primary key for the table
+		mysqlop.add_primary_key(db_handler, db_connection, self.db_name, self.tb_name, self.columns[0])
+		return db_connection, db_handler
 
-        self.zk.create(path=self.znode_path, value=b'', ephemeral=True)
-        while self.zk.exists(self.znode_path) is None:
-            pass
-        print('Create zndoe for Ingress operator.')
+	def init_zk(self):
+		self.zk = KazooClient(hosts=self.zk_address)
+		self.zk.start()
+		while (self.zk.state == KazooState.CONNECTED) is False:
+			pass
+		print('Connected to ZooKeeper server.')
 
-        if self.zk.exists(self.leader_path) is None:
-            self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True)
-            while self.zk.exists(self.leader_path) is None:
-                pass
-            print('Create leader znode.')
+		# Create parent path in zookeeper
+		self.zk.ensure_path(path=self.parent_path)
+		self.zk.create(path=self.znode_path, value=b'', ephemeral=True)
 
-        @self.zk.DataWatch(self.leader_path)
-        def watch_leader(data, stat):
-            if stat is None:
-                election = self.zk.Election(self.parent_path, self.id)
-                election.run(win_election)
+		@self.zk.DataWatch(self.leader_path)
+		def watch_leader(data, stat):
+			if stat is None:
+				election = self.zk.Election(self.parent_path, self.id)
+				election.run(win_election)
 
-        # Check if operators path exists
-        flag = False
-        if self.zk.exists(self.operator_path) is None:
-            self.zk.create(path=self.operator_path, value=b'', ephemeral=False, makepath=True)
-        while self.zk.exists(self.operator_path) is None:
-            flag = True
-        if flag:
-            print('Create Znode Operators in ZK.')
+		def win_election():
+			print('Yeah, I won the election.')
+			# Create leader znode
+			self.zk.ensure_path(path=self.leader_path)
+			self.init_upstream_socket()
+			self.zk.set(path=self.leader_path, value=self.my_address)
+			self.isLeader = True
+			# Start receiving data from data source
+			threading.Thread(target=self.recv_sourcedata, args=()).start()
+			time.sleep(2)
+			threading.Thread(target=self.distribute_data, args=()).start()
 
-        @self.zk.ChildrenWatch(self.zk, self.operator_path)
-        def watch_operators(children):
-            for child in children:
-                if child not in self.operators:
-                    path = self.spout + '/operators/' + child
-                    address = self.operator_path + self.zk.get(path=path)
-                    threading.Thread(target=init_REQ, args=(address,)).start()
+		while self.isLeader is False:
+			pass
 
-        def init_REQ(address):
-            context = zmq.Context()
-            socket = context.socket(zmq.REQ)
-            socket.connect('tcp://' + address + ':2341')
-            socket.setsockopt(zmq.RCVTIMEO, 30000)
-            self.down_stream_sockets.append(socket)
+		@self.zk.ChildrenWatch(self.operator_path)
+		def watch_operators(children):
+			for child in children:
+				if child not in self.operators:
+					path = '/Spout--' + self.spout + '/Operators/' + child
+					address = self.zk.get(path=path)[0]
+					threading.Thread(target=init_REQ, args=(address,)).start()
 
-        def win_election():
-            print('Yeah, I won the election.')
-            # Create leader znode
+		def init_REQ(address):
+			context = zmq.Context()
+			socket = context.socket(zmq.REQ)
+			socket.connect('tcp://' + address + ':2341')
+			socket.setsockopt(zmq.RCVTIMEO, 30000)
+			self.down_stream_sockets.append(socket)
 
-            if self.zk.exists(self.leader_path) is None:
-            self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True)
-            while self.zk.exists(self.leader_path) is None:
-                pass
-            print('Create leader znode.')
+	def init_upstream_socket(self):
+		context = zmq.Context()
+		self.up_stream_socket = context.socket(zmq.REP)
+		self.up_stream_socket.bind('tcp://*:2341')
 
-            self.init_upstream_socket()
-            self.zk.set(path=self.leader_path, value=self.my_address)
-            # Start receiving data from data source
-            threading.Thread(target=self.recv_sourcedata, args=()).start()
-            time.sleep(2)
-            threading.Thread(target=self.distribute_data, args=()).start()
+	def recv_sourcedata(self):
+		while True:
+			msg = self.up_stream_socket.recv_string()
+			self.up_stream_socket.send_sting('OK')
+			print('Receive msg %s from data source.' % msg)
+			msg = simplejson.loads(msg)
+			msg.update({'Status': 'Recv'})
+			# Store data into DB
+			vals = msg.values()
+			vals = [str(val) for val in vals]
+			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, vals)
 
-    def init_upstream_socket(self):
-        context = zmq.Context()
-        self.up_stream_socket = context.socket(zmq.REP)
-        self.up_stream_socket.bind('tcp://*:2341')
+	def distribute_data(self):
+		while True:
+			if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
+				# get row count in db
+				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
+				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status',
+									'Sending', min(row_count, 100))
 
-    def recv_sourcedata(self):
-        while True:
-            msg = self.up_stream_socket.recv_string()
-            self.up_stream_socket.send_sting('OK')
-            print('Receive msg %s from data source.' % msg)
-            msg = simplejson.loads(msg)
-            msg.update({'Status': 'Recv'})
-            # Store data into DB
-            vals = msg.values()
-            vals = [str(val) for val in vals]
-            mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, vals)
+				# 读取前100/row_count 行数据
+				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 100))
+				temp_data = []
+				for item in data:
+					temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
+				data = temp_data
 
-    def distribute_data(self):
-        while :
-            if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
-                # get row count in db
-                row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
-                mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status', 'Sending', min(row_count, 100))
+				# 开始并行发送
+				def send_data(socket, my_data):
+					for __data in data:
+						__data = simplejson.dumps(__data)
+						socket.send_string(__data)
+						ack = socket.recv_string()
+						# Ack msg format: 'ack--' + $time
+						ack_time = ack.split('--')[1]
+						# Update DB
+						mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time',
+										   ack_time)
 
-                # 读取前100/row_count 行数据
-                data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 100))
-                temp_data = []
-                for item in data:
-                    temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
-                data = temp_data
-                # 开始并行发送
-                def send_data(socket, my_data):
-                    for __data in data:
-                        __data = simplejson.dumps(__data)
-                        socket.send_string(__data)
-                        ack = socket.recv_string()
-                        # Ack msg format: 'ack--' + $time
-                        ack_time = ack.split('--')[1]
-                        # Update DB
-                        mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time', ack_time)
-                socket_count = len(self.down_stream_sockets)
-                each_count = len(data)/socket_count
-                for i in range(socket_count):
-                    if i != socket_count - 1:
-                        threading.Thread(target=send_data, args=(self.down_stream_sockets[i], data[i*each_count:(i+1)*each_count])).start()
-                    else:
-                        threading.Thread(target=send_data, args=(self.down_stream_sockets[i], data[i*each_count:])).start()
+				socket_count = len(self.down_stream_sockets)
+				each_count = len(data) / socket_count
+				for i in range(socket_count):
+					if i != socket_count - 1:
+						threading.Thread(target=send_data, args=(
+						self.down_stream_sockets[i], data[i * each_count:(i + 1) * each_count])).start()
+					else:
+						threading.Thread(target=send_data,
+										 args=(self.down_stream_sockets[i], data[i * each_count:])).start()

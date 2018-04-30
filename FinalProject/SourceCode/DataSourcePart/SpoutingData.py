@@ -55,9 +55,9 @@ if __name__ == '__main__':
                 state = state.split('.')[0]
                 current = time.time()
                 event = {
-                    'Time': current
+                    'Time': current,
                     'State': state,
-                    'Data': line,
+                    'Data': line
                 }
                 socket.send_string(simplejson.dumps(event))
                 print(socket.recv_string())
