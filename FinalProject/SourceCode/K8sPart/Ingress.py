@@ -23,7 +23,7 @@ class Ingress:
 		self.zk_address = zk_address
 		self.id = str(random.randint(1, 1000))
 		self.my_address = my_address
-		self.zk = None
+		self.zk = KazooClient(hosts=self.zk_address)
 		self.up_stream_socket = None
 		self.down_stream_sockets = []
 		self.operators = []
@@ -49,7 +49,6 @@ class Ingress:
 		return db_connection, db_handler
 
 	def init_zk(self):
-		self.zk = KazooClient(hosts=self.zk_address)
 		self.zk.start()
 		while (self.zk.state == KazooState.CONNECTED) is False:
 			pass
@@ -74,7 +73,7 @@ class Ingress:
 			self.isLeader = True
 			# Start receiving data from data source
 			threading.Thread(target=self.recv_sourcedata, args=()).start()
-			time.sleep(2)
+			time.sleep(0.3)
 			threading.Thread(target=self.distribute_data, args=()).start()
 
 		while self.isLeader is False:

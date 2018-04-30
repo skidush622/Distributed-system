@@ -4,7 +4,7 @@ import random
 import zmq
 import simplejson
 import threading
-import Calculator as cal
+import numpy as np
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
@@ -23,8 +23,8 @@ class Operator:
         self.db_pwd = db_pwd
         self.db_name = 'Spout--' + spout
         self.tb_name = str('Operator--' + str(operator_id))
-        self.columns = ['ID', 'State', 'Status', 'Sum', 'Mean', 'Var', 'Std', 'Max', 'Min']
-        self.columns_type = ['INT(11)', 'CHAR(20)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
+        self.columns = ['ID', 'State', 'Status', 'Sum', 'Mean', 'Max', 'Min']
+        self.columns_type = ['INT(11)', 'CHAR(20)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
         self.db_connection, self.db_handler = self.init_db()
 
         self.id = 'op' + random.randint(1, 1000)
@@ -72,7 +72,7 @@ class Operator:
         def watch_egress_leader(data, state):
             if state is not None:
                 egress_leader_address = str(data)
-                self.build_egress_socket(egress_leader_address)
+                self.down_stream_socket = self.build_egress_socket(egress_leader_address)
                 self.egress_available = True
             else:
                 self.egress_available = False
@@ -111,8 +111,8 @@ class Operator:
         return socket
 
     def recv_data(self):
+        data_set = []
         while True:
-            data_set = []
             data = self.up_stream_socket.recv_string()
             data = simplejson.loads(data)
             time = data['time']
@@ -126,6 +126,7 @@ class Operator:
                 values = [state, 'Recv']
                 values.extend(result.values())
                 mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+                data_set = []
 
     def distribute_data(self):
         while True:
@@ -139,7 +140,7 @@ class Operator:
                 data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 20))
                 temp_data = []
                 for item in data:
-                    temp_data.append({'ID': item[0], 'State': item[1], 'Sum': item[3], 'Mean': item[4], 'Var': item[5], 'Std': item[6], 'Max': item[7], 'Min': item[8]})
+                    temp_data.append({'ID': item[0], 'State': item[1], 'Sum': item[3], 'Mean': item[4], 'Max': item[5], 'Min': item[6]})
                 data = temp_data
 
                 # 开始发送
@@ -154,10 +155,8 @@ class Operator:
                     mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
 
     def calculating(self, data_set):
-        data_sum = cal.get_sum(data_set)
-        data_mean = cal.get_mean(data_set)
-        data_var = cal.get_var(data_set)
-        data_std = cal.get_std(data_set)
-        data_max = cal.get_max(data_set)
-        data_min = cal.get_min(data_set)
-        return {'sum': data_sum, 'mean': data_mean, 'var': data_var, 'std': data_std, 'max': data_max, 'min': data_min}
+        data_sum = np.sum(data_set)
+        data_mean = np.mean(data_set)
+        data_max = np.max(data_set)
+        data_min = np.min(data_set)
+        return {'sum': data_sum, 'mean': data_mean, 'max': data_max, 'min': data_min}
