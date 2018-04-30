@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import docker
 import argparse
 
@@ -25,15 +28,14 @@ class DataSpoutContainers:
 
     def main(self):
         parser = argparse.ArgumentParser()
-        parser.add_argument('-a', '--address', type=str, default='127.0.0.1', help='The address of destination.')
-        parser.add_argument('-p', '--port', type=str, default='2341', help='The port number of destination.')
+        parser.add_argument('-z', '--zk_address', type=str, help='The address of ZooKeeper server.')
         args = parser.parse_args()
-        address = args.address
+        zk_address = args.zk_address
         port = args.port
-        for i in range(5):
+        for i in range(1):
             container_name = 'DataSpout' + str(i+1)
             print('Start running container DataSpout %s' % str(i+1))
-            command = 'python /home/SpoutingData.py -s ' + str(i+1) + ' -a ' + address + ' -p ' + port
+            command = 'python /home/SpoutingData.py -s ' + str(i+1) + ' -z ' + zk_address
             self.run_container(container_name, container_name, command)
 
 

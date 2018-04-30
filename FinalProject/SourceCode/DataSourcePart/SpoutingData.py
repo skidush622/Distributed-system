@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import glob
 import argparse
@@ -29,7 +30,7 @@ if __name__ == '__main__':
         global socket
         global ingress_alive
         if stat == KazooState.CONNECTED:
-            socket = connect_2_k8s(data)
+            socket = connect_2_k8s(str(data) + ':2341')
             ingress_alive = True
         else:
             ingress_alive = False

@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 
 import zmq
 import random
@@ -14,7 +16,7 @@ class Ingress:
 	def __init__(self, spout, my_address, zk_address, db_address, db_user, db_pwd):
 		# Connect to MySQL server
 		self.tb_name = 'IngressOperator'
-		self.db_name = 'Spout--' + spout
+		self.db_name = 'Spout--' + str(spout)
 		self.columns = ['Time', 'State', 'Data', 'Status']
 		self.columns_type = ['char(50)', 'char(20)', 'char(100)', 'char(10)']
 		self.db_connection, self.db_handler = self.init_db(db_address, db_user, db_pwd)
