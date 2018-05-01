@@ -99,9 +99,9 @@ def get_first_row(db_handler, db_name, tb_name):
 	return db_handler.fetchall()
 
 
-def count_rows(db_handler, db_name, tb_name):
+def count_rows(db_handler, db_name, tb_name, column):
 	useDB(db_handler, db_name)
-	count_cmd = 'SELECT COUNT(*) FROM ' + tb_name
+	count_cmd = 'SELECT COUNT(' + column + ') FROM ' + tb_name
 	db_handler.execute(count_cmd)
 	return db_handler.fetchall()[0][0]
 

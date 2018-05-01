@@ -93,6 +93,7 @@ class Ingress:
 					print(child)
 					path = '/Spout--' + str(self.spout) + '/Operators/' + child
 					address = self.zk.get(path=path)[0]
+					print('Address is: ' + address)
 					init_REQ(address)
 
 		while True:
@@ -122,7 +123,7 @@ class Ingress:
 			flag += 1
 			if flag > 100 and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# get row count in db
-				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
+				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
 				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status',
 									'Sending', min(row_count, 100))
 
