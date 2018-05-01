@@ -151,6 +151,8 @@ class Ingress:
 						send_lock.release()
 
 				socket_count = len(self.down_stream_sockets)
+				while socket_count == 0:
+					pass
 				each_count = 100 / socket_count
 				for i in range(socket_count):
 					if i != socket_count - 1:
