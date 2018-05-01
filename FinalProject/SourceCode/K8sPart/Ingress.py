@@ -107,7 +107,9 @@ class Ingress:
 			# print('Receive msg %s from data source.' % msg)
 			msg = simplejson.loads(msg)
 			print(msg)
-			msg.append['Recv']
+			temp = []
+			temp.extend(msg)
+			temp.append('Recv')
 			# Store data into DB
 			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, msg)
 			self.up_stream_socket.send_string('OK')
