@@ -121,7 +121,6 @@ class Egress:
 		while True:
 			data = self.up_stream_socket.recv_string()
 			data = simplejson.loads(data)
-			print(data)
 			id = data['ID']
 			self.up_stream_socket.send_string('Ack--' + str(id))
 			state = data['State']
@@ -138,6 +137,7 @@ class Egress:
 				# 将数据存入数据库
 				values = [id, state, 'Recv']
 				values.extend([data_sum, data_mean, data_max, data_min])
+				print(values)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				self.flag += 1
