@@ -123,7 +123,7 @@ class Operator:
 			time = data['Time']
 			self.up_stream_socket.send_string('Ack--' + time)
 			state = data['State']
-			data = data['Data']
+			data = int(data['Data'])
 			data_set.append(data)
 			if len(data_set) == 100:
 				result = self.calculating(data_set)
