@@ -21,7 +21,6 @@ def closeConnection(connection):
 def createDB(db_handler, db_name):
     create_db = 'CREATE DATABASE IF NOT EXISTS ' + db_name
     db_handler.execute(create_db)
-    useDB(db_handler, db_name)
 
 
 def useDB(db_handler, db_name):
@@ -65,7 +64,7 @@ def add_primary_key(db_handler, db_connection, db_name, tb_name, pkey):
 
 
 def insert_data(db_connection, db_handler, db_name, tb_name, values):
-    # useDB(db_handler, db_name)
+    useDB(db_handler, db_name)
     insert_db = 'INSERT INTO ' + tb_name + ' VALUES ' + '('
     for i in range(len(values)):
         if i != len(values) - 1:
