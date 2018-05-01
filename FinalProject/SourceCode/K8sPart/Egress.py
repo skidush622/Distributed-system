@@ -140,7 +140,7 @@ class Egress:
 		while True:
 			if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# Get row count in DB
-				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
+				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
 				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status', 'Sending', min(row_count, 5))
 
 				# 读取前5/row_count 行数据

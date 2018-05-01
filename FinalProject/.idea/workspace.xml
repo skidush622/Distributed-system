@@ -26,7 +26,7 @@
       <file leaf-file-name="Operator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
+            <state relative-caret-position="412">
               <caret line="89" column="63" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="63" />
             </state>
           </provider>
@@ -35,8 +35,8 @@
       <file leaf-file-name="Egress.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Egress.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+            <state relative-caret-position="361">
+              <caret line="142" column="99" selection-start-line="142" selection-start-column="99" selection-end-line="142" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -379,20 +379,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524532154570</updated>
     </task>
-    <task id="LOCAL-00022" summary="update">
-      <created>1524616618469</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1524616618469</updated>
-    </task>
-    <task id="LOCAL-00023" summary="update">
-      <created>1524869703775</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1524869703775</updated>
-    </task>
     <task id="LOCAL-00024" summary="update">
       <created>1524870252293</created>
       <option name="number" value="00024" />
@@ -722,7 +708,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525192346981</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="update">
+      <created>1525193106061</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1525193106061</updated>
+    </task>
+    <task id="LOCAL-00072" summary="update">
+      <created>1525193153068</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1525193153068</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1124,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="89" column="63" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1138,10 +1131,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="89" column="63" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Egress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+        <state relative-caret-position="361">
+          <caret line="142" column="99" selection-start-line="142" selection-start-column="99" selection-end-line="142" selection-end-column="99" />
         </state>
       </provider>
     </entry>
