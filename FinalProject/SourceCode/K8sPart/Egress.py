@@ -121,6 +121,7 @@ class Egress:
 		while True:
 			data = self.up_stream_socket.recv_string()
 			data = simplejson.loads(data)
+			print(data)
 			id = data['ID']
 			self.up_stream_socket.send_string('Ack--' + str(id))
 			state = data['State']
