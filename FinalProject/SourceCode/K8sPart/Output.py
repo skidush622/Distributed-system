@@ -37,7 +37,7 @@ if __name__ == '__main__':
 		recv = output_socket.recv_string()
 		recv = simplejson.loads(recv)
 		id = recv['ID']
-		output_socket.send_string('Ack--' + id)
+		output_socket.send_string('Ack--' + str(id))
 		state = recv['State']
 		data_sum = recv['Sum']
 		data_mean = recv['Mean']
