@@ -104,7 +104,7 @@ class Ingress:
     def recv_sourcedata(self):
         while True:
             msg = self.up_stream_socket.recv_string()
-            self.up_stream_socket.send_sting('OK')
+            self.up_stream_socket.send_string('OK')
             print('Receive msg %s from data source.' % msg)
             msg = simplejson.loads(msg)
             msg.update({'Status': 'Recv'})
