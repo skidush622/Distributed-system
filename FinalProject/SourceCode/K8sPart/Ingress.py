@@ -146,6 +146,7 @@ class Ingress:
 						ack = socket.recv_string()
 						# Ack msg format: 'ack--' + $time
 						ack_time = ack.split('--')[1]
+						print(ack)
 						# Update DB
 						mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time',
 										   ack_time)
