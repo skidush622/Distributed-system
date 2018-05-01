@@ -115,6 +115,8 @@ class Ingress:
 
     def distribute_data(self):
         while True:
+            while mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Recv') < 100:
+                pass
             if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
                 # get row count in db
                 row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
