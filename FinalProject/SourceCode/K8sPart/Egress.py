@@ -116,7 +116,10 @@ class Egress:
 		return socket
 
 	def recv_data(self):
-		sum_set = mean_set = max_set = min_set = []
+		sum_set = []
+		mean_set = []
+		max_set = []
+		min_set = []
 		myid = 0
 		while True:
 			data = self.up_stream_socket.recv_string()
@@ -142,10 +145,12 @@ class Egress:
 				# print(values)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
-				sum_set = mean_set = max_set = min_set = []
+				sum_set = []
+				mean_set = []
+				max_set = []
+				min_set = []
 				self.flag += 1
 				self.lock.release()
-			data = []
 
 	def send_data(self):
 		while True:
