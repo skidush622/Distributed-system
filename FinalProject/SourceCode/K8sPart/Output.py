@@ -52,7 +52,7 @@ if __name__ == '__main__':
 			mysqlop.add_primary_key(db_handler, db_connection, db_name, tb_name, columns[0])
 		# store data into database
 		values = [id, state, data_sum, data_mean, data_max, data_min]
-		mysqlop.insert_data(db_connection, db_handler, db_name, tb_name, values)
+		mysqlop.insert_data_output(db_connection, db_handler, db_name, tb_name, values)
 		# Display data
 		print('----------------------' + state + '----------------------')
 		print('Sum: ' + data_sum)

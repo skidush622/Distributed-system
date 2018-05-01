@@ -82,6 +82,12 @@ def insert_data_operator(db_connection, db_handler, db_name, tb_name, values):
 	db_connection.commit()
 
 
+def insert_data_output(db_connection, db_handler, db_name, tb_name, values):
+	useDB(db_handler, db_name)
+	insert_db = 'INSERT INTO ' + tb_name + ' VALUES ' + '(' + str(values[0]) + ',' + '\'' + values[1] + '\',' + str(values[2]) + ',' + str(values[3]) + ',' + str(values[4]) + ',' + str(values[5]) + ')'
+	db_handler.execute(insert_db)
+	db_connection.commit()
+
 def update_tb(db_handler, db_connection, db_name, tb_name, column_name, new_val, key_column_name, key_column_val):
 	useDB(db_handler, db_name)
 	update_tb = 'UPDATE ' + tb_name + ' SET ' + column_name + ' = \'' + new_val + '\' WHERE ' + key_column_name + ' = \'' + key_column_val + '\''
