@@ -131,7 +131,7 @@ class Operator:
 			state = data['State']
 			data = int(data['Data'])
 			data_set.append(data)
-			if len(data_set) == 100:
+			if len(data_set) == 10:
 				id += 1
 				result = self.calculating(data_set)
 				# 将数据存入数据库
@@ -145,10 +145,10 @@ class Operator:
 
 	def distribute_data(self):
 		while True:
-			if self.flag == 20:
+			if self.flag == 2:
 				self.lock.acquire()
 				# 读取前20 行数据
-				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 20)
+				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 2)
 				self.flag = 0
 				self.lock.release()
 				temp_data = []

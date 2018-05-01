@@ -129,7 +129,7 @@ class Egress:
 			mean_set.append(data['Mean'])
 			max_set.append(data['Max'])
 			min_set.append(data['Min'])
-			if len(sum_set) == 10:
+			if len(sum_set) == 2:
 				myid += 1
 				data_sum = np.sum(sum_set)
 				data_max = np.max(max_set)
@@ -146,7 +146,7 @@ class Egress:
 
 	def send_data(self):
 		while True:
-			if self.flag == 5:
+			if self.flag == 2:
 				self.flag = 0
 				self.lock.acquire()
 				# 读取前5/row_count 行数据

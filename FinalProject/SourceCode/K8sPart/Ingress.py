@@ -127,11 +127,11 @@ class Ingress:
 
 	def distribute_data(self):
 		while True:
-			if self.flag == 100:
+			if self.flag == 10:
 				self.flag = 0
 				# 读取前100/row_count 行数据
 				self.lock.acquire()
-				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)
+				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 10)
 				self.lock.release()
 				print(data)
 				temp_data = []
@@ -156,7 +156,7 @@ class Ingress:
 				socket_count = len(self.down_stream_sockets)
 				while socket_count == 0:
 					print('no socket')
-				each_count = 100 / socket_count
+				each_count = 10 / socket_count
 				for i in range(socket_count):
 					if i != socket_count - 1:
 						threading.Thread(target=send_data, args=(
