@@ -44,8 +44,8 @@
       <file leaf-file-name="SpoutingData.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/DataSourcePart/SpoutingData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+            <state relative-caret-position="420">
+              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
               <folding>
                 <element signature="e#43#54#0" expanded="true" />
               </folding>
@@ -610,7 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525152787323</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update">
+      <created>1525152876655</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1525152876655</updated>
+    </task>
+    <task id="LOCAL-00036" summary="update">
+      <created>1525152973944</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1525152973944</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -626,7 +640,7 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
       <window_info anchor="bottom" id="Docker" order="7" sideWeight="0.4951535" weight="0.6896552" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50436854" side_tool="true" weight="0.61241376" />
@@ -956,8 +970,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/DataSourcePart/SpoutingData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="32" column="21" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        <state relative-caret-position="420">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
           <folding>
             <element signature="e#43#54#0" expanded="true" />
           </folding>

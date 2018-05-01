@@ -68,7 +68,6 @@ if __name__ == '__main__':
                     'State': state,
                     'Data': line
                 }
-                print('Send data: ' + event)
                 socket.send_string(simplejson.dumps(event))
                 print(socket.recv_string())
 
