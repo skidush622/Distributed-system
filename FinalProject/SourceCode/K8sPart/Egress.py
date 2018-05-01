@@ -39,6 +39,7 @@ class Egress:
 		self.id = str(random.randint(1, 1000))
 		self.my_address = my_address
 		self.zk = KazooClient(hosts=zk_address)
+		self.root = 'Spout--' + str(spout)
 		self.parent_path = '/Spout--' + str(spout) + '/Egress_operators'
 		self.leader_path = '/Spout--' + str(spout) + '/Egress_leader'
 		self.znode_path = self.parent_path + '/Egress--' + self.id
@@ -65,6 +66,10 @@ class Egress:
 			pass
 		print('Connected to ZK server.')
 
+		# Ensure root path exists
+		if self.zk.exists(path=self.root) is None:
+			self.zk.create(path=self.root, value=b'', ephemeral=False, makepath=True)
+
 		# Ensure parent path exists
 		if self.zk.exists(path=self.parent_path) is None:
 			self.zk.create(path=self.parent_path, value=b'', ephemeral=False, makepath=True)
@@ -76,7 +81,10 @@ class Egress:
 		def win_election():
 			print('Yeah, I won the election.')
 			self.isLeader = True
-			self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True, makepath=True)
+			if self.zk.exists(path=self.leader_path) is None:
+				self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True, makepath=True)
+			else:
+				self.zk.set(path=self.leader_path, value=self.my_address)
 			self.up_stream_socket = self.build_upstream_socket()
 			self.down_stream_socket = self.build_downstream_socket(str(self.output_address))
 			threading.Thread(target=self.recv_data, args=()).start()
