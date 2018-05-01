@@ -137,7 +137,7 @@ def query_first_N(db_handler, db_name, tb_name, n):
 	query_cmd = 'SELECT * FROM ' + tb_name + ' LIMIT ' + str(n)
 	db_handler.execute(query_cmd)
 	result = db_handler.fetchall()
-	print(result)
+	# print(result)
 	if result is None:
 		return None
 	return result

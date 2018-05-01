@@ -139,12 +139,13 @@ class Egress:
 				# 将数据存入数据库
 				values = [id, state, 'Recv']
 				values.extend([data_sum, data_mean, data_max, data_min])
-				print(values)
+				# print(values)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				sum_set = mean_set = max_set = min_set = []
 				self.flag += 1
 				self.lock.release()
+			data = []
 
 	def send_data(self):
 		while True:
