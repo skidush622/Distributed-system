@@ -21,6 +21,7 @@ def closeConnection(connection):
 def createDB(db_handler, db_name):
     create_db = 'CREATE DATABASE IF NOT EXISTS ' + db_name
     db_handler.execute(create_db)
+    useDB(db_handler, db_name)
 
 
 def useDB(db_handler, db_name):
