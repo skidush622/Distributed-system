@@ -123,6 +123,7 @@ class Egress:
 			data = simplejson.loads(data)
 			# print(data)
 			id = data['ID']
+			self.up_stream_socket.send_string('Ack--' + str(id))
 			state = data['State']
 			sum_set.append(data['Sum'])
 			print(sum_set)
@@ -141,10 +142,9 @@ class Egress:
 				print(values)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+				sum_set = mean_set = max_set = min_set = []
 				self.flag += 1
 				self.lock.release()
-				sum_set = mean_set = max_set = min_set = []
-			self.up_stream_socket.send_string('Ack--' + str(id))
 
 	def send_data(self):
 		while True:
