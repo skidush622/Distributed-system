@@ -89,6 +89,8 @@ class Ingress:
 		def watch_operators(children):
 			for child in children:
 				if child not in self.operators:
+					self.operators.append(child)
+					print(child)
 					path = '/Spout--' + str(self.spout) + '/Operators/' + child
 					address = self.zk.get(path=path)[0]
 					threading.Thread(target=init_REQ, args=(address,)).start()
