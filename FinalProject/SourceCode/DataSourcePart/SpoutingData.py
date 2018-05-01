@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 event = [current, state, line]
                 socket.send_string(simplejson.dumps(event))
                 print(socket.recv_string())
-                time.sleep(0.01)
+                time.sleep(0.1)
 
     read_file(data_files)
 
