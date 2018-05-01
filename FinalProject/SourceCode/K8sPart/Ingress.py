@@ -36,6 +36,7 @@ class Ingress:
 		self.operator_path = '/Spout--' + str(self.spout) + '/Operators'
 
 		self.isLeader = False
+		self.lock = threading.Lock()
 
 		self.init_zk()
 
@@ -114,13 +115,16 @@ class Ingress:
 			temp.append('Recv')
 			print(temp)
 			# Store data into DB
+			self.lock.acquire()
 			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, temp)
+			self.lock.release()
 			self.up_stream_socket.send_string('OK')
 
 	def distribute_data(self):
 		flag = 0
 		while True:
 			flag += 1
+			self.lock.acquire()
 			if flag > 100 and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# get row count in db
 				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
@@ -155,6 +159,7 @@ class Ingress:
 					else:
 						threading.Thread(target=send_data,
 										 args=(self.down_stream_sockets[i], data[i * each_count:])).start()
+			self.lock.release()
 
 
 if __name__ == '__main__':
