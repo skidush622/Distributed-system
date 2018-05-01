@@ -60,7 +60,7 @@ if __name__ == '__main__':
             for line in f:
                 while ingress_alive is False:
                     pass
-                state = file_path.split('/')[2]
+                state = file_path.split('/')[7]
                 state = state.split('.')[0]
                 current = time.time()
                 event = {
