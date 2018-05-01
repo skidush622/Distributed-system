@@ -72,8 +72,8 @@ class Operator:
 
 		# Watch the leader of Egress operator
 		@self.zk.DataWatch(self.egress_leader)
-		def watch_egress_leader(data, state):
-			if state is not None:
+		def watch_egress_leader(data, stat):
+			if stat is not None:
 				egress_leader_address = str(data)
 				self.down_stream_socket = self.build_egress_socket(egress_leader_address)
 				self.egress_available = True
@@ -139,7 +139,7 @@ class Operator:
 		while True:
 			flag += 1
 			self.lock.acquire()
-			if flag > 100 and self.egress_available and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
+			if flag > 20 and self.egress_available and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# get row count in db
 				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
 				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status',

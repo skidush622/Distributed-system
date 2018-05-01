@@ -48,6 +48,7 @@ class Egress:
 
 		self.up_stream_socket = None
 		self.down_stream_socket = None
+		self.lock = threading.Lock()
 
 		self.init_zk()
 
@@ -133,12 +134,16 @@ class Egress:
 				# 将数据存入数据库
 				values = [state, 'Recv']
 				values.extend([data_sum, data_mean, data_max, data_min])
+				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+				self.lock.release()
 				sum_set = mean_set = max_set = min_set = []
 
 	def send_data(self):
+		flag = 0
 		while True:
-			if mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
+			flag += 1
+			if flag > 5 and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# Get row count in DB
 				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
 				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status', 'Sending', min(row_count, 5))
