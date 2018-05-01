@@ -110,13 +110,9 @@ def count_spec_rows(db_handler, db_name, tb_name, spec_column, expect_val):
 	useDB(db_handler, db_name)
 	count_spec = 'SELECT COUNT(' + spec_column + ') FROM ' + tb_name + ' WHERE ' + spec_column + '=' + '\'' + expect_val + '\''
 	db_handler.execute(count_spec)
-	print(db_handler.fetchall())
-	try:
-		result = db_handler.fetchall()[0][0]
-		return result
-	except:
+	if db_handler.fetchall() is None:
 		return 0
-
+	return db_handler.fetchall()[0][0]
 
 def update_rows(db_handler, db_connection, db_name, tb_name, spec_column, new_value, row_num):
 	useDB(db_handler, db_name)
