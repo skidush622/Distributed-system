@@ -124,9 +124,9 @@ class Operator:
 		i = 0
 		while True:
 			i += 1
-			print(i)
+			# print(i)
 			data = self.up_stream_socket.recv_string()
-			print('Recv data :' + data)
+			# print('Recv data :' + data)
 			data = simplejson.loads(data)
 			time = data['Time']
 			self.up_stream_socket.send_string('Ack--' + time)
@@ -162,6 +162,7 @@ class Operator:
 				for __data in data:
 					while self.egress_available is False:
 						pass
+					print(__data)
 					__data = simplejson.dumps(__data)
 					self.down_stream_socket.send_string(__data)
 					ack = self.down_stream_socket.recv_string()
