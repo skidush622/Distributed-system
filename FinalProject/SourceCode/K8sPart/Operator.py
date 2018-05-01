@@ -44,6 +44,7 @@ class Operator:
 		self.up_stream_socket = None
 		self.down_stream_socket = None
 		self.lock = threading.Lock()
+		self.flag = 0
 
 		self.init_zk()
 
@@ -132,15 +133,14 @@ class Operator:
 				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				data_set = []
+				self.flag += 1
 				self.lock.release()
 
 	def distribute_data(self):
-		flag = 0
 		while True:
-			flag += 1
-			if flag > 20:
+			if self.flag > 20:
 				self.lock.acquire()
-				flag = 0
+				self.flag = 0
 				# 读取前20 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 20)
 				self.lock.release()

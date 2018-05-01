@@ -37,6 +37,7 @@ class Ingress:
 
 		self.isLeader = False
 		self.lock = threading.Lock()
+		self.flag = 0
 
 		self.init_zk()
 
@@ -120,15 +121,14 @@ class Ingress:
 			# Store data into DB
 			self.lock.acquire()
 			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, temp)
+			self.flag += 1
 			self.lock.release()
 			self.up_stream_socket.send_string('OK')
 
 	def distribute_data(self):
-		flag = 0
 		while True:
-			flag += 1
-			if flag == 100:
-				flag = 0
+			if self.flag == 100:
+				self.flag = 0
 				# 读取前100/row_count 行数据
 				self.lock.acquire()
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)

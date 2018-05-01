@@ -49,6 +49,7 @@ class Egress:
 		self.up_stream_socket = None
 		self.down_stream_socket = None
 		self.lock = threading.Lock()
+		self.flag = 0
 
 		self.init_zk()
 
@@ -136,15 +137,14 @@ class Egress:
 				values.extend([data_sum, data_mean, data_max, data_min])
 				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+				self.flag += 1
 				self.lock.release()
 				sum_set = mean_set = max_set = min_set = []
 
 	def send_data(self):
-		flag = 0
 		while True:
-			flag += 1
-			if flag > 5:
-				flag = 0
+			if self.flag > 5:
+				self.flag = 0
 				self.lock.acquire()
 				# 读取前5/row_count 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 5)
@@ -162,6 +162,7 @@ class Egress:
 					ack_id = ack.split('--')[1]
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
 				self.lock.release()
+
 
 if __name__ == '__main__':
 	Egress('172.17.0.3', '172.17.0.7', '172.17.0.8', 1, '172.17.0.2', 'root', 'kzw')
