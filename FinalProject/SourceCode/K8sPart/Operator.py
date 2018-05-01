@@ -79,6 +79,7 @@ class Operator:
 				egress_leader_address = str(data)
 				print(egress_leader_address)
 				self.down_stream_socket = self.build_egress_socket(egress_leader_address)
+				print('Connect to egress....')
 				self.egress_available = True
 			else:
 				self.egress_available = False
@@ -88,6 +89,7 @@ class Operator:
 			print('Yeah, I won the election.')
 			self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True, makepath=True)
 			self.up_stream_socket = self.build_socket()
+			print('Ready to receive msg....')
 			if self.up_stream_socket is not None:
 				self.isLeader = True
 				threading.Thread(target=self.recv_data, args=()).start()
