@@ -134,7 +134,7 @@ class Operator:
 				values = [id, state, 'Recv']
 				values.extend(result.values())
 				self.lock.acquire()
-				# mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				data_set = []
 				self.flag += 1
 				self.lock.release()
