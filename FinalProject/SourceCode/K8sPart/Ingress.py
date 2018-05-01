@@ -93,7 +93,7 @@ class Ingress:
 					print(child)
 					path = '/Spout--' + str(self.spout) + '/Operators/' + child
 					address = self.zk.get(path=path)[0]
-					threading.Thread(target=init_REQ, args=(address,)).start()
+					init_REQ(address)
 
 		while True:
 			pass
