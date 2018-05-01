@@ -132,7 +132,7 @@ class Operator:
 				result = self.calculating(data_set)
 				# 将数据存入数据库
 				values = [id, state, 'Recv']
-				values.extend(result.values())
+				values.extend(result)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				data_set = []
@@ -170,7 +170,7 @@ class Operator:
 		data_mean = np.mean(data_set)
 		data_max = np.max(data_set)
 		data_min = np.min(data_set)
-		return {'sum': data_sum, 'mean': data_mean, 'max': data_max, 'min': data_min}
+		return [data_sum, data_mean, data_max, data_min]
 
 if __name__ == '__main__':
 	op = Operator('172.17.0.3', '172.17.0.6', 1, 1, '172.17.0.2', 'root', 'kzw')
