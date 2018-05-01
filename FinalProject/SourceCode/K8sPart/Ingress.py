@@ -125,14 +125,10 @@ class Ingress:
 		while True:
 			flag += 1
 			self.lock.acquire()
-			if flag > 100 and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
-				# get row count in db
-				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
-				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status',
-									'Sending', min(row_count, 100))
-
+			if flag == 100:
+				flag = 0
 				# 读取前100/row_count 行数据
-				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 100))
+				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)
 				temp_data = []
 				for item in data:
 					temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
@@ -140,7 +136,7 @@ class Ingress:
 
 				# 开始并行发送
 				def send_data(socket, my_data):
-					for __data in data:
+					for __data in my_data:
 						__data = simplejson.dumps(__data)
 						socket.send_string(__data)
 						ack = socket.recv_string()
@@ -152,14 +148,14 @@ class Ingress:
 										   ack_time)
 
 				socket_count = len(self.down_stream_sockets)
-				each_count = len(data) / socket_count
+				each_count = 100 / socket_count
 				for i in range(socket_count):
 					if i != socket_count - 1:
 						threading.Thread(target=send_data, args=(
-						self.down_stream_sockets[i], data[i * each_count:(i + 1) * each_count])).start()
+						self.down_stream_sockets[i], data[i * each_count:(i + 1) * each_count], )).start()
 					else:
 						threading.Thread(target=send_data,
-										 args=(self.down_stream_sockets[i], data[i * each_count:])).start()
+										 args=(self.down_stream_sockets[i], data[i * each_count:],)).start()
 			self.lock.release()
 
 

@@ -143,13 +143,9 @@ class Egress:
 		flag = 0
 		while True:
 			flag += 1
-			if flag > 5 and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
-				# Get row count in DB
-				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
-				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status', 'Sending', min(row_count, 5))
-
+			if flag > 5:
 				# 读取前5/row_count 行数据
-				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, min(row_count, 5))
+				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 5)
 				temp_data = []
 				for item in data:
 					temp_data.append({'ID': item[0], 'State': item[1], 'Sum': item[3], 'Mean': item[4], 'Max': item[5], 'Min': item[6]})
