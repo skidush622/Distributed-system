@@ -117,6 +117,7 @@ class Egress:
 
 	def recv_data(self):
 		sum_set = mean_set = max_set = min_set = []
+		myid = 0
 		while True:
 			data = self.up_stream_socket.recv_string()
 			data = simplejson.loads(data)
@@ -129,12 +130,13 @@ class Egress:
 			max_set.append(data['Max'])
 			min_set.append(data['Min'])
 			if len(sum_set) == 10:
+				myid += 1
 				data_sum = np.sum(sum_set)
 				data_max = np.max(max_set)
 				data_min = np.min(min_set)
 				data_mean = np.mean(mean_set)
 				# 将数据存入数据库
-				values = [state, 'Recv']
+				values = [id, state, 'Recv']
 				values.extend([data_sum, data_mean, data_max, data_min])
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
