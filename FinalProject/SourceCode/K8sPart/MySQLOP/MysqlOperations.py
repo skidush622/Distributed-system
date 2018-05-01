@@ -71,22 +71,16 @@ def insert_data(db_connection, db_handler, db_name, tb_name, values):
             insert_db += '\'' + values[i] + '\','
         else:
             insert_db += '\'' + values[i] + '\')'
-    try:
-        db_handler.execute(insert_db)
-        db_connection.commit()
-    except:
-        db_connection.rollback()
+	db_handler.execute(insert_db)
+	db_connection.commit()
 
 
 def update_tb(db_handler, db_connection, db_name, tb_name, column_name, new_val, key_column_name, key_column_val):
     useDB(db_handler, db_name)
     update_tb = 'UPDATE ' + tb_name + ' SET ' + column_name + ' = \'' + new_val + '\' WHERE ' + key_column_name + ' = \'' + key_column_val + '\''
-    try:
-        db_handler.execute(update_tb)
-        db_connection.commit()
-    except:
-        db_connection.rollback()
 
+	db_handler.execute(update_tb)
+	db_connection.commit()
 
 def delete_row(db_handler, db_connection, db_name, tb_name, key_column_name, key_column_val):
     useDB(db_handler, db_name)
