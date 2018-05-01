@@ -129,6 +129,7 @@ class Ingress:
 				flag = 0
 				# 读取前100/row_count 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)
+				print(data)
 				temp_data = []
 				for item in data:
 					temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})

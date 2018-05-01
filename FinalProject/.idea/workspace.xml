@@ -16,8 +16,8 @@
       <file leaf-file-name="Ingress.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="148" column="43" lean-forward="true" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+            <state relative-caret-position="483">
+              <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -378,20 +378,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524532154570</updated>
     </task>
-    <task id="LOCAL-00030" summary="update">
-      <created>1525124207267</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1525124207267</updated>
-    </task>
-    <task id="LOCAL-00031" summary="update">
-      <created>1525151300834</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1525151300834</updated>
-    </task>
     <task id="LOCAL-00032" summary="update">
       <created>1525151989604</created>
       <option name="number" value="00032" />
@@ -721,7 +707,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525194981263</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="update">
+      <created>1525195614389</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1525195614389</updated>
+    </task>
+    <task id="LOCAL-00080" summary="update">
+      <created>1525195806459</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1525195806459</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1139,8 +1139,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="148" column="43" lean-forward="true" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+        <state relative-caret-position="483">
+          <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
         </state>
       </provider>
     </entry>
