@@ -11,7 +11,7 @@ import random
 
 class DataGenerator:
     def __init__(self):
-        states = 'Alabama, Delaware, Florida, Georgia, West Virginia'
+        states = 'Alabama,Delaware,Florida,Georgia,West Virginia'
         self.states = states.split(',')
 
     def generator(self):

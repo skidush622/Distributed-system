@@ -26,7 +26,7 @@ class Egress:
 		self.db_address = db_address
 		self.db_user = db_user
 		self.db_pwd = db_pwd
-		self.db_name = 'Spout--' + spout
+		self.db_name = 'Spout_' + str(spout)
 		self.tb_name = 'EgressOperator'
 		self.columns = ['ID', 'State', 'Status', 'Sum', 'Mean', 'Max', 'Min']
 		self.columns_type = ['INT(11)', 'CHAR(20)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
@@ -40,13 +40,15 @@ class Egress:
 		self.my_address = my_address
 		self.zk = KazooClient(hosts=zk_address)
 		self.parent_path = '/Spout--' + str(spout) + '/Egress_operators'
-		self.leader_path = self.parent_path + '/Leader'
+		self.leader_path = '/Spout--' + str(spout) + '/Egress_leader'
 		self.znode_path = self.parent_path + '/Egress--' + self.id
 
 		self.isLeader = False
 
 		self.up_stream_socket = None
 		self.down_stream_socket = None
+
+		self.init_zk()
 
 	def init_db(self):
 		# Connect to Mysql server
@@ -59,16 +61,26 @@ class Egress:
 
 	def init_zk(self):
 		self.zk.start()
-		while self.zk.state == KazooState.CONNECTED:
+		while (self.zk.state == KazooState.CONNECTED) is False:
 			pass
 		print('Connected to ZK server.')
 
 		# Ensure parent path exists
-		self.zk.ensure_path(path=self.parent_path)
+		if self.zk.exists(path=self.parent_path) is None:
+			self.zk.create(path=self.parent_path, value=b'', ephemeral=False, makepath=True)
 
 		# Create Znode for this operator in ZK
 		self.zk.create(path=self.znode_path, value=b'', ephemeral=True, makepath=True)
 		self.zk.ensure_path(path=self.znode_path)
+
+		def win_election():
+			print('Yeah, I won the election.')
+			self.isLeader = True
+			self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True, makepath=True)
+			self.up_stream_socket = self.build_upstream_socket()
+			self.down_stream_socket = self.build_downstream_socket(str(self.output_address))
+			threading.Thread(target=self.recv_data, args=()).start()
+			threading.Thread(target=self.send_data, args=()).start()
 
 		# Watch Leader node
 		@self.zk.DataWatch(self.leader_path)
@@ -77,13 +89,8 @@ class Egress:
 				election = self.zk.Election(self.parent_path)
 				election.run(win_election)
 
-		def win_election():
-			self.isLeader = True
-			self.up_stream_socket = self.build_upstream_socket()
-			self.down_stream_socket = self.build_downstream_socket(self.output_address)
-			self.zk.create(path=self.leader_path, value=self.my_address, ephemeral=True, makepath=True)
-			threading.Thread(target=self.recv_data, args=()).start()
-			threading.Thread(target=self.send_data, args=()).start()
+		while True:
+			pass
 
 	def build_upstream_socket(self):
 		context = zmq.Context()
@@ -142,3 +149,6 @@ class Egress:
 					# Ack msg format: 'ack--' + $ID
 					ack_id = ack.split('--')[1]
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
+
+if __name__ == '__main__':
+	Egress('172.17.0.2', '172.17.0.8', '172.17.0.10', 1, '172.17.0.3', 'root', 'kzw')

@@ -31,7 +31,6 @@ class DataSpoutContainers:
         parser.add_argument('-z', '--zk_address', type=str, help='The address of ZooKeeper server.')
         args = parser.parse_args()
         zk_address = args.zk_address
-        port = args.port
         for i in range(1):
             container_name = 'DataSpout' + str(i+1)
             print('Start running container DataSpout %s' % str(i+1))

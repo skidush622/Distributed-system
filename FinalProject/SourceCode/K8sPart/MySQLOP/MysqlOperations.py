@@ -1,13 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 
-import MySQLdb as db
+import pymysql
 
 
 def connectMysql(mysql_host, mysql_user, mysql_pwd, db=None):
     try:
-        connection = db.Connection(host=mysql_host, port=3306, user=mysql_user, passwd=mysql_pwd)
+        connection = pymysql.connect(host=mysql_host, port=3306, user=mysql_user, passwd=mysql_pwd)
         db_handler = connection.cursor()
         return connection, db_handler
     except Exception as e:
@@ -45,7 +45,7 @@ def createTableAutoInc(db_handler, db_name, table_name, columns, columns_type):
     for i in range(len(columns)):
         if i != len(columns) - 1:
             if i == 0:
-                create_tb += columns[i] + ' ' + columns_type[i] + 'auto_increment,'
+                create_tb += columns[i] + ' ' + columns_type[i] + ' NOT NULL PRIMARY KEY AUTO_INCREMENT,'
             else:
                 create_tb += columns[i] + ' ' + columns_type[i] + ','
         else:
