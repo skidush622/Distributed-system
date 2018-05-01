@@ -14,7 +14,7 @@ RUN pip install --upgrade virtualenv
 
 # Install app dependencies
 RUN pip install pyzmq
-RUN apt-get install -y nano
+RUN apt-get install -y nano git
 RUN pip install kazoo
 RUN pip install simplejson
 
