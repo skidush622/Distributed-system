@@ -133,4 +133,4 @@ def query_first_N(db_handler, db_name, tb_name, n):
 	print(result)
 	if result is None:
 		return None
-	return result[0]
+	return result
