@@ -129,4 +129,4 @@ def query_first_N(db_handler, db_name, tb_name, n):
 	useDB(db_handler, db_name)
 	query_cmd = 'SELECT * FROM ' + tb_name + ' LIMIT ' + str(n)
 	db_handler.execute(query_cmd)
-	return db_handler.fetchall()
+	return db_handler.fetchall()[0]

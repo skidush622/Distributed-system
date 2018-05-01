@@ -88,6 +88,9 @@ class Ingress:
 
 		@self.zk.ChildrenWatch(self.operator_path)
 		def watch_operators(children):
+			for i, op in enumerate(self.operators[:]):
+				if op not in children:
+					del self.operators[i]
 			for child in children:
 				if child not in self.operators:
 					self.operators.append(child)
