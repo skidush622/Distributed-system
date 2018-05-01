@@ -164,4 +164,4 @@ class Operator:
 		return {'sum': data_sum, 'mean': data_mean, 'max': data_max, 'min': data_min}
 
 if __name__ == '__main__':
-	op = Operator('172.17.0.2', '172.17.0.6', 1, 1, '172.17.0.8', 'root', 'kzw')
+	op = Operator('172.17.0.3', '172.17.0.6', 1, 1, '172.17.0.2', 'root', 'kzw')
