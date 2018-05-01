@@ -36,6 +36,7 @@ if __name__ == '__main__':
 		address = zk.get(ingress_path)
 		if address is not None:
 			ingress_alive = True
+			print(address)
 			address = address + ':2341'
 			socket = connect_2_k8s(address)
 
