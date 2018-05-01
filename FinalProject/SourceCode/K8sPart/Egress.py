@@ -151,4 +151,4 @@ class Egress:
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
 
 if __name__ == '__main__':
-	Egress('172.17.0.2', '172.17.0.4', '172.17.0.10', 1, '172.17.0.3', 'root', 'kzw')
+	Egress('172.17.0.2', '172.17.0.4', '172.17.0.10', 1, '172.17.0.8', 'root', 'kzw')

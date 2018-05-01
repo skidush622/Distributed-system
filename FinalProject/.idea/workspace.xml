@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66d86916-591e-47f8-8746-c1716d9f752f" name="Default" comment="">
+    <list default="true" id="66d86916-591e-47f8-8746-c1716d9f752f" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/Egress.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/Egress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/Operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/Operator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="Ingress.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="118" column="20" lean-forward="true" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
+            <state relative-caret-position="585">
+              <caret line="156" column="64" selection-start-line="156" selection-start-column="64" selection-end-line="156" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -26,17 +28,17 @@
       <file leaf-file-name="Operator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="135" column="21" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="21" />
+            <state relative-caret-position="556">
+              <caret line="166" column="63" selection-start-line="166" selection-start-column="63" selection-end-line="166" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Egress.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Egress.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Egress.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="81" column="35" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="35" />
+            <state relative-caret-position="556">
+              <caret line="153" column="68" selection-start-line="153" selection-start-column="68" selection-end-line="153" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -68,8 +70,8 @@
       <file leaf-file-name="Output.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Output.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+            <state relative-caret-position="570">
+              <caret line="38" column="23" lean-forward="true" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
               <folding>
                 <element signature="e#43#53#0" expanded="true" />
               </folding>
@@ -77,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MysqlOperations.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MysqlOperations.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="540">
+              <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -125,9 +127,9 @@
       <find>while self.isLeader is False:</find>
       <find>self.leader_path</find>
       <find>down_stream_sockets</find>
-      <find>get</find>
       <find>--</find>
       <find>query_first_N</find>
+      <find>get</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,11 +178,11 @@
         <option value="$PROJECT_DIR$/SourceCode/DataSourcePart/Dockerfile" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/Dockerfile" />
         <option value="$PROJECT_DIR$/SourceCode/DataSourcePart/DataGenerator.py" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Operator.py" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Egress.py" />
         <option value="$PROJECT_DIR$/SourceCode/DataSourcePart/SpoutingData.py" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Egress.py" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/Operator.py" />
       </list>
     </option>
   </component>
@@ -653,7 +655,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525154355914</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="update">
+      <created>1525154387778</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1525154387779</updated>
+    </task>
+    <task id="LOCAL-00042" summary="update">
+      <created>1525154740507</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1525154740507</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -952,34 +968,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Output.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-          <folding>
-            <element signature="e#43#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.6/lib/python/site-packages/kazoo/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="785" column="8" selection-start-line="785" selection-start-column="8" selection-end-line="785" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="135" column="21" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Egress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="81" column="35" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -993,17 +985,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="118" column="20" lean-forward="true" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
+        <state relative-caret-position="540">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py">
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Output.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        <state relative-caret-position="570">
+          <caret line="38" column="23" lean-forward="true" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+          <folding>
+            <element signature="e#43#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Ingress.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="156" column="64" selection-start-line="156" selection-start-column="64" selection-end-line="156" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="166" column="63" selection-start-line="166" selection-start-column="63" selection-end-line="166" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Egress.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="153" column="68" selection-start-line="153" selection-start-column="68" selection-end-line="153" selection-end-column="68" />
         </state>
       </provider>
     </entry>
