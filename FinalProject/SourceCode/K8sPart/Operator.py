@@ -43,6 +43,7 @@ class Operator:
 
 		self.up_stream_socket = None
 		self.down_stream_socket = None
+		self.lock = threading.Lock()
 
 		self.init_zk()
 
@@ -116,6 +117,7 @@ class Operator:
 		data_set = []
 		while True:
 			data = self.up_stream_socket.recv_string()
+			print('Recv data :' + data)
 			data = simplejson.loads(data)
 			time = data['Time']
 			self.up_stream_socket.send_string('Ack--' + time)
@@ -127,14 +129,19 @@ class Operator:
 				# 将数据存入数据库
 				values = [state, 'Recv']
 				values.extend(result.values())
+				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				data_set = []
+				self.lock.release()
 
 	def distribute_data(self):
+		flag = 0
 		while True:
-			if self.egress_available and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
+			flag += 1
+			self.lock.acquire()
+			if flag > 100 and self.egress_available and mysqlop.count_spec_rows(self.db_handler, self.db_name, self.tb_name, 'Status', 'Sending') == 0:
 				# get row count in db
-				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name)
+				row_count = mysqlop.count_rows(self.db_handler, self.db_name, self.tb_name, 'Status')
 				mysqlop.update_rows(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Status',
 									'Sending', min(row_count, 20))
 
@@ -155,6 +162,7 @@ class Operator:
 					# Ack msg format: 'ack--' + $ID
 					ack_id = ack.split('--')[1]
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
+			self.lock.release()
 
 	def calculating(self, data_set):
 		data_sum = np.sum(data_set)
