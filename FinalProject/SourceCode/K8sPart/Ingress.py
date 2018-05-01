@@ -167,4 +167,4 @@ class Ingress:
 
 
 if __name__ == '__main__':
-	ingress = Ingress(1, '172.17.0.5', '172.17.0.3', '172.17.0.2', 'root', 'kzw')
+	ingress = Ingress(1, '172.17.0.5', '172.17.0.6', '172.17.0.7', 'root', 'kzw')
