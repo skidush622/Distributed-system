@@ -123,7 +123,7 @@ class Ingress:
 			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, temp)
 			self.flag += 1
 			self.lock.release()
-			self.up_stream_socket.send_string('OK')
+			self.up_stream_socket.send_string('Ack--OK')
 
 	def distribute_data(self):
 		while True:

@@ -166,10 +166,10 @@ class Operator:
 					self.lock.release()
 
 	def calculating(self, data_set):
-		data_sum = np.sum(data_set)
-		data_mean = np.mean(data_set)
-		data_max = np.max(data_set)
-		data_min = np.min(data_set)
+		data_sum = sum(data_set)
+		data_mean = data_sum / len(data_set)
+		data_max = max(data_set)
+		data_min = min(data_set)
 		return {'sum': data_sum, 'mean': data_mean, 'max': data_max, 'min': data_min}
 
 if __name__ == '__main__':
