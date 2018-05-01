@@ -143,6 +143,7 @@ class Operator:
 				flag = 0
 				# 读取前20 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 20)
+				self.lock.release()
 				temp_data = []
 				for item in data:
 					temp_data.append({'ID': item[0], 'State': item[1], 'Sum': item[3], 'Mean': item[4], 'Max': item[5], 'Min': item[6]})
@@ -157,8 +158,9 @@ class Operator:
 					ack = self.down_stream_socket.recv_string()
 					# Ack msg format: 'ack--' + $ID
 					ack_id = ack.split('--')[1]
+					self.lock.acquire()
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
-				self.lock.release()
+					self.lock.release()
 
 	def calculating(self, data_set):
 		data_sum = np.sum(data_set)

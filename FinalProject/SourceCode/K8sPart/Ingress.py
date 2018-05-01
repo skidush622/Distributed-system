@@ -83,7 +83,7 @@ class Ingress:
 			context = zmq.Context()
 			socket = context.socket(zmq.REQ)
 			socket.connect('tcp://' + address + ':2341')
-			socket.setsockopt(zmq.RCVTIMEO, 30000)
+			# socket.setsockopt(zmq.RCVTIMEO, 30000)
 			self.down_stream_sockets.append(socket)
 
 		@self.zk.ChildrenWatch(self.operator_path)
@@ -128,17 +128,16 @@ class Ingress:
 		while True:
 			flag += 1
 			if flag == 100:
-				self.lock.acquire()
 				flag = 0
 				# 读取前100/row_count 行数据
+				self.lock.acquire()
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)
+				self.lock.release()
 				print(data)
 				temp_data = []
 				for item in data:
 					temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
 				data = temp_data
-
-				send_lock = threading.Lock()
 
 				# 开始并行发送
 				def send_data(socket, my_data):
@@ -150,9 +149,9 @@ class Ingress:
 						ack_time = ack.split('--')[1]
 						print(ack)
 						# Update DB
-						send_lock.acquire()
+						self.lock.acquire()
 						mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time', ack_time)
-						send_lock.release()
+						self.lock.release()
 
 				socket_count = len(self.down_stream_sockets)
 				while socket_count == 0:
@@ -165,7 +164,6 @@ class Ingress:
 					else:
 						threading.Thread(target=send_data,
 										 args=(self.down_stream_sockets[i], data[i * each_count:],)).start()
-				self.lock.release()
 
 
 if __name__ == '__main__':
