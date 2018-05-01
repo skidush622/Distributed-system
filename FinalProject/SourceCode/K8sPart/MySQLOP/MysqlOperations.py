@@ -64,7 +64,7 @@ def add_primary_key(db_handler, db_connection, db_name, tb_name, pkey):
 
 
 def insert_data(db_connection, db_handler, db_name, tb_name, values):
-    useDB(db_handler, db_name)
+    # useDB(db_handler, db_name)
     insert_db = 'INSERT INTO ' + tb_name + ' VALUES ' + '('
     for i in range(len(values)):
         if i != len(values) - 1:
