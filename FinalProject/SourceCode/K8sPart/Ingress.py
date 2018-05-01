@@ -146,9 +146,9 @@ class Ingress:
 						ack_time = ack.split('--')[1]
 						print(ack)
 						# Update DB
-						with send_lock:
-							mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time',
-											   ack_time)
+						send_lock.acquire()
+						mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time', ack_time)
+						send_lock.release()
 
 				socket_count = len(self.down_stream_sockets)
 				each_count = 100 / socket_count
