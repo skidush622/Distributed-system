@@ -129,7 +129,6 @@ class Operator:
 			print('Recv data :' + data)
 			data = simplejson.loads(data)
 			time = data['Time']
-			self.up_stream_socket.send_string('Ack--' + time)
 			state = data['State']
 			data = int(data['Data'])
 			data_set.append(data)
@@ -144,6 +143,7 @@ class Operator:
 				data_set = []
 				self.flag += 1
 				self.lock.release()
+			self.up_stream_socket.send_string('Ack--' + time)
 
 	def distribute_data(self):
 		while True:
