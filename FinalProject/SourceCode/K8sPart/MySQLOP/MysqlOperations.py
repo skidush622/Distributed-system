@@ -111,6 +111,7 @@ def count_spec_rows(db_handler, db_name, tb_name, spec_column, expect_val):
 	count_spec = 'SELECT COUNT(' + spec_column + ') FROM ' + tb_name + ' WHERE ' + spec_column + '=' + '\'' + expect_val + '\''
 	db_handler.execute(count_spec)
 	result = db_handler.fetchall()
+	print(result)
 	if result is None:
 		return 0
 	return result[0][0]
