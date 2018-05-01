@@ -77,6 +77,7 @@ class Operator:
 		def watch_egress_leader(data, stat):
 			if stat is not None:
 				egress_leader_address = str(data)
+				print(egress_leader_address)
 				self.down_stream_socket = self.build_egress_socket(egress_leader_address)
 				self.egress_available = True
 			else:
