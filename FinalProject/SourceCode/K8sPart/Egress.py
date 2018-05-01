@@ -93,7 +93,7 @@ class Egress:
 		# Watch Leader node
 		@self.zk.DataWatch(self.leader_path)
 		def watch_egress_leader(data, state):
-			if state is not None:
+			if state is None:
 				print('Suggest election..')
 				election = self.zk.Election(self.parent_path)
 				election.run(win_election)
