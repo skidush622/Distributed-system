@@ -26,8 +26,8 @@
       <file leaf-file-name="Operator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="168" column="40" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
+            <state relative-caret-position="328">
+              <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -379,20 +379,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524532154570</updated>
     </task>
-    <task id="LOCAL-00041" summary="update">
-      <created>1525154387778</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1525154387779</updated>
-    </task>
-    <task id="LOCAL-00042" summary="update">
-      <created>1525154740507</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1525154740507</updated>
-    </task>
     <task id="LOCAL-00043" summary="update">
       <created>1525155587747</created>
       <option name="number" value="00043" />
@@ -722,7 +708,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525198171729</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="update">
+      <created>1525198850095</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1525198850095</updated>
+    </task>
+    <task id="LOCAL-00091" summary="update">
+      <created>1525199194997</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1525199194997</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1140,8 +1140,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Operator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="168" column="40" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
+        <state relative-caret-position="328">
+          <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
         </state>
       </provider>
     </entry>

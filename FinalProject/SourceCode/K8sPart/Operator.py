@@ -130,7 +130,7 @@ class Operator:
 				id += 1
 				result = self.calculating(data_set)
 				# 将数据存入数据库
-				values = [id, state, 'Recv']
+				values = [str(id), state, 'Recv']
 				values.extend(result.values())
 				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
