@@ -144,7 +144,7 @@ class Egress:
 
 	def send_data(self):
 		while True:
-			if self.flag > 5:
+			if self.flag == 5:
 				self.flag = 0
 				self.lock.acquire()
 				# 读取前5/row_count 行数据

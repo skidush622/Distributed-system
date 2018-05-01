@@ -142,11 +142,11 @@ class Operator:
 
 	def distribute_data(self):
 		while True:
-			if self.flag > 20:
+			if self.flag == 20:
 				self.lock.acquire()
-				self.flag = 0
 				# 读取前20 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 20)
+				self.flag = 0
 				self.lock.release()
 				temp_data = []
 				for item in data:
