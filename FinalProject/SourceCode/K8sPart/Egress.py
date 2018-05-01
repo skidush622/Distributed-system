@@ -144,6 +144,7 @@ class Egress:
 		while True:
 			flag += 1
 			if flag > 5:
+				flag = 0
 				self.lock.acquire()
 				# 读取前5/row_count 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 5)
