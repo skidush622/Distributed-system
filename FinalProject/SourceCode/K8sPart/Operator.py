@@ -116,6 +116,7 @@ class Operator:
 
 	def recv_data(self):
 		data_set = []
+		id = 0
 		while True:
 			data = self.up_stream_socket.recv_string()
 			print('Recv data :' + data)
@@ -126,9 +127,10 @@ class Operator:
 			data = int(data['Data'])
 			data_set.append(data)
 			if len(data_set) == 100:
+				id += 1
 				result = self.calculating(data_set)
 				# 将数据存入数据库
-				values = [state, 'Recv']
+				values = [id, state, 'Recv']
 				values.extend(result.values())
 				self.lock.acquire()
 				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
