@@ -144,6 +144,7 @@ class Egress:
 		while True:
 			flag += 1
 			if flag > 5:
+				self.lock.acquire()
 				# 读取前5/row_count 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 5)
 				temp_data = []
@@ -159,7 +160,7 @@ class Egress:
 					# Ack msg format: 'ack--' + $ID
 					ack_id = ack.split('--')[1]
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
-
+				self.lock.release()
 
 if __name__ == '__main__':
 	Egress('172.17.0.3', '172.17.0.7', '172.17.0.8', 1, '172.17.0.2', 'root', 'kzw')

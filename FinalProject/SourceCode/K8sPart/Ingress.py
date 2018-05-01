@@ -124,8 +124,8 @@ class Ingress:
 		flag = 0
 		while True:
 			flag += 1
-			self.lock.acquire()
 			if flag == 100:
+				self.lock.acquire()
 				flag = 0
 				# 读取前100/row_count 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 100)
@@ -156,7 +156,7 @@ class Ingress:
 					else:
 						threading.Thread(target=send_data,
 										 args=(self.down_stream_sockets[i], data[i * each_count:],)).start()
-			self.lock.release()
+				self.lock.release()
 
 
 if __name__ == '__main__':

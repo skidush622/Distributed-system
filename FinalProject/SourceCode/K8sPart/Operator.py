@@ -138,8 +138,8 @@ class Operator:
 		flag = 0
 		while True:
 			flag += 1
-			self.lock.acquire()
 			if flag > 20:
+				self.lock.acquire()
 				flag = 0
 				# 读取前20 行数据
 				data = mysqlop.query_first_N(self.db_handler, self.db_name, self.tb_name, 20)
@@ -158,7 +158,7 @@ class Operator:
 					# Ack msg format: 'ack--' + $ID
 					ack_id = ack.split('--')[1]
 					mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'ID', ack_id)
-			self.lock.release()
+				self.lock.release()
 
 	def calculating(self, data_set):
 		data_sum = np.sum(data_set)
