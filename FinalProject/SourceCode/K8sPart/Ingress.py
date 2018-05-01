@@ -134,6 +134,8 @@ class Ingress:
 					temp_data.append({'Time': item[0], 'State': item[1], 'Data': item[2]})
 				data = temp_data
 
+				send_lock = threading.Lock()
+
 				# 开始并行发送
 				def send_data(socket, my_data):
 					for __data in my_data:
@@ -144,8 +146,9 @@ class Ingress:
 						ack_time = ack.split('--')[1]
 						print(ack)
 						# Update DB
-						mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time',
-										   ack_time)
+						with send_lock:
+							mysqlop.delete_row(self.db_handler, self.db_connection, self.db_name, self.tb_name, 'Time',
+											   ack_time)
 
 				socket_count = len(self.down_stream_sockets)
 				each_count = 100 / socket_count
