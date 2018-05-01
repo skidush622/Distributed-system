@@ -33,11 +33,11 @@ if __name__ == '__main__':
         return socket
 
     if zk.exists(ingress_path) is not None:
-		address = zk.get(ingress_path)
-		if address is not None:
-			ingress_alive = True
-			address = address[0] + ':2341'
-			socket = connect_2_k8s(address)
+        address = zk.get(ingress_path)
+        if address is not None:
+            ingress_alive = True
+            address = address[0] + ':2341'
+            socket = connect_2_k8s(address)
 
     @zk.DataWatch(ingress_path)
     def watch_ingress(data, stat):
@@ -62,12 +62,8 @@ if __name__ == '__main__':
                     pass
                 state = file_path.split('/')[7]
                 state = state.split('.')[0]
-                current = time.time()
-                event = {
-                    'Time': current,
-                    'State': state,
-                    'Data': line
-                }
+                current = str(time.time())
+                event = [current, state, line]
                 socket.send_string(simplejson.dumps(event))
                 print(socket.recv_string())
 

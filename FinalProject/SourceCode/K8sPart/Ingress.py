@@ -106,12 +106,10 @@ class Ingress:
 			msg = self.up_stream_socket.recv_string()
 			# print('Receive msg %s from data source.' % msg)
 			msg = simplejson.loads(msg)
-			msg.update({'Status': 'Recv'})
+			msg.extend['Recv']
 			# Store data into DB
-			vals = msg.values()
-			vals = [str(val) for val in vals]
-			print(vals)
-			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, vals)
+			print(msg)
+			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, msg)
 			self.up_stream_socket.send_string('OK')
 
 	def distribute_data(self):
