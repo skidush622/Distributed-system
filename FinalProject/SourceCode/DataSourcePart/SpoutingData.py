@@ -49,7 +49,8 @@ if __name__ == '__main__':
         else:
             ingress_alive = False
 
-    data_files = glob.glob('/home/DataSource/*.txt')
+    data_files = glob.glob('/home/CS6381/FinalProject/SourceCode/DataSourcePart/DataSource/*.txt')
+
     data_files = data_files[spout-1]
 
     print(data_files)
