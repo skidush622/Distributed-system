@@ -119,7 +119,10 @@ class Operator:
 	def recv_data(self):
 		data_set = []
 		id = 0
+		i = 0
 		while True:
+			i += 1
+			print(i)
 			data = self.up_stream_socket.recv_string()
 			print('Recv data :' + data)
 			data = simplejson.loads(data)
