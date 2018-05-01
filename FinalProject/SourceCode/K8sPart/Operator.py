@@ -138,7 +138,6 @@ class Operator:
 				result = self.calculating(data_set)
 				# 将数据存入数据库
 				values = [id, state, 'Recv']
-				result = [str(res) for res in result]
 				values.extend(result)
 				self.lock.acquire()
 				mysqlop.insert_data_operator(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
