@@ -7,6 +7,7 @@ import zmq
 import simplejson
 import threading
 import numpy as np
+import math
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
@@ -26,7 +27,7 @@ class Operator:
 		self.db_name = 'Spout_' + str(spout)
 		self.tb_name = str('Operator_' + str(operator_id))
 		self.columns = ['ID', 'State', 'Status', 'Sum', 'Mean', 'Max', 'Min']
-		self.columns_type = ['INT(11)', 'CHAR(20)', 'CHAR(30)', 'CHAR(30)', 'CHAR(30)', 'CHAR(30)', 'CHAR(30)']
+		self.columns_type = ['INT(11)', 'CHAR(20)', 'CHAR(30)', 'FLOAT(30, 5)', 'FLOAT(30, 5)', 'FLOAT(30, 5)','FLOAT(30, 5)']
 		self.db_connection, self.db_handler = self.init_db()
 
 		self.id = 'op' + str(random.randint(1, 1000))
@@ -130,10 +131,10 @@ class Operator:
 				id += 1
 				result = self.calculating(data_set)
 				# 将数据存入数据库
-				values = [str(id), state, 'Recv']
+				values = [id, state, 'Recv']
 				values.extend(result.values())
 				self.lock.acquire()
-				mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
+				# mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, values)
 				data_set = []
 				self.flag += 1
 				self.lock.release()
@@ -165,10 +166,10 @@ class Operator:
 					self.lock.release()
 
 	def calculating(self, data_set):
-		data_sum = str(np.sum(data_set))
-		data_mean = str(np.mean(data_set))
-		data_max = str(np.max(data_set))
-		data_min = str(np.min(data_set))
+		data_sum = np.sum(data_set)
+		data_mean = np.mean(data_set)
+		data_max = np.max(data_set)
+		data_min = np.min(data_set)
 		return {'sum': data_sum, 'mean': data_mean, 'max': data_max, 'min': data_min}
 
 if __name__ == '__main__':
