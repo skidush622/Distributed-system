@@ -1,16 +1,5 @@
-# Copyright 2016 The Kubernetes Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 from os import path
 
@@ -18,78 +7,108 @@ import yaml
 
 from kubernetes import client, config
 
-DEPLOYMENT_NAME = "nginx-deployment"
+
+def create_deployment_using_yaml(yaml_file):
+	config.load_kube_config()
+	with open(path.join(path.dirname(__file__), yaml_file)) as f:
+		dep = yaml.load(f)
+		k8s_beta = client.ExtensionsV1beta1Api()
+		resp = k8s_beta.create_namespaced_deployment(
+			body=dep, namespace="default")
+		print("Deployment created using %s. status='%s'" % (yaml_file, str(resp.status)))
 
 
-def create_deployment_object():
-    # Configureate Pod template container
-    container = client.V1Container(
-        name="nginx",
-        image="nginx:1.7.9",
-        ports=[client.V1ContainerPort(container_port=80)])
-    # Create and configurate a spec section
-    template = client.V1PodTemplateSpec(
-        metadata=client.V1ObjectMeta(labels={"app": "nginx"}),
-        spec=client.V1PodSpec(containers=[container]))
-    # Create the specification of deployment
-    spec = client.ExtensionsV1beta1DeploymentSpec(
-        replicas=3,
-        template=template)
-    # Instantiate the deployment object
-    deployment = client.ExtensionsV1beta1Deployment(
-        api_version="extensions/v1beta1",
-        kind="Deployment",
-        metadata=client.V1ObjectMeta(name=DEPLOYMENT_NAME),
-        spec=spec)
+def create_service(service_name, app_name, port, node_port):
+	# Load config from default location
+	config.load_kube_config()
 
-    return deployment
+	# Create API endpoint instance
+	api_instance = client.CoreV1Api()
 
-def create_deployment(api_instance, deployment):
-    # Create deployement
-    api_response = api_instance.create_namespaced_deployment(
-        body=deployment,
-        namespace="default")
-    print("Deployment created. status='%s'" % str(api_response.status))
+	# Create API resource instances
+	service = client.V1Service()
+
+	#  required Service fields
+	service.api_version = "v1"
+	service.kind = 'Service'
+	service.metadata = client.V1ObjectMeta(name=service_name)
+
+	# Provide Service .spec description
+	spec = client.V1ServiceSpec()
+	spec.selector = {"app": app_name}
+	spec.type = 'NodePort'
+	spec.ports = [client.V1ServicePort(protocol='TCP', node_port=node_port, port=port)]
+	service.spec = spec
+
+	# create service
+	api_instance.create_namespaced_service(namespace="default", body=service)
 
 
-def update_deployment(api_instance, deployment):
-    # Update container image
-    deployment.spec.template.spec.containers[0].image = "nginx:1.9.1"
-    # Update the deployment
-    api_response = api_instance.patch_namespaced_deployment(
-        name=DEPLOYMENT_NAME,
-        namespace="default",
-        body=deployment)
-    print("Deployment updated. status='%s'" % str(api_response.status))
+def create_deployment(deployment_name, pod_label, container_name, image_name, container_port):
+	# Load config from default location
+	config.load_kube_config()
+	extension = client.ExtensionsV1beta1Api()
+
+	# Create Deployment object
+	deployment = client.ExtensionsV1beta1Deployment()
+
+	# Fill required Deployment fields
+	deployment.api_version = "extensions/v1beta1"
+	deployment.kind = "Deployment"
+	deployment.metadata = client.V1ObjectMeta(name=deployment_name)
+
+	# spec section
+	spec = client.ExtensionsV1beta1DeploymentSpec()
+	spec.replicas = 3
+
+	# Pod template
+	spec.template = client.V1PodTemplateSpec()
+	spec.template.metadata = client.V1ObjectMeta(labels={"app": pod_label})
+	spec.template.spec = client.V1PodSpec()
+
+	# Pod template container description
+	container = client.V1Container()
+	container.name = container_name
+	container.image = image_name
+	container.ports = [client.V1ContainerPort(container_port=container_port)]
+
+	spec.template.spec.containers = [container]
+	deployment.spec = spec
+
+	# create deployment
+	extension.create_namespaced_deployment(namespace="default", body=deployment)
 
 
-def delete_deployment(api_instance):
-    # Delete deployment
-    api_response = api_instance.delete_namespaced_deployment(
-        name=DEPLOYMENT_NAME,
-        namespace="default",
-        body=client.V1DeleteOptions(
-            propagation_policy='Foreground',
-            grace_period_seconds=5))
-    print("Deployment deleted. status='%s'" % str(api_response.status))
-
-
-def main():
-    # Configs can be set in Configuration class directly or using helper
-    # utility. If no argument provided, the config will be loaded from
-    # default location.
-    config.load_kube_config()
-    extensions_v1beta1 = client.ExtensionsV1beta1Api()
-    # Create a deployment object with client-python API. The deployment we
-    # created is same as the `nginx-deployment.yaml` in the /examples folder.
-    deployment = create_deployment_object()
-
-    create_deployment(extensions_v1beta1, deployment)
-
-    update_deployment(extensions_v1beta1, deployment)
-
-    delete_deployment(extensions_v1beta1)
+def create_initial_operator_deployments():
+	base_port = 2300
+	for i in range(3):
+		deployment_name = 'operator' + str(i + 1)
+		pod_label = 'operator' + str(i + 1)
+		container_name = 'operator' + str(i + 1)
+		image_name = 'zhuangweikang/operator_image:0.01'
+		container_port = base_port + i + 1
+		create_deployment(deployment_name, pod_label, container_name, image_name, container_port)
+		print('Create operator deployment %s ' % deployment_name)
 
 
 if __name__ == '__main__':
-    main()
+	# create deployment for ingress operator
+	ingress_yaml = './OperatorsDeployment/ingress-deployment.yaml'
+	create_deployment_using_yaml(ingress_yaml)
+
+	# create service for ingress operator
+	create_service('ingress', 'ingress', 2340, 3000)
+
+	# create deployment for output operator
+	output_yaml = './OperatorsDeployment/output-deployment.yaml'
+	create_deployment_using_yaml(output_yaml)
+
+	# create deployment for egress operator
+	egress_yaml = './OperatorsDeployment/egress-deployment.yaml'
+	create_deployment_using_yaml(egress_yaml)
+
+	# create initial operator deployments
+	create_initial_operator_deployments()
+
+
+

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: output-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: output
+    spec:
+      containers:
+      - name: output
+        image: zhuangweikang/operator_image:0.01
+        ports:
+        - containerPort: 2343

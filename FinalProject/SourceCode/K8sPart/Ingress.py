@@ -7,6 +7,7 @@ import random
 import threading
 import simplejson
 import time as tm
+import argparse
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
@@ -166,4 +167,18 @@ class Ingress:
 
 
 if __name__ == '__main__':
-	ingress = Ingress(1, '172.17.0.5', '172.17.0.6', '172.17.0.7', 'root', 'kzw')
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-s', '--spout', type=int, default=1, help='Spout number.')
+	parser.add_argument('-a', '--address', type=str, help='IP address of current operator.')
+	parser.add_argument('-z', '--zk_address', type=str, help='IP address of zookeeper server')
+	parser.add_argument('-d', '--db_address', type=str, help='IP address of mysql server')
+	parser.add_argument('-u', '--db_user', type=str, default='root', help='User name of mysql server')
+	parser.add_argument('-p', '--db_pwd', type=str, default='kzw', help='Password of mysql server.')
+	args = parser.parse_args()
+	spout = args.spout
+	address = args.address
+	zk_address = args.zk_address
+	db_address = args.db_address
+	db_user = args.db_user
+	db_pwd = args.db_pwd
+	Ingress(spout, address, zk_address, db_address, db_user, db_pwd)

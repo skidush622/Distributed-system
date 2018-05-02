@@ -7,6 +7,7 @@ import zmq
 import simplejson
 import threading
 import numpy as np
+import argparse
 import time as tm
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
@@ -182,4 +183,20 @@ class Operator:
 
 
 if __name__ == '__main__':
-	op = Operator('172.17.0.6', '172.17.0.4', 1, 1, '172.17.0.7', 'root', 'kzw')
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-z', '--zk_address', type=str, help='ZooKeeper server address')
+	parser.add_argument('-a', '--address', type=str, help='IP address of this operator')
+	parser.add_argument('-s', '--spout', type=int, default=1, help='Spout number')
+	parser.add_argument('-i', '--id', type=int, default=1, help='ID of this operator')
+	parser.add_argument('-d', '--db_address', type=str, help='IP address of mysql server')
+	parser.add_argument('-u', '--user', type=str, default='root', help='User name of mysql server')
+	parser.add_argument('-p', '--pwd', type=str, default='kzw', help='Password of mysql server')
+	args = parser.parse_args()
+	zk_address = args.zk_address
+	address = args.address
+	spout = args.spout
+	id = args.id
+	db_address = args.db_address
+	user = args.user
+	pwd = args.pwd
+	Operator(zk_address, address, spout, id, db_address, user, pwd)

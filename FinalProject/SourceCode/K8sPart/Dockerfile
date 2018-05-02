@@ -19,7 +19,6 @@ RUN pip install simplejson
 RUN pip install PyMySQL
 RUN pip install numpy
 
-COPY MySQLOP /home/K8sPart/MySQLOP/
-COPY ./*.py /home/K8sPart/
+RUN git clone https://github.com/ZhuangweiKang/CS6381.git /home/
 
 EXPOSE 2341

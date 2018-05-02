@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: egress-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: egress
+    spec:
+      containers:
+      - name: egress
+        image: zhuangweikang/operator_image:0.01
+        ports:
+        - containerPort: 2342
