@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: output
-        image: zhuangweikang/operator_image:0.01
+        image: zhuangweikang/operator_image
         ports:
         - containerPort: 2343
