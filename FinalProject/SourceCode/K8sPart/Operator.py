@@ -179,5 +179,6 @@ class Operator:
 		data_min = np.min(data_set)
 		return [data_sum, data_mean, data_max, data_min]
 
+
 if __name__ == '__main__':
 	op = Operator('172.17.0.6', '172.17.0.4', 1, 1, '172.17.0.7', 'root', 'kzw')

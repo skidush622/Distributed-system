@@ -1,9 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import sys
 import zmq
 import simplejson
 import argparse
+import time
 from MySQLOP import MysqlOperations as mysqlop
 
 if __name__ == '__main__':
@@ -33,6 +35,10 @@ if __name__ == '__main__':
 		return socket
 	exists_table = []
 	output_socket = build_socket()
+	total_sum = 0
+	total_mean = 0
+	total_max = -sys.maxsize-1
+	total_min = sys.maxsize
 	while True:
 		recv = output_socket.recv_string()
 		recv = simplejson.loads(recv)
@@ -55,8 +61,14 @@ if __name__ == '__main__':
 		mysqlop.insert_data_output(db_connection, db_handler, db_name, tb_name, values)
 		# Display data
 		print('\n----------------------' + state + '----------------------')
+		print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 		print('Sum: ' + str(data_sum))
 		print('Mean: ' + str(data_mean))
 		print('Max: ' + str(data_max))
 		print('Min: ' + str(data_min))
+		print('Total sum:' + str(total_sum+data_sum))
+		print('Total mean:' + str((total_mean + data_mean)/2))
+		print('Total max:' + str(max(total_max, data_max)))
+		print('Total min:' + str(min(total_min, data_min)))
+
 
