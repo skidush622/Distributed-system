@@ -84,7 +84,7 @@ def insert_data_operator(db_connection, db_handler, db_name, tb_name, values):
 
 def insert_data_output(db_connection, db_handler, db_name, tb_name, values):
 	useDB(db_handler, db_name)
-	insert_db = 'INSERT INTO ' + tb_name + ' VALUES ' + '(' + str(values[0]) + ',' + '\'' + values[1] + '\',' + str(values[2]) + ',' + str(values[3]) + ',' + str(values[4]) + ',' + str(values[5]) + ')'
+	insert_db = 'INSERT INTO ' + tb_name + ' VALUES ' + '(' + str(values[0]) + ',' + '\'' + values[1] + '\',' + str(values[2]) + ',' + str(values[3]) + ',' + str(values[4]) + ',' + str(values[5]) + ',' + str(values[6]) + ',' + str(values[7]) + ',' + str(values[8]) + ',' + str(values[9]) + ')'
 	db_handler.execute(insert_db)
 	db_connection.commit()
 

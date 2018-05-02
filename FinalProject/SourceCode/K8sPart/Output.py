@@ -25,8 +25,8 @@ if __name__ == '__main__':
 	# create database
 	mysqlop.createDB(db_handler, 'result')
 	# table columns
-	columns = ['ID', 'State', 'Sum', 'Mean', 'Max', 'Min']
-	columns_type = ['INT(11)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
+	columns = ['ID', 'State', 'Sum', 'Mean', 'Max', 'Min', 'Total Sum', 'Total Mean', 'Total Max', 'Total Min']
+	columns_type = ['INT(11)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
 
 	def build_socket():
 		context = zmq.Context()
@@ -39,9 +39,11 @@ if __name__ == '__main__':
 	total_mean = 0
 	total_max = -sys.maxsize-1
 	total_min = sys.maxsize
+	my_id = 0
 	while True:
 		recv = output_socket.recv_string()
 		recv = simplejson.loads(recv)
+		my_id += 1
 		id = recv['ID']
 		output_socket.send_string('Ack--' + str(id))
 		state = recv['State']
@@ -56,8 +58,12 @@ if __name__ == '__main__':
 			mysqlop.createTableAutoInc(db_handler, db_name, tb_name, columns, columns_type)
 			# Add primary key
 			mysqlop.add_primary_key(db_handler, db_connection, db_name, tb_name, columns[0])
+		total_sum += data_sum
+		total_mean = (total_mean + data_mean) / 2
+		total_max = max(total_max, data_max)
+		total_min = min(total_min, data_min)
 		# store data into database
-		values = [id, state, data_sum, data_mean, data_max, data_min]
+		values = [my_id, state, data_sum, data_mean, data_max, data_min, total_sum, total_mean, total_max, total_min]
 		mysqlop.insert_data_output(db_connection, db_handler, db_name, tb_name, values)
 		# Display data
 		print('\n----------------------' + state + '----------------------')
@@ -66,10 +72,6 @@ if __name__ == '__main__':
 		print('Mean: ' + str(data_mean))
 		print('Max: ' + str(data_max))
 		print('Min: ' + str(data_min))
-		total_sum += data_sum
-		total_mean = (total_mean + data_mean)/2
-		total_max = max(total_max, data_max)
-		total_min = min(total_min, data_min)
 		print('Total sum:' + str(total_sum))
 		print('Total mean:' + str(total_mean))
 		print('Total max:' + str(total_max))
