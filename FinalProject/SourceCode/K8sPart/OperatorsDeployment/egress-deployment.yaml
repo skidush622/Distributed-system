@@ -16,4 +16,4 @@ spec:
       - name: egress
         image: zhuangweikang/operator_image:0.01
         ports:
-        - containerPort: 2342
+        - containerPort: 30030

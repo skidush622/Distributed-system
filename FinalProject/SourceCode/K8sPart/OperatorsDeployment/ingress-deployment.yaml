@@ -16,4 +16,4 @@ spec:
       - name: ingress
         image: zhuangweikang/operator_image:0.01
         ports:
-        - containerPort: 2340
+        - containerPort: 30010

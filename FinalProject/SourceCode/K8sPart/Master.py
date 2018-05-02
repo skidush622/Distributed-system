@@ -76,7 +76,7 @@ def create_deployment(deployment_name, pod_label, container_name, image_name, co
 
 
 def create_initial_operator_deployments():
-	base_port = 2300
+	base_port = 30012
 	for i in range(3):
 		deployment_name = 'operator' + str(i + 1)
 		pod_label = 'operator' + str(i + 1)
