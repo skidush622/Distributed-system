@@ -49,26 +49,27 @@ def create_deployment(deployment_name, pod_label, container_name, image_name, co
 	config.load_kube_config()
 	extension = client.ExtensionsV1beta1Api()
 
-	# Create Deployment object
-	deployment = client.ExtensionsV1beta1Deployment()
+	container = client.V1Container(
+		name=container_name,
+		image=image_name,
+		ports=[client.V1ContainerPort(container_port=container_port)])
 
-	# Fill required Deployment fields
-	deployment.api_version = "extensions/v1beta1"
-	deployment.kind = "Deployment"
-	deployment.metadata = client.V1ObjectMeta(name=deployment_name)
+	# Create and configurate a spec section
+	template = client.V1PodTemplateSpec(
+		metadata=client.V1ObjectMeta(labels={"app": pod_label}),
+		spec=client.V1PodSpec(containers=[container]))
 
-	template = client.V1PodTemplateSpec(metadata=client.V1ObjectMeta(labels={"app": pod_label}), spec=client.V1PodSpec)
-	# spec section
-	spec = client.ExtensionsV1beta1DeploymentSpec(replicas=3, template=template)
+	# Create the specification of deployment
+	spec = client.ExtensionsV1beta1DeploymentSpec(
+		replicas=3,
+		template=template)
 
-	# Pod template container description
-	container = client.V1Container()
-	container.name = container_name
-	container.image = image_name
-	container.ports = [client.V1ContainerPort(container_port=container_port)]
-
-	spec.template.spec.containers = [container]
-	deployment.spec = spec
+	# Instantiate the deployment object
+	deployment = client.ExtensionsV1beta1Deployment(
+		api_version="extensions/v1beta1",
+		kind="Deployment",
+		metadata=client.V1ObjectMeta(name=deployment_name),
+		spec=spec)
 
 	# create deployment
 	extension.create_namespaced_deployment(namespace="default", body=deployment)
