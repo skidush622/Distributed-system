@@ -25,7 +25,7 @@ if __name__ == '__main__':
 	# create database
 	mysqlop.createDB(db_handler, 'result')
 	# table columns
-	columns = ['ID', 'State', 'Sum', 'Mean', 'Max', 'Min', 'Total Sum', 'Total Mean', 'Total Max', 'Total Min']
+	columns = ['ID', 'State', 'Sum', 'Mean', 'Max', 'Min', 'Total_Sum', 'Total_Mean', 'Total_Max', 'Total_Min']
 	columns_type = ['INT(11)', 'CHAR(20)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)', 'DOUBLE(30,4)']
 
 	def build_socket():
