@@ -54,10 +54,9 @@ if __name__ == '__main__':
 		values = [id, state, data_sum, data_mean, data_max, data_min]
 		mysqlop.insert_data_output(db_connection, db_handler, db_name, tb_name, values)
 		# Display data
-		print('----------------------' + state + '----------------------')
+		print('\n----------------------' + state + '----------------------')
 		print('Sum: ' + str(data_sum))
 		print('Mean: ' + str(data_mean))
 		print('Max: ' + str(data_max))
 		print('Min: ' + str(data_min))
-		print('---------------------------------------------------------\n')
 
