@@ -92,7 +92,7 @@ if __name__ == '__main__':
 	create_deployment_using_yaml(ingress_yaml)
 
 	# create service for ingress operator
-	create_service('ingress', 'ingress', 2340, 30000)
+	create_service('ingress', 'ingress', 2340, 30010)
 
 	# create deployment for output operator
 	output_yaml = './OperatorsDeployment/output-deployment.yaml'
