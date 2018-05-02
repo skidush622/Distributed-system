@@ -57,14 +57,9 @@ def create_deployment(deployment_name, pod_label, container_name, image_name, co
 	deployment.kind = "Deployment"
 	deployment.metadata = client.V1ObjectMeta(name=deployment_name)
 
+	template = client.V1PodTemplateSpec(metadata=client.V1ObjectMeta(labels={"app": pod_label}), spec=client.V1PodSpec)
 	# spec section
-	spec = client.ExtensionsV1beta1DeploymentSpec()
-	spec.replicas = 3
-
-	# Pod template
-	spec.template = client.V1PodTemplateSpec()
-	spec.template.metadata = client.V1ObjectMeta(labels={"app": pod_label})
-	spec.template.spec = client.V1PodSpec()
+	spec = client.ExtensionsV1beta1DeploymentSpec(replicas=3, template=template)
 
 	# Pod template container description
 	container = client.V1Container()
