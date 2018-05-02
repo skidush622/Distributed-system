@@ -81,7 +81,7 @@ def create_initial_operator_deployments():
 		deployment_name = 'operator' + str(i + 1)
 		pod_label = 'operator' + str(i + 1)
 		container_name = 'operator' + str(i + 1)
-		image_name = 'zhuangweikang/operator_image'
+		image_name = 'zhuangweikang/operator_image:0.01'
 		container_port = base_port + i + 1
 		create_deployment(deployment_name, pod_label, container_name, image_name, container_port)
 		print('Create operator deployment %s ' % deployment_name)
