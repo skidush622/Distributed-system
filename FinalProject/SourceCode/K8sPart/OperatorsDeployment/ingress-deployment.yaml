@@ -4,6 +4,9 @@ metadata:
   name: ingress-deployment
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: ingress
   template:
     metadata:
       labels:

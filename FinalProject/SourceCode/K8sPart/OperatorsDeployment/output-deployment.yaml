@@ -4,6 +4,9 @@ metadata:
   name: output-deployment
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: output
   template:
     metadata:
       labels:

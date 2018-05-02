@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="66d86916-591e-47f8-8746-c1716d9f752f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/Master.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/Master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Master.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Master.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Master.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+            <state relative-caret-position="395">
+              <caret line="84" column="42" lean-forward="true" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
               <folding>
                 <element signature="e#43#62#0" expanded="true" />
               </folding>
@@ -29,8 +31,17 @@
       <file leaf-file-name="ingress-service.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-service.yaml">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="output-deployment.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <caret line="8" column="17" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -38,8 +49,17 @@
       <file leaf-file-name="ingress-deployment.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="120">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="egress-deployment.yaml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -47,8 +67,8 @@
       <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="36" />
+            <state relative-caret-position="225">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -128,10 +148,7 @@
         <option value="$PROJECT_DIR$/SourceCode/DataSourcePart/SpoutingData.py" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/MySQLOP/MysqlOperations.py" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/Output.py" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/operator-deployment.yaml" />
-        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/operator-pod.yaml" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-pod.yaml" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/Operator.py" />
@@ -140,6 +157,9 @@
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/Dockerfile" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-service.yaml" />
         <option value="$PROJECT_DIR$/SourceCode/K8sPart/Master.py" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml" />
+        <option value="$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml" />
       </list>
     </option>
   </component>
@@ -331,20 +351,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524532154570</updated>
-    </task>
-    <task id="LOCAL-00087" summary="update">
-      <created>1525197646523</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1525197646523</updated>
-    </task>
-    <task id="LOCAL-00088" summary="update">
-      <created>1525198002849</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1525198002849</updated>
     </task>
     <task id="LOCAL-00089" summary="update">
       <created>1525198171729</created>
@@ -675,7 +681,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525254329719</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="update">
+      <created>1525254648485</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1525254648485</updated>
+    </task>
+    <task id="LOCAL-00137" summary="update">
+      <created>1525255315803</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1525255315803</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TodoView">
@@ -691,7 +711,7 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
       <window_info anchor="bottom" id="Docker" order="7" sideWeight="0.4951535" weight="0.6896552" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50436854" side_tool="true" weight="0.61241376" />
@@ -1014,13 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Output.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1032,13 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1079,13 +1085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.6/lib/python/site-packages/yaml/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1096,27 +1095,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml">
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-service.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        <state relative-caret-position="135">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/Master.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+        <state relative-caret-position="395">
+          <caret line="84" column="42" lean-forward="true" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
           <folding>
             <element signature="e#43#62#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/output-deployment.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/ingress-deployment.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SourceCode/K8sPart/OperatorsDeployment/egress-deployment.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>

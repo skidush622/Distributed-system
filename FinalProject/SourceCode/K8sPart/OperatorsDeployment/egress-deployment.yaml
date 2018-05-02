@@ -4,6 +4,9 @@ metadata:
   name: egress-deployment
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: egress
   template:
     metadata:
       labels:
