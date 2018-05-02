@@ -66,9 +66,13 @@ if __name__ == '__main__':
 		print('Mean: ' + str(data_mean))
 		print('Max: ' + str(data_max))
 		print('Min: ' + str(data_min))
-		print('Total sum:' + str(total_sum+data_sum))
-		print('Total mean:' + str((total_mean + data_mean)/2))
-		print('Total max:' + str(max(total_max, data_max)))
-		print('Total min:' + str(min(total_min, data_min)))
+		total_sum += data_sum
+		total_mean = (total_mean + data_mean)/2
+		total_max = max(total_max, data_max)
+		total_min = min(total_min, data_min)
+		print('Total sum:' + str(total_sum))
+		print('Total mean:' + str(total_mean))
+		print('Total max:' + str(total_max))
+		print('Total min:' + str(total_min))
 
 

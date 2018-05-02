@@ -7,7 +7,7 @@ import zmq
 import simplejson
 import threading
 import numpy as np
-import math
+import time as tm
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
@@ -144,6 +144,7 @@ class Operator:
 				data_set = []
 				self.flag += 1
 				self.lock.release()
+			tm.sleep(0.01)
 
 	def distribute_data(self):
 		while True:

@@ -6,7 +6,7 @@ import zmq
 import random
 import threading
 import simplejson
-import time
+import time as tm
 from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from MySQLOP import MysqlOperations as mysqlop
@@ -116,13 +116,13 @@ class Ingress:
 			temp = []
 			temp.extend(msg)
 			temp.append('Recv')
-			print(temp)
 			# Store data into DB
 			self.lock.acquire()
 			mysqlop.insert_data(self.db_connection, self.db_handler, self.db_name, self.tb_name, temp)
 			self.flag += 1
 			self.lock.release()
 			self.up_stream_socket.send_string('Ack--OK')
+			tm.sleep(0.01)
 
 	def distribute_data(self):
 		while True:
