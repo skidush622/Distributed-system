@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: output-deployment
+  labels:
+    app: nginx
 spec:
   replicas: 3
   selector:
@@ -16,4 +18,4 @@ spec:
       - name: output
         image: zhuangweikang/operator_image:0.01
         ports:
-        - containerPort: 30040
+        - containerPort: 2030

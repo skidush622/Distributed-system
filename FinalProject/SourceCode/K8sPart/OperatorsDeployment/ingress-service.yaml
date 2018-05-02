@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 2340
+    - port: 2001
       nodePort: 30010
   selector:
     name: ingress
